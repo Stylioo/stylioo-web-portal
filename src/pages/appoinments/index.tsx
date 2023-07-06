@@ -1,6 +1,8 @@
 const AppointmentPage = () => {
   return (
-    <div>AppointmentPage</div>
+    <div>
+      <h1>AppointmentPage</h1>
+    </div>
   )
 }
 

@@ -1,18 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { ThemeProvider, createTheme } from "@mui/material"
 import HomePage from "./pages/home"
 import AppointmentPage from "./pages/appoinments"
-import Sidebar from "./components/sidebar"
-import Appbar from "./components/appbar"
+import SideBar from "./components/SideBar"
 
 function App() {
+
+  const theme = createTheme()
   return (
     <BrowserRouter>
-      <Appbar />
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/appointment" element={<AppointmentPage />}></Route>
-      </Routes>
+      <ThemeProvider theme={theme}>
+        <SideBar >
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/appointment" element={<AppointmentPage />}></Route>
+          </Routes>
+        </SideBar>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
