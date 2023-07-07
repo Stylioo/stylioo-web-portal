@@ -143,7 +143,7 @@ export default function SideBar({ children }: sidebarPropType) {
                     </List>
                 </Box>
             </SwipeableDrawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100dvh' }}>
+            <Box component="main" sx={{ flexGrow: 1, px: 3, minHeight: '100dvh' }}>
                 <Toolbar />
                 {children}
             </Box>

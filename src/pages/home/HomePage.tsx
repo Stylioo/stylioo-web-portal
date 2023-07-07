@@ -1,5 +1,5 @@
 
-import { Button, Container, Stack, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,7 +11,7 @@ const StyledButton = styled(Button)(() => ({
 
 const HomePage = () => {
   return (
-    <Container>
+    <>
       <Typography variant="h1">Hello</Typography>
       <Typography variant="h2">Hello</Typography>
       <Typography variant="subtitle1">Hello</Typography>
@@ -38,7 +38,7 @@ const HomePage = () => {
       <Fab color="primary" size="small">
         <AddIcon />
       </Fab>
-    </Container>
+    </>
   )
 }
 
