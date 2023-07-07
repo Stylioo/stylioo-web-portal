@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { CssBaseline, Box, Drawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { Link } from 'react-router-dom';
-import { useTheme } from '@emotion/react';
+
+import { useTheme } from '@mui/material/styles';
 
 const drawerWidth = 220;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -33,11 +35,9 @@ export default function SideBar({ children }: sidebarPropType) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
-    const theme = useTheme()
-    // const [isMobile, setIsMobile] = useState(false)
-
-    // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const [openDrawer, setOpenDrawer] = useState(false);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -45,17 +45,25 @@ export default function SideBar({ children }: sidebarPropType) {
             <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
+
                     }}>
+                        <IconButton
+                            sx={{
+                                marginRight: '1.5rem'
+                            }}
+                            onClick={() => setOpenDrawer(!openDrawer)}
+                        ><MenuIcon sx={{
+                            display: isMobile ? 'block' : 'none',
+                            color: 'white',
+                            fontSize: '1.5rem',
+                        }} /></IconButton>
                         <Typography
                             variant="h6"
                             noWrap
                         >
                             Stylioo
                         </Typography>
-
+                        <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -89,12 +97,14 @@ export default function SideBar({ children }: sidebarPropType) {
                 </Container>
             </AppBar>
             <Drawer
-                variant="permanent"
+                variant={isMobile ? "temporary" : "permanent"}
+                open={openDrawer}
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
                     [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
                 }}
+
             >
                 <Toolbar />
                 <Box sx={{ overflow: 'auto' }}>
