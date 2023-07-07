@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CssBaseline, Box, SwipeableDrawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
+import { Box, SwipeableDrawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -41,7 +41,6 @@ export default function SideBar({ children }: sidebarPropType) {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
             <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{
@@ -144,7 +143,7 @@ export default function SideBar({ children }: sidebarPropType) {
                     </List>
                 </Box>
             </SwipeableDrawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100dvh' }}>
+            <Box component="main" sx={{ flexGrow: 1, px: 3, minHeight: '100dvh' }}>
                 <Toolbar />
                 {children}
             </Box>

@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { ThemeProvider, createTheme } from "@mui/material"
+import { CssBaseline, ThemeProvider } from "@mui/material"
+import theme from "./theme"
 import SideBar from "./components/SideBar/SideBar"
 import HomePage from "./pages/home/HomePage"
 import AppointmentPage from "./pages/appoinments/HomePage"
 
 function App() {
 
-  const theme = createTheme()
   return (
     <BrowserRouter>
+      <CssBaseline />
       <ThemeProvider theme={theme}>
         <SideBar >
           <Routes>
