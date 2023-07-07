@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { CssBaseline, Box, Drawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
@@ -18,19 +19,19 @@ interface sidebarPropType {
 
 export default function SideBar({ children }: sidebarPropType) {
 
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
+    // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    //     setAnchorElNav(event.currentTarget);
+    // };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+    // const handleCloseNavMenu = () => {
+    //     setAnchorElNav(null);
+    // };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
@@ -66,7 +67,9 @@ export default function SideBar({ children }: sidebarPropType) {
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <IconButton 
+                                onClick={handleOpenUserMenu} 
+                                sx={{ p: 0 }}>
                                     <Avatar alt="Remy Sharp" src="https://stylioo.blob.core.windows.net/images/profile.jpeg" />
                                 </IconButton>
                             </Tooltip>
