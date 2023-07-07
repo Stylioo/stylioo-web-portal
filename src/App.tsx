@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ThemeProvider, createTheme } from "@mui/material"
+import SideBar from "./components/SideBar"
 import HomePage from "./pages/home"
 import AppointmentPage from "./pages/appoinments"
-import SideBar from "./components/SideBar"
 
 function App() {
 
