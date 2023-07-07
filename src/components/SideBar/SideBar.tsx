@@ -66,7 +66,9 @@ export default function SideBar({ children }: sidebarPropType) {
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <IconButton 
+                                onClick={handleOpenUserMenu} 
+                                sx={{ p: 0 }}>
                                     <Avatar alt="Remy Sharp" src="https://stylioo.blob.core.windows.net/images/profile.jpeg" />
                                 </IconButton>
                             </Tooltip>
