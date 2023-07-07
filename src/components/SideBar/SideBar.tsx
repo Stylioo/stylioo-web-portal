@@ -99,7 +99,8 @@ export default function SideBar({ children }: sidebarPropType) {
                 </Container>
             </AppBar>
             <SwipeableDrawer
-                anchor="right"
+                variant={!isMobile ? "permanent" : "temporary"}
+                anchor="left"
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 onOpen={() => setOpenDrawer(true)}
