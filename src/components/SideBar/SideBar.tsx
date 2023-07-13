@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 import { Box, SwipeableDrawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { Link } from 'react-router-dom';
-
-import { useTheme } from '@mui/material/styles';
 
 const drawerWidth = 220;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -16,21 +16,21 @@ interface sidebarPropType {
     children: React.ReactNode
 }
 
+interface RootState {
+    user: {
+        photoUrl: string
+    }
+}
+
 export default function SideBar({ children }: sidebarPropType) {
 
-    // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const user = useSelector((state: RootState) => state.user);
+
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    //     setAnchorElNav(event.currentTarget);
-    // };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };
-
-    // const handleCloseNavMenu = () => {
-    //     setAnchorElNav(null);
-    // };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
@@ -68,7 +68,7 @@ export default function SideBar({ children }: sidebarPropType) {
                                 <IconButton
                                     onClick={handleOpenUserMenu}
                                     sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="https://stylioo.blob.core.windows.net/images/profile.jpeg" />
+                                    <Avatar alt="Remy Sharp" src={user.photoUrl} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
