@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material/styles';
 
 const drawerWidth = 220;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const SidebarItems = ['Home', 'Appointment', 'Clients', 'Beauticians']
+const SidebarItems = ['Home', 'Appointment', 'Clients', 'Beauticians','Receptionist','Profile Settings']
 
 interface sidebarPropType {
     children: React.ReactNode
