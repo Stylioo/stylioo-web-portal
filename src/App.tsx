@@ -6,7 +6,11 @@ import SideBar from "./components/SideBar/SideBar"
 import HomePage from "./pages/home/HomePage"
 import AppointmentPage from "./pages/appoinments/HomePage"
 import ReceptionistPage from "./pages/receptionist/HomePage"
-import ProfileSettingsPage from "./components/Profile/ProfileSettingsPage"
+import BeauticianPage from "./pages/beautician/HomePage"
+import StaffPage from "./pages/staff/HomePage"
+import QuickSalePage from "./pages/quicksale/QuickSalePage"
+import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
+
 
 function App() {
 
@@ -18,8 +22,12 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/appointment" element={<AppointmentPage />}></Route>
+            <Route path="/beautician" element={<BeauticianPage />}></Route>
             <Route path="/receptionist" element={<ReceptionistPage />}></Route>
-            <Route path="/components/Profile" element={<ProfileSettingsPage />}></Route>
+            <Route path="/quicksale" element={<QuickSalePage />} />
+            <Route path="/staff" element={<StaffPage />}></Route>
+            <Route path="/quick-sale-form" element={<QuickSaleForm />}></Route>
+           
           </Routes>
         </SideBar>
       </ThemeProvider>

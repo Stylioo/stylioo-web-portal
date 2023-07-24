@@ -17,19 +17,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Menu, MenuItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import ReceiptIcon from '@mui/icons-material/Receipt';
+import { PersonAdd } from '@mui/icons-material';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'Date', headerName: 'Date', width: 130 },
-  { field: 'StartTime', headerName: 'Start Time', width: 130 },
-  { field: 'EndTime', headerName: 'End Time', width: 130 },
-  { field: 'ClientName', headerName: 'Client name', width: 130 },
-  { field: 'Service', headerName: 'Service', width: 130 },
-  { field: 'Beautician', headerName: 'Beautician', width: 130 },
-  { field: 'ServicePrice', headerName: 'Service Price', width: 130 },
+  { field: 'id', headerName: 'id', width: 70 },
+  { field: 'Role', headerName: 'Role', width: 70 },
+  { field: 'Name', headerName: 'Name', width: 130 },
+  { field: 'Address', headerName: 'Address', width: 130 },
+  { field: 'ContactNo', headerName: 'ContactNo', width: 130 },
+  { field: 'Email', headerName: 'Email', width: 130 },
+  { field: 'Salary', headerName: 'Salary', width: 130 },
+  { field: 'JoinedDate', headerName: 'JoinedDate', width: 130 },
+  { field: 'Status', headerName: 'Status', width: 130 },
 
   {
     field: 'Options',
@@ -73,8 +74,8 @@ const columns: GridColDef[] = [
               },
             }}
           >
-            <MenuItem onClick={handleClose} >View Details</MenuItem>
-            <MenuItem onClick={handleClose} >Invoice</MenuItem>
+            <MenuItem onClick={handleClose} >View Profile Details</MenuItem>
+            {/* <MenuItem onClick={handleClose} >Invoice</MenuItem> */}
           </Menu>
         </div>
       );
@@ -84,24 +85,26 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  { id: 1,
-    Date: '10/10/2021',
-    StartTime: '10:00 AM',
-    EndTime: '11:00 AM',
-    ClientName: 'John Doe',
-    Service: 'Haircut',
-    Beautician: 'Chirasi Walpola',
-    ServicePrice: 'Rs.1500.00'
+  {  
+    id: 1,
+    Role: 'Beautician',
+    Name: 'Chirasi Walpola',
+    Address: 'Matara',
+    ContactNo: '0711234569',
+    Email: 'amaya1999@gmail.com',
+    Salary: 'Rs.50,000',
+    JoinedDate: '2022-10-15',
+    Status: 'Active'
  },
 
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+//   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+//   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+//   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+//   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+//   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+//   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+//   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+//   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 
@@ -142,7 +145,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function ReceptionistPage() {
+export default function StaffPage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -170,7 +173,7 @@ export default function ReceptionistPage() {
     handleClose();
   };
 
-  const [totalPrice, setTotalPrice] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
   // Additional state variables for form fields
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -186,12 +189,12 @@ export default function ReceptionistPage() {
             disableElevation
             variant="contained"
             aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'911.5px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Appoinment</Button>
+            sx={{ marginTop: '20px', marginLeft:'925.5px'}} >
+            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add Staff</Button>
                   
                 <Dialog open={open} onClose={handleClose}>
                   
-                  <DialogTitle className='formHeader'>Add New Appointment</DialogTitle>
+                  <DialogTitle className='formHeader'>Add Staff</DialogTitle>
                     <DialogContent>
                       <DialogContentText>
                         <TextField
@@ -265,7 +268,7 @@ export default function ReceptionistPage() {
                     </DialogActions>
                 </Dialog>
 
-            <Button startIcon={<ReceiptIcon />}>Quick Sale</Button>
+            <Button startIcon={<PersonAdd />}>Upload Attendance</Button>
           </ButtonGroup>
           <TextField
             label="Search"
@@ -280,12 +283,12 @@ export default function ReceptionistPage() {
             }}
             sx={{ marginTop: '-45px'}} // Add margin top here
           />
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'65%'}}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'50%'}}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Ongoing Appoinments" {...a11yProps(0)} />
-          <Tab label="Today Appoinments" {...a11yProps(1)} />
-          <Tab label="Upcoming Appoinments" {...a11yProps(2)} />
-          <Tab label="Past Appoinments" {...a11yProps(3)} />
+          <Tab label="Staff List" {...a11yProps(0)} />
+          <Tab label="Staff Schedule" {...a11yProps(1)} />
+          <Tab label="Bussiness Offdays" {...a11yProps(2)} />
+          <Tab label="Inactive Staff" {...a11yProps(3)} />
         </Tabs>
       </Box>
      
@@ -307,32 +310,12 @@ export default function ReceptionistPage() {
 
 
       <CustomTabPanel value={value} index={1}>
-      <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
+      
       </CustomTabPanel>
 
 
       <CustomTabPanel value={value} index={2}>
-           <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
+          
       </CustomTabPanel>
 
 
