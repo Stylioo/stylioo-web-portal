@@ -24,16 +24,15 @@ import { Select, InputLabel } from '@mui/material';
 import "../../styles/receptionist/form.scss";
 
 const columns: GridColDef[] = [
-  // { field: 'id', headerName: 'id', width: 10},
+  { field: 'id', headerName: 'id', width: 10},
   { field: 'Name', headerName: 'Name', width: 130 },
+  { field: 'Address', headerName: 'Address', width: 100 },
   { field: 'ContactNo', headerName: 'ContactNo', width: 130 },
-  { field: 'Email', headerName: 'Email', width: 100 },
-  { field: 'Notes', headerName: 'Notes', width: 100 },
-  { field: 'Service', headerName: 'Service', width: 100},
-  { field: 'Price', headerName: 'Price/Paid/Balance', width: 150 },
+  { field: 'Email', headerName: 'Email', width: 170 },
+  { field: 'LastSeriveDate', headerName: 'Last Service Date', width: 130 },
+  { field: 'Notes', headerName: 'Notes', width: 130 },
+  { field: 'TotalVisit', headerName: 'TotalVisit', width: 100},
   { field: 'Status', headerName: 'Status', width: 100 },
-  { field: 'Date', headerName: 'Date', width: 100 },
-  { field: 'CancelledReason', headerName: 'Cancelled Reason', width: 130 },
 
   {
     field: 'Options',
@@ -77,7 +76,7 @@ const columns: GridColDef[] = [
               },
             }}
           >
-            <MenuItem onClick={handleClose} >View Details</MenuItem>
+            <MenuItem onClick={handleClose} >View Profile Details</MenuItem>
             {/* <MenuItem onClick={handleClose} >Invoice</MenuItem> */}
           </Menu>
         </div>
@@ -91,14 +90,13 @@ const rows = [
   {  
     id: 1,
     Name: 'Chirasi Walpola',
+    Address: 'Matara',
     ContactNo: '0711234569',
     Email: 'amaya99@gmail.com',
+    LastSeriveDate: '2022-10-15',
     Notes: 'Good',
-    Service: 'Hair Cut',
-    Price : 'Rs 1000.00',
-    Status: 'Paid',
-    Date: '2021-10-10',
-    CancelledReason: 'No Reason'
+    TotalVisit: '5',
+    Status: 'Active'
  },
 
 //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
@@ -149,7 +147,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function AppoinmentPage() {
+export default function ClientPage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -191,8 +189,8 @@ export default function AppoinmentPage() {
             disableElevation
             variant="contained"
             aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'1050px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Appoinment</Button>
+            sx={{ marginTop: '20px', marginLeft:'1090px'}} >
+            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Client</Button>
                   
                 <Dialog open={open} onClose={handleClose}>
                   
@@ -285,9 +283,33 @@ export default function AppoinmentPage() {
                 <Button className="searchButton" variant="contained" color="primary">Click here to Search</Button>
         </div>
 
+
+
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'30%'}}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Client List" {...a11yProps(0)} />
+          <Tab label="Inactive Clients" {...a11yProps(1)} />
+        </Tabs>
+      </Box>
+     
+      
        
       <CustomTabPanel value={value} index={0}>
                       <DataGrid sx={{ width:'100%'}}
+                        rows={rows}
+                        columns={columns}
+                        initialState={{
+                          pagination: {
+                            paginationModel: { page: 0, pageSize: 5 },
+                          },
+                        }}
+                        pageSizeOptions={[5, 10]}
+                        checkboxSelection
+                      />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={1}>
+          <DataGrid sx={{ width:'100%' }}
                         rows={rows}
                         columns={columns}
                         initialState={{

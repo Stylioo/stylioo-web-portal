@@ -10,6 +10,7 @@ import BeauticianPage from "./pages/beautician/HomePage"
 import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
+import ClientPage from "./pages/client/HomePage"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/appointment" element={<AppointmentPage />}></Route>
+            <Route path="/client" element={<ClientPage />}></Route>
             <Route path="/beautician" element={<BeauticianPage />}></Route>
             <Route path="/receptionist" element={<ReceptionistPage />}></Route>
             <Route path="/quicksale" element={<QuickSalePage />} />
