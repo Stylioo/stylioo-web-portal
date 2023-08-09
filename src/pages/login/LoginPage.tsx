@@ -1,50 +1,89 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import React from "react";
+import { useState } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+function LoginPage() {
+  const [isSignup, setIsSignup] = useState(false);
 
-const card = (
-  <React.Fragment>
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Word of the Day
-      </Typography>
-      <Typography variant="h5" component="div">
-        be{bull}nev{bull}o{bull}lent
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
-      </Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </React.Fragment>
-);
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-export default function OutlinedCard() {
+  // const handleChange = (e)=>{
+  //   setInputs((prevState)=>{
+  //     ...prevState,
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
+
   return (
-    <main >
-      <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
-    </main>
+    <div>
+      <form>
+        <Box
+          display="flex"
+          flexDirection={"column"}
+          maxWidth={400}
+          alignItems="center"
+          justifyContent={"center"}
+          margin="auto"
+          marginTop={5}
+          padding={3}
+          borderRadius={5}
+          boxShadow={"5px 5px 10px #ccc"}
+          sx={{
+            ":hover": {
+              boxShadow: "10px 10px 10px #ccc",
+            },
+          }}
+        >
+          <Typography variant="h2" padding={3} textAlign={"center"}>
+            {isSignup ? "Signup" : "Login"}
+          </Typography>
+          {isSignup && (
+            <TextField
+            // onChange={handleChange}
+            value={inputs.name}
+              name="name"
+              margin="normal"
+              type="text"
+              variant="outlined"
+              placeholder="Name"
+            />
+          )}
+          <TextField
+            name="email"
+            value={inputs.email}
+            margin="normal"
+            type="email"
+            variant="outlined"
+            placeholder="Email"
+          />
+          <TextField
+          value={inputs.password}
+            name="password"
+            margin="normal"
+            type="password"
+            variant="outlined"
+            placeholder="Password"
+          />
+          <Button
+            sx={{ marginTop: 3, borderRadius: 3 }}
+            variant="contained"
+            color="warning"
+          >
+            {isSignup ? "Signup" : "Login"}
+          </Button>
+          <Button onClick={()=>setIsSignup(!isSignup)}
+            sx={{ marginTop: 3, borderRadius: 3 }}
+          >
+            {isSignup ? "Already have an account? Login" : "Don't have an account? Signup"}
+          </Button>
+        </Box>
+      </form>
+    </div>
   );
 }
+
+export default LoginPage;

@@ -1,14 +1,10 @@
 
 import { Button, Typography } from "@mui/material";
-import { styled } from "@mui/system";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useDispatch } from "react-redux";
 import { changePicture } from "../../features/user/user";
 
-const StyledButton = styled(Button)(() => ({
-  backgroundColor: "#f6ccff",
-}));
 
 
 const HomePage = () => {
@@ -30,9 +26,7 @@ const HomePage = () => {
       <Button variant="outlined" color="primary" disableRipple>
         Contained outlined button
       </Button>
-      <StyledButton variant="outlined" color="secondary">
-        Styled button
-      </StyledButton>
+
       <Fab color="primary">
         <AddIcon />
       </Fab>
