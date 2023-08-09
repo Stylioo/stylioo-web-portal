@@ -1,0 +1,26 @@
+.calanderBox{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 60%;
+    box-sizing: border-box;
+    margin-top: 10px;
+  
+}
+
+
+.inputcontainer {
+    padding: 12px; 
+    border: 2px solid rgb(141, 157, 141);
+    border-radius: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .billdatebox{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
