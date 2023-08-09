@@ -274,7 +274,7 @@ const Package = () => {
       <Modal
         isOpen={isPopuptwoOpen}
         onRequestClose={closePopuptwo}
-        contentLabel="Example Popup"
+        contentLabel="Delete"
         style={centerStylestwo}
         
       >          

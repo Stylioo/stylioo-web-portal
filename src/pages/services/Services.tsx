@@ -1,11 +1,15 @@
-
+import * as React from 'react';
 import "../../styles/services/services.css";
 import { useState } from "react";
 import Modal from 'react-modal';
 import CustomDropdown from './CustomDropdown';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { FaRegEdit } from 'react-icons/Fa'
+import { FaRegEdit } from 'react-icons/Fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
 
 
 
@@ -13,6 +17,10 @@ const Services = () => {
     const [ searchValue, setSearchValue] = useState("");
     const [selectedValue, setSelectedValue] = useState("10");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
+    const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
+    const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
+
     const [ Name, setName] = useState("");
     const [Description, setDescription] = useState("");
     const [Price, setPrice] = useState("");
@@ -51,6 +59,59 @@ const Services = () => {
           minHeight: '650px',
         },
     };
+
+    const openPopuptwo = () => {
+      setIsPopuptwoOpen(true);
+    
+    };
+    
+    const closePopuptwo = () => {
+      setIsPopuptwoOpen(false);
+    };
+
+
+
+    const centerStylestwo =  {
+      overlay: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        marginTop: '4em'
+        
+      },
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        borderRadius: '8px',
+        padding: '20px',
+        border: 'none',
+        width: '400px',
+        minHeight: '300px',
+      },
+  };
+
+  const openPopupView = () => {
+    setIsPopupViewOpen(true);
+  
+  };
+  
+  const closePopupView = () => {
+    setIsPopupViewOpen(false);
+  };
+  const openPopupViewtwo = () => {
+    setIsPopupViewtwoOpen(true);
+  
+  };
+  
+  const closePopupViewtwo = () => {
+    setIsPopupViewtwoOpen(false);
+  };
+
     return (
       <div>
         
@@ -89,7 +150,7 @@ const Services = () => {
             e.preventDefault()
             setSearchValue(e.target.value)
         }}
-        placeholder=" "
+        placeholder="Search..."
         className="searchbar"
           />
           </div>
@@ -101,9 +162,7 @@ const Services = () => {
             <th>Sr.No</th>
             <th>Parent</th>
             <th>Name</th>
-            <th>Description</th>
-            <th>Price(SLRs)</th>
-            <th>Service Time</th>
+      
             <th>Action</th>
           </tr>
         </thead>
@@ -112,27 +171,22 @@ const Services = () => {
             <td>1</td>
             <td>Facisl Service</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>              
               <div className="btn_delete_edit">
               <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
-              <  RiDeleteBin5Line size={20} onClick={closePopup} />
+              <  RiDeleteBin5Line size={20} onClick={openPopuptwo} />
               </div>
               </td>
           </tr>
           <tr>
             <td>2</td>
             <td></td>
-            <td>Clean-up facial</td>
-            <td></td>
-            <td>15.00</td>
-            <td>00.15</td>
+            <td style={{cursor: 'pointer'}} onClick={openPopupView}>Clean-up facial</td>
+
             <td>
             <div className="btn_delete_edit">
               <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
-              <  RiDeleteBin5Line size={20} onClick={closePopup} />
+              <  RiDeleteBin5Line size={20} onClick={openPopuptwo} />
               </div>
             </td>
           </tr>
@@ -140,27 +194,21 @@ const Services = () => {
             <td>3</td>
             <td>Hair service</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
             <div className="btn_delete_edit">
               <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
-              <  RiDeleteBin5Line size={20} onClick={closePopup} />
+              <  RiDeleteBin5Line size={20} onClick={openPopuptwo} />
               </div>
             </td>
           </tr>
           <tr>
             <td>4</td>
             <td></td>
-            <td>Hair Coloring</td>
-            <td></td>
-            <td>15.00</td>
-            <td>00.40</td>
+            <td style={{cursor: 'pointer'}} onClick={openPopupViewtwo}>Hair Coloring</td>
             <td>
             <div className="btn_delete_edit">
               <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
-              <  RiDeleteBin5Line size={20} onClick={closePopup} />
+              <  RiDeleteBin5Line size={20} onClick={openPopuptwo} />
               </div>
             </td>
           </tr>
@@ -181,18 +229,14 @@ const Services = () => {
           <div className="close_btn">
             <  AiOutlineCloseCircle size={30} onClick={closePopup} />
          </div>
-            <h2 style={{ textAlign: 'center' }}>Add Service</h2>
+            <h2 style={{ textAlign: 'center' , marginBottom: '10px' }}>Add Service</h2>
             
         <div className="name_container">
         <select value={selectedValue}
                 onChange={(e)=>{
                     setSelectedValue(e.target.value);
                 }}
-        style={{
-            padding: '2px',
-            borderRadius: '6px',
-            width: '100%'
-        }}>
+        className="first_seelectbox">
                 <option value="">Select Group</option>
                 <option value="option1">Facial Service</option>
                 <option value="option2">Hair Service</option>
@@ -235,11 +279,7 @@ const Services = () => {
                 onChange={(e)=>{
                     setselectedTimeValue(e.target.value);
                 }}
-        style={{
-            padding: '2px',
-            borderRadius: '6px',
-            width: '100%'
-        }}>
+        className="first_seelectbox">
                 <option value="">Select Sevice Time</option>
                 <option value="option1">00.00</option>
                 <option value="option2">00.05</option>
@@ -390,6 +430,163 @@ const Services = () => {
 
 
         </div>
+
+      </Modal>
+
+      <Modal
+        isOpen={isPopuptwoOpen}
+        onRequestClose={closePopuptwo}
+        contentLabel="Delete"
+        style={centerStylestwo}
+        
+      >          
+          <div className="deleteclose_icon">
+            <  AiOutlineCloseCircle size={80} style={{ color: '#990000' }} onClick={closePopup} />
+         </div>
+            <h2 style={{ textAlign: 'center' }}>Are you sure?</h2>
+            <p style={{ textAlign: 'center' }}>Do you really want to delete theser records? This process cannot be undone.</p>
+            
+
+        <div className="YesNo_button_Gap">
+            <button className="cancel_button" onClick={closePopuptwo}>Cancel</button>
+            <button className="delete_button" onClick={closePopuptwo}>Delete</button>
+        </div>
+
+      </Modal>
+      <Modal
+        isOpen={isPopupViewOpen}
+        onRequestClose={closePopupView}
+        contentLabel="Example Popup"
+        style={centerStyles}
+        
+      >          
+        <div>
+          <Card variant="outlined" style={{border: '1px solid rgb(79, 79, 79)'}}>
+              <React.Fragment>
+          <CardContent> 
+       
+            <Typography variant="body2">
+
+  
+          <div className="close_btn">
+            <  AiOutlineCloseCircle size={30} onClick={closePopupView} />
+         </div>
+            <h2 style={{ textAlign: 'center' }}>View Service</h2>
+            <p className="intro_container">Generate diverse packages by including names, group, description, price and srvice time and sessions associated with each service.</p>
+            
+        <Typography style={{margin: '30px 0px 20px 0px'}} variant="h5" gutterBottom>
+        Clean-up facial
+      </Typography>
+
+
+      <Card sx={{ minWidth: 275 }} style={{border: '1px solid rgb(79, 79, 79)'}}>
+      <CardContent>
+
+        <Typography variant="body2">
+        A clean-up facial is a professional skincare treatment that deeply cleanses and refreshes the skin on the face. It involves cleansing, exfoliation, steam, extraction of impurities like blackheads and whiteheads, and the application of a mask. The treatment aims to improve skin texture, unclog pores, and leave the skin looking revitalized and healthier. 
+          
+        </Typography>
+      </CardContent>
+    </Card>
+
+
+        
+        <table className="table">
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Service Time</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rs.1500</td>
+            <td>00.30</td>
+     
+          </tr>  
+
+        </tbody>
+      </table>
+      <p style={{margin:'30px 20px 50px 0px', textAlign:'end', fontSize: '18px'}}>Total price : 1600.00</p>
+      </Typography>
+          </CardContent>
+
+        </React.Fragment>
+        </Card>
+
+        </div>
+
+
+        
+
+      </Modal>
+
+    
+      <Modal
+        isOpen={isPopupViewtwoOpen}
+        onRequestClose={closePopupViewtwo}
+        contentLabel="View 2"
+        style={centerStyles}
+        
+      >          
+        <div>
+          <Card variant="outlined" style={{border: '1px solid rgb(79, 79, 79)'}}>
+              <React.Fragment>
+          <CardContent> 
+       
+            <Typography variant="body2">
+
+  
+          <div className="close_btn">
+            <  AiOutlineCloseCircle size={30} onClick={closePopupViewtwo} />
+         </div>
+            <h2 style={{ textAlign: 'center' }}>View Service</h2>
+            <p className="intro_container">Generate diverse packages by including names, group, description, price and srvice time and sessions associated with each service.</p>
+            
+        <Typography style={{margin: '30px 0px 20px 0px'}} variant="h5" gutterBottom>
+        Hair Coloring
+      </Typography>
+
+
+      <Card sx={{ minWidth: 275 }} style={{border: '1px solid rgb(79, 79, 79)'}}>
+      <CardContent>
+
+        <Typography variant="body2">
+            Hair coloring is the art of changing hair color. It can be subtle, like adding highlights, or bold, with vibrant shades. Professionals use various techniques to apply color, giving you a new look or covering grays. It's a creative way to express your style and enhance your appearance.        </Typography>
+      </CardContent>
+    </Card>
+
+
+        
+        <table className="table">
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Service Time</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rs.2000</td>
+            <td>00.45</td>
+     
+          </tr>  
+
+        </tbody>
+      </table>
+      <p style={{margin:'30px 20px 50px 0px', textAlign:'end', fontSize: '18px'}}>Total price : 2000.00</p>
+      </Typography>
+          </CardContent>
+
+        </React.Fragment>
+        </Card>
+
+        </div>
+
+
+        
 
       </Modal>
 
