@@ -4,6 +4,7 @@ import theme from "./theme"
 import SideBar from "./components/SideBar/SideBar"
 import HomePage from "./pages/home/HomePage"
 import AppointmentPage from "./pages/appoinments/HomePage"
+import LoginPage from "./pages/login/LoginPage"
 
 function App() {
 
@@ -11,12 +12,13 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <SideBar >
+        {/* <SideBar > */}
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/appointment" element={<AppointmentPage />}></Route>
+            <Route path="/login" element={<LoginPage />}></Route>
           </Routes>
-        </SideBar>
+        {/* </SideBar> */}
       </ThemeProvider>
     </BrowserRouter>
   )
