@@ -1,0 +1,147 @@
+.searchBarWithDate{
+        margin-top:15px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
+        border:1px solid #cac8c8;
+        padding:15px;
+        border-radius: 5px;
+}
+
+.otherDetails{
+        margin-top:3px;
+        width:100%;
+        border:1px solid #cac8c8;
+        padding:15px;
+        border-radius: 5px;
+}
+
+.searchBar{
+        width:50%;
+        color:black;
+        ::placeholder{
+                color:black;
+        }
+
+}
+
+.labelforDate{
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+}
+.bill_date{
+        margin-right:30px;
+        color:#723D46;
+}
+
+.date{
+        margin-left:10px;
+        margin-right:10px;
+}
+
+.btn-class Button{
+        margin-left:10px;
+        margin-right:10px;
+        margin-top:30px;
+}
+
+
+.clientDetails {
+        display: flex; /* Use flexbox to align items in a row */
+        flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+        justify-content: space-between; /* Distribute space between elements */
+        align-items: center; /* Center the items vertically */
+        width: 62%; /* Optional: Set the width of the container */
+        margin-top: 15px;
+        
+}
+      
+/* Optional: Style the TextField element */
+.TextField {
+        width: 100%; /* Optional: Make the text field occupy the entire available width */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+}
+
+.charges{
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
+        margin-top: 25px;
+}
+
+.charges TextField{
+        width: 50%;
+}
+
+.discountType{
+        padding:10px;
+}
+
+.table{
+        margin-top: 50px;
+        width: 40%;
+        border-collapse: collapse;
+        display: table;
+}
+
+.btn-class2{
+        float: right;
+        margin-bottom:30px;
+}
+
+.btn-class2 Button{
+        margin-right:10px;
+        margin-top:50px;
+}
+
+.btn-class2 {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .btn-class2 .MuiButton-outlined:hover {
+        background-color: #e3e3e3;
+        border-color: #3c3a3b;
+        color: #0e0303;
+        transform: translateY(-2px) scale(1.05);
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 12px rgba(255, 64, 129, 0.2);
+      }
+      
+      /* Styling for the Apply button on hover */
+      .btn-class2 .successbtn:hover {
+        background-color: #035306;
+        color: #ffffff;
+        transform: translateY(-2px) scale(1.05);
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 12px rgba(255, 64, 129, 0.2);
+      }
+
+#outlined-adornment-amount{
+        text-align: right;
+}
+
+.amoutnDetails{
+        margin-right:50px;
+}
+
+
+.Search{
+        margin-right: -250px;
+}
+
+
+.client_name_label{
+        margin-left: 10px;
+        margin-top:5px;
+}
+
+.contactNoLable{
+        margin-left: -20px;
+        margin-top:5px;
+}
