@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { Height } from "@mui/icons-material";
 
 function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
@@ -19,8 +20,8 @@ function LoginPage() {
   // }
 
   return (
-    <div>
-      <form>
+    <div style={{minHeight:"100vh"}}>
+      <form style={{ paddingTop: "50px" ,justifyContent: "center" }}>
         <Box
           display="flex"
           flexDirection={"column"}
