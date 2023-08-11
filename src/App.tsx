@@ -12,6 +12,7 @@ import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
+import AddProduct from "./pages/addProducts/AddProduct"
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        {/* <SideBar > */}
+        <SideBar >
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/appointment" element={<AppointmentPage />}></Route>
@@ -31,9 +32,9 @@ function App() {
             <Route path="/quicksale" element={<QuickSalePage />} />
             <Route path="/staff" element={<StaffPage />}></Route>
             <Route path="/quick-sale-form" element={<QuickSaleForm />}></Route>
-           
+            <Route path="/add-products" element={<AddProduct />}></Route>
           </Routes>
-        {/* </SideBar> */}
+        </SideBar>
       </ThemeProvider>
     </BrowserRouter>
   )
