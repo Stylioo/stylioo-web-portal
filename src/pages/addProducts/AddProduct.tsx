@@ -17,7 +17,8 @@ import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import FilterListIcon from '@mui/icons-material/FilterList';
+import FilterListIcon from "@mui/icons-material/FilterList";
+import AddProductPopup from "../../components/Popups/AddProductPopup";
 
 interface Column {
   id:
@@ -145,6 +146,7 @@ const rows = [
 function AddProduct() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [openPopup, setOpenPopup] = React.useState(false);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -159,7 +161,7 @@ function AddProduct() {
 
   return (
     <div>
-      <div style={{backgroundColor:"#f0f0f0",padding:"35px"}}>
+      <div style={{ backgroundColor: "#f0f0f0", padding: "35px" }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <TextField
             variant="outlined"
@@ -202,7 +204,7 @@ function AddProduct() {
         style={{ display: "flex", justifyContent: "flex-end", padding: "35px" }}
       >
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" startIcon={<AddIcon />}>
+          <Button variant="contained" startIcon={<AddIcon />} onClick={()=> setOpenPopup(true)}>
             Add Product
           </Button>
           <Button variant="contained" startIcon={<EditIcon />}>
@@ -268,6 +270,10 @@ function AddProduct() {
           />
         </Paper>
       </div>
+      <AddProductPopup
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      ></AddProductPopup>
     </div>
   );
 }
