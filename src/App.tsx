@@ -11,6 +11,8 @@ import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
+import LeavePage from "./pages/leave/HomePage"
+import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Route path="/quicksale" element={<QuickSalePage />} />
             <Route path="/staff" element={<StaffPage />}></Route>
             <Route path="/quick-sale-form" element={<QuickSaleForm />}></Route>
+            <Route path="/leave" element={<LeavePage />}></Route>
+            <Route path="/leavemanagement" element={<LeaveManagmentPage />}></Route>
            
           </Routes>
         </SideBar>

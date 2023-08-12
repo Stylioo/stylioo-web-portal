@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const drawerWidth = 220;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const SidebarItems = ['Home', 'Appointment', 'Client', 'Beautician','Receptionist','Staff','QuickSale']
+const SidebarItems = ['Home', 'Appointment', 'Client', 'Beautician','Receptionist','Staff','QuickSale', 'Leave','LeaveManagement']
 
 interface sidebarPropType {
     children: React.ReactNode

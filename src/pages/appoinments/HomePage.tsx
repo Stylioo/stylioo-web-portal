@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 import '../../styles/receptionist/index.scss';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -17,10 +15,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Menu, MenuItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { PersonAdd } from '@mui/icons-material';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
-import { Select, InputLabel } from '@mui/material';
+import { FormLabel } from '@mui/material';
 import "../../styles/receptionist/form.scss";
 
 const columns: GridColDef[] = [
