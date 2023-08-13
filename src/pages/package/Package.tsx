@@ -298,8 +298,8 @@ const Package = () => {
       <Modal
         isOpen={isPopupUpdateOpen}
         onRequestClose={closePopupUpdate}
-        contentLabel="Example Popup"
-        style={centerStylestwo}
+        contentLabel="Edit Popup"
+        style={centerStyles}
         
       >          
         <div>
@@ -312,7 +312,7 @@ const Package = () => {
 
         <input
         type="text"
-        value={Name}
+        value="Special Package"
         onChange={(e)=> {
             e.preventDefault()
             setName(e.target.value)
@@ -329,13 +329,46 @@ const Package = () => {
                 <option value="option1">Clean-up facial(Price: 15.00)</option>
                 <option value="option2">Hair Coloring(Price: 15.00)</option>
         </select>
+        <table className="table">
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Action</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hair coloring</td>
+            <td>1</td>
+            <td> 
+              Rs.1000
+            </td>
+            <td className="editdlt_btn">
+            <  RiDeleteBin5Line size={20} />
+            </td>
+          </tr>  
+          <tr>
+            <td>Clean-up facial</td>
+            <td>1</td>
+            <td> 
+              Rs.600
+            </td>
+            <td className="editdlt_btn">
+            <  RiDeleteBin5Line size={20}  />
+            </td>
+          </tr> 
+        </tbody>
+      </table>
 
         
 
         <div className="name_container">
             <input
                 type="text"
-                value={costPrice}
+                value="Rs.1200.00"
                 onChange={(e)=> {
                     e.preventDefault()
                     setCostPrice(e.target.value)
@@ -345,7 +378,7 @@ const Package = () => {
              />
               <input
                 type="text"
-                value={specialPrice}
+                value="Rs.1000.00"
                 onChange={(e)=> {
                     e.preventDefault()
                     setspecialPrice(e.target.value)
@@ -358,7 +391,7 @@ const Package = () => {
         <div className="name_container">
         <input
               type="text"
-              value={days}
+              value="5"
               onChange={(e)=> {
                   e.preventDefault()
                   setdays(e.target.value)
