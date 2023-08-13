@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
 import theme from "./theme"
-import SideBar from "./components/SideBar/SideBar"
+
+import Layout from "./Layout"
+
 import HomePage from "./pages/home/HomePage"
 import AppointmentPage from "./pages/appoinments/HomePage"
 import ReceptionistPage from "./pages/receptionist/HomePage"
@@ -23,21 +25,21 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <SideBar >
-          <Routes>
-            <Route path="/" element={<ReceptionistPage />}></Route>
-            {/* <Route path="/appointment" element={<AppointmentPage />}></Route> */}
-            <Route path="/client" element={<ClientPage />}></Route>
-            {/* <Route path="/beautician" element={<BeauticianPage />}></Route> */}
-            <Route path="/receptionist" element={<ReceptionistPage />}></Route>
-            <Route path="/quicksale" element={<QuickSalePage />} />
-            <Route path="/staff" element={<StaffPage />}></Route>
-            <Route path="/quick-sale-form" element={<QuickSaleForm />}></Route>
-            <Route path="/leave" element={<LeavePage />}></Route>
-            <Route path="/leavemanagement" element={<LeaveManagmentPage />}></Route>
+        <Routes>
+          <Route path="/signin" element={<h1>login</h1>}></Route>
+          <Route path="/" element={<Layout><ReceptionistPage /></Layout>
+          }></Route>
+          {/* <Route path="/appointment" element={<Layout><AppointmentPage />}></Route> */}
+          <Route path="/client" element={<Layout><ClientPage /></Layout>}></Route>
+          {/* <Route path="/beautician" element={<Layout><BeauticianPage /></Layout>}></Route> */}
+          <Route path="/receptionist" element={<Layout><ReceptionistPage /></Layout>}></Route>
+          <Route path="/quicksale" element={<Layout><QuickSalePage /> </Layout>} />
+          <Route path="/staff" element={<Layout><StaffPage /></Layout>}></Route>
+          <Route path="/quick-sale-form" element={<Layout><QuickSaleForm /></Layout>}></Route>
+          <Route path="/leave" element={<Layout><LeavePage /></Layout>}></Route>
+          <Route path="/leavemanagement" element={<Layout><LeaveManagmentPage /></Layout>}></Route>
 
-          </Routes>
-        </SideBar>
+        </Routes>
       </ThemeProvider>
     </BrowserRouter>
   )
