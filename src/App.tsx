@@ -17,6 +17,8 @@ import ClientPage from "./pages/client/HomePage"
 import ReduxProvider from "./redux/Provider"
 import Services from "./pages/services/Services"
 import Package from "./pages/package/Package"
+import StaffList from "./pages/staffList/StaffList"
+import AddEmployee from "./pages/addEmployee/AddEmployee"
 // import LeavePage from "./pages/leave/HomePage"
 // import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
@@ -49,7 +51,11 @@ function App() {
             </Route>
 
             <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
-              <Route path="" element={<h1>OWNER</h1>} />
+              <Route path="" element={<h1>Insights</h1>} />
+              <Route path="insights" element={<h1>Insights</h1>} />
+              <Route path="staff" element={<StaffList />} />
+              <Route path="addEmployee" element={<AddEmployee />} />
+              <Route path="sales" element={<h1>Sales</h1>} />
             </Route>
 
             <Route path="/signin" element={<Signin />} />

@@ -268,7 +268,7 @@ export default function ReceptionistPage() {
             </DialogActions>
           </Dialog>
 
-          <Button component={Link} to="/quick-sale-form" startIcon={<ReceiptIcon />}>Quick Sale</Button>
+          <Button component={Link} to="/receptionist/quick-sale-form" startIcon={<ReceiptIcon />}>Quick Sale</Button>
         </ButtonGroup>
         <TextField
           label="Search"

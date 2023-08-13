@@ -111,7 +111,7 @@ export default function QuickSalePage() {
             variant="contained"
             aria-label="Disabled elevation buttons"
             sx={{ marginTop: '20px', marginLeft:'1133.5px'}} >
-            <Button startIcon={<ReceiptIcon />} color='accent' component={Link} to="/quick-sale-form">QuickSale</Button>     
+            <Button startIcon={<ReceiptIcon />} color='accent' component={Link} to="/receptionist/quick-sale-form">QuickSale</Button>     
           </ButtonGroup>
 
           <TextField
