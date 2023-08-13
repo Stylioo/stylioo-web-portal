@@ -1,6 +1,6 @@
 import * as React from 'react';
 import "../../styles/services/services.css";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import Modal from 'react-modal';
 import CustomDropdown from './CustomDropdown';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
@@ -111,6 +111,17 @@ const Services = () => {
   const closePopupViewtwo = () => {
     setIsPopupViewtwoOpen(false);
   };
+
+  // const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+  // const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setSelectedImage(file);
+  //   }
+  // };
+
+  
 
     return (
       <div>
@@ -589,6 +600,25 @@ const Services = () => {
         
 
       </Modal>
+
+      {/* <div>
+      <h2>Image Upload</h2>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+      />
+      {selectedImage && (
+        <div>
+          <h3>Selected Image Preview:</h3>
+          <img
+            src={URL.createObjectURL(selectedImage)}
+            alt="Selected"
+            style={{ maxWidth: '100%', maxHeight: '200px' }}
+          />
+        </div>
+      )}
+      </div> */}
 
 
 
