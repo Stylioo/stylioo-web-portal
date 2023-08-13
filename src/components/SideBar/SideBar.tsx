@@ -8,9 +8,9 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-const drawerWidth = 220;
+const drawerWidth = 200;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const SidebarItems = ['Home', 'Appointment', 'Client', 'Beautician','Receptionist','Staff','QuickSale', 'Leave','LeaveManagement']
+const SidebarItems = ['Appointment', 'Client', 'Staff', 'QuickSale']
 
 interface sidebarPropType {
     children: React.ReactNode
@@ -111,29 +111,17 @@ export default function SideBar({ children }: sidebarPropType) {
 
             >
                 <Toolbar />
-                <Box sx={{ overflow: 'auto' }}>
+                <Box sx={{ overflow: 'hidden', marginInline: '1.5rem' }}>
                     <List>
                         {SidebarItems.map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {SidebarItems.map((text, index) => (
-                            <ListItem key={text} disablePadding>
+                            <ListItem key={text} disablePadding className='sidebar-link'>
                                 {/* <ListItemButton> */}
-                                <ListItemIcon>
+                                {/* <ListItemIcon>
                                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
+                                </ListItemIcon> */}
                                 <Link
-                                    to={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                                    className="sidebar-link-text"
+                                    to={text === 'Appointment' ? '/' : `/${text.toLowerCase()}`}
                                 >
                                     <ListItemText primary={text} />
                                 </Link>

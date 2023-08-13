@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 *,
 ::after,
 ::before {
@@ -20,4 +22,27 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+}
+
+
+.sidebar-link {
+
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    .sidebar-link-text {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: $primary;
+
+        .sidebar-link-text {
+            color: #fff;
+        }
+    }
 }
