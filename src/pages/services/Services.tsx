@@ -20,6 +20,8 @@ const Services = () => {
     const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
     const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
     const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
+    const [iseditPopupOpen, setIseditPopupOpen] = useState(false);
+
 
     const [ Name, setName] = useState("");
     const [Description, setDescription] = useState("");
@@ -112,6 +114,15 @@ const Services = () => {
     setIsPopupViewtwoOpen(false);
   };
 
+  const openeditPopup = () => {
+    setIseditPopupOpen(true);
+  
+  };
+  
+  const closeeditPopup = () => {
+    setIseditPopupOpen(false);
+  };
+
   // const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   // const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -184,7 +195,7 @@ const Services = () => {
             <td></td>
             <td>              
               <div className="btn_delete_edit">
-              <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
+              <  FaRegEdit size={20} onClick={openeditPopup} className="icon-with-gap" />
               <  RiDeleteBin5Line size={20} onClick={openPopuptwo} />
               </div>
               </td>
@@ -619,6 +630,220 @@ const Services = () => {
         </div>
       )}
       </div> */}
+
+<Modal
+        isOpen={iseditPopupOpen}
+        onRequestClose={closeeditPopup}
+        contentLabel="Sevice Edit"
+        style={centerStyles}
+      >          
+        <div>
+          <div className="close_btn">
+            <  AiOutlineCloseCircle size={30} onClick={closeeditPopup} />
+         </div>
+            <h2 style={{ textAlign: 'center' , marginBottom: '10px' }}>Edit Service</h2>
+            
+        <div className="name_container">
+        <select value={selectedValue}
+                onChange={(e)=>{
+                    setSelectedValue(e.target.value);
+                }}
+        className="first_seelectbox">
+                <option value="">Facial Service</option>
+                <option value="option1">Facial Service</option>
+                <option value="option2">Hair Service</option>
+        </select>
+        <input
+        type="text"
+        value="Clean-up facial"
+        onChange={(e)=> {
+            e.preventDefault()
+            setName(e.target.value)
+        }}
+        placeholder="Name"
+        className="inputbox_container"
+        />
+        </div>
+
+        <textarea
+        value="A clean-up facial is a professional skincare treatment that deeply cleanses and refreshes the skin on the face. It involves cleansing, exfoliation, steam, extraction of impurities like blackheads and whiteheads, and the application of a mask. The treatment aims to improve skin texture, unclog pores, and leave the skin looking revitalized and healthier."
+        onChange={(e)=> {
+            e.preventDefault()
+            setDescription(e.target.value)
+        }}
+        rows={5}
+        placeholder="Description..."
+        className="inputbox_container_description"
+        />
+
+        <div className="name_container">
+            <input
+                type="text"
+                value="Rs.1500"
+                onChange={(e)=> {
+                    e.preventDefault()
+                    setPrice(e.target.value)
+                }}
+                placeholder="Price"
+                className="inputbox_container"
+             />
+        <select value={selectedTimeValue}
+                onChange={(e)=>{
+                    setselectedTimeValue(e.target.value);
+                }}
+        className="first_seelectbox">
+                <option value="">00.30</option>
+                <option value="option1">00.00</option>
+                <option value="option2">00.05</option>
+                <option value="option1">00.10</option>
+                <option value="option2">00.15</option>
+                <option value="option1">00.20</option>
+                <option value="option2">00.25</option>
+                <option value="option1">00.30</option>
+                <option value="option2">00.35</option>
+                <option value="option1">00.40</option>
+                <option value="option2">00.45</option>
+                <option value="option1">00.50</option>
+                <option value="option2">00.55</option>
+                <option value="option1">01.00</option>
+                <option value="option2">01.05</option>
+                <option value="option1">01.10</option>
+                <option value="option2">01.15</option>
+                <option value="option1">01.20</option>
+                <option value="option2">01.25</option>
+                <option value="option1">01.30</option>
+                <option value="option2">01.35</option>
+                <option value="option1">01.40</option>
+                <option value="option2">01.45</option>
+                <option value="option1">01.50</option>
+                <option value="option2">01.55</option>
+                <option value="option1">02.00</option>
+                <option value="option2">02.05</option>
+                <option value="option1">02.10</option>
+                <option value="option2">02.15</option>
+                <option value="option1">02.20</option>
+                <option value="option2">02.25</option>
+                <option value="option1">02.30</option>
+                <option value="option2">02.35</option>
+                <option value="option1">02.40</option>
+                <option value="option2">02.45</option>
+                <option value="option1">02.50</option>
+                <option value="option2">02.55</option>
+                <option value="option1">03.00</option>
+                <option value="option2">03.05</option>
+                <option value="option1">03.10</option>
+                <option value="option2">03.15</option>
+                <option value="option1">03.20</option>
+                <option value="option2">03.25</option>
+                <option value="option1">03.30</option>
+                <option value="option2">03.35</option>
+                <option value="option1">03.40</option>
+                <option value="option2">03.45</option>
+                <option value="option1">03.50</option>
+                <option value="option2">03.55</option>
+                <option value="option1">04.00</option>
+                <option value="option1">04.00</option>
+                <option value="option2">04.05</option>
+                <option value="option1">04.10</option>
+                <option value="option2">04.15</option>
+                <option value="option1">04.20</option>
+                <option value="option2">04.25</option>
+                <option value="option1">04.30</option>
+                <option value="option2">04.35</option>
+                <option value="option1">04.40</option>
+                <option value="option2">04.45</option>
+                <option value="option1">04.50</option>
+                <option value="option2">04.55</option>
+                <option value="option1">05.00</option>
+                <option value="option2">05.05</option>
+                <option value="option1">05.10</option>
+                <option value="option2">05.15</option>
+                <option value="option1">05.20</option>
+                <option value="option2">05.25</option>
+                <option value="option1">05.30</option>
+                <option value="option2">05.35</option>
+                <option value="option1">05.40</option>
+                <option value="option2">05.45</option>
+                <option value="option1">05.50</option>
+                <option value="option2">05.55</option>
+                <option value="option1">06.00</option>
+                <option value="option2">06.05</option>
+                <option value="option1">06.10</option>
+                <option value="option2">06.15</option>
+                <option value="option1">06.20</option>
+                <option value="option2">06.25</option>
+                <option value="option1">06.30</option>
+                <option value="option2">06.35</option>
+                <option value="option1">06.40</option>
+                <option value="option2">06.45</option>
+                <option value="option1">06.50</option>
+                <option value="option2">06.55</option>
+                <option value="option1">07.00</option>
+                <option value="option2">07.05</option>
+                <option value="option1">07.10</option>
+                <option value="option2">07.15</option>
+                <option value="option1">07.20</option>
+                <option value="option2">07.25</option>
+                <option value="option1">07.30</option>
+                <option value="option2">07.35</option>
+                <option value="option1">07.40</option>
+                <option value="option2">07.45</option>
+                <option value="option1">07.50</option>
+                <option value="option2">07.55</option>
+                <option value="option1">08.00</option>
+                <option value="option1">08.00</option>
+                <option value="option2">08.05</option>
+                <option value="option1">08.10</option>
+                <option value="option2">08.15</option>
+                <option value="option1">08.20</option>
+                <option value="option2">08.25</option>
+                <option value="option1">08.30</option>
+                <option value="option2">08.35</option>
+                <option value="option1">08.40</option>
+                <option value="option2">08.45</option>
+                <option value="option1">08.50</option>
+                <option value="option2">08.55</option>
+                <option value="option1">08.00</option>
+                <option value="option2">08.05</option>
+                <option value="option1">08.10</option>
+                <option value="option2">08.15</option>
+                <option value="option1">08.20</option>
+                <option value="option2">08.25</option>
+                <option value="option1">08.30</option>
+                <option value="option2">08.35</option>
+                <option value="option1">08.40</option>
+                <option value="option2">08.45</option>
+                <option value="option1">08.50</option>
+                <option value="option2">08.55</option>
+                <option value="option1">09.00</option>
+                <option value="option1">09.00</option>
+                <option value="option2">09.05</option>
+                <option value="option1">09.10</option>
+                <option value="option2">09.15</option>
+                <option value="option1">09.20</option>
+                <option value="option2">09.25</option>
+                <option value="option1">09.30</option>
+                <option value="option2">09.35</option>
+                <option value="option1">09.40</option>
+                <option value="option2">09.45</option>
+                <option value="option1">09.50</option>
+                <option value="option2">09.55</option>
+                <option value="option1">10.00</option>
+        </select>
+        </div>
+        <p style={{
+            marginTop: '40px',
+        }}>Who can provide the service * </p>
+        
+      <div>
+           <CustomDropdown options={dropdownOptions} />
+      </div>
+        <button className="save-button" onClick={openPopup}>Save</button>
+
+
+        </div>
+
+      </Modal>
 
 
 
