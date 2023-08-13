@@ -23,12 +23,14 @@ type servicesType = {
 
 
 const Services = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("10");
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
-  const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
-  const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
+    const [ searchValue, setSearchValue] = useState("");
+    const [selectedValue, setSelectedValue] = useState("10");
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
+    const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
+    const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
+    const [iseditPopupOpen, setIseditPopupOpen] = useState(false);
+
 
   const [services, setServices] = useState<servicesType[]>([]);
   const [deleteOrUpdateId, setDeleteOrUpdateId] = useState<string>("");
@@ -126,6 +128,15 @@ const Services = () => {
 
   const closePopupViewtwo = () => {
     setIsPopupViewtwoOpen(false);
+  };
+
+  const openeditPopup = () => {
+    setIseditPopupOpen(true);
+  
+  };
+  
+  const closeeditPopup = () => {
+    setIseditPopupOpen(false);
   };
 
   // const [selectedImage, setSelectedImage] = useState<File | null>(null);

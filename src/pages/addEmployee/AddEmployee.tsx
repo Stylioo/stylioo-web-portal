@@ -12,6 +12,7 @@ function AddEmployee() {
     const[districtValue, setdistrictValue] = useState("")
     const[joindateValue, setjoindateValue] = useState("")
     const[genderValue, setgenderValue] = useState("Gender")
+    const[roleValue, setroleValue] = useState("Role")
 
   return (
     <div>
@@ -80,7 +81,7 @@ function AddEmployee() {
                     />
                 </div>
         </div>
-        <p style={{margin:'20px 0px 8px 0px', fontSize: '18px'}}>Address: </p>
+        <p style={{marginTop:'10px', fontSize: '18px'}}>Address: </p>
 
         <div className="name_container">
                     <input
@@ -128,6 +129,26 @@ function AddEmployee() {
         </div>
 
         <div className="name_container">
+
+                <div className='div_container'>
+                <p style={{marginTop: '10px'}}>Gender: </p>
+
+                <select value={genderValue}
+                        onChange={(e)=>{
+                            setgenderValue(e.target.value);
+                        }}
+                className="first_seelectbox">
+                        <option value="">Gender</option>
+                        <option value="option1">Male</option>
+                        <option value="option2">Female</option>
+                </select>
+                </div>
+                <div className='div_container'>
+
+                </div>
+         </div>
+
+         <div className="name_container">
                 <div className='div_container'>
                     <p style={{marginTop: '10px'}}>Date of joining: </p>
             
@@ -143,70 +164,22 @@ function AddEmployee() {
                     />
                 </div>
                 <div className='div_container'>
-                <p style={{marginTop: '10px'}}>Gender: </p>
+                <p style={{marginTop: '10px'}}>Role: </p>
 
-                <select value={genderValue}
+                <select value={roleValue}
                         onChange={(e)=>{
-                            setgenderValue(e.target.value);
+                            setroleValue(e.target.value);
                         }}
                 className="first_seelectbox">
-                        <option value="">Gender</option>
-                        <option value="option1">Male</option>
-                        <option value="option2">Female</option>
+                        <option value="">Role</option>
+                        <option value="option2">Manager</option>
+                        <option value="option2">Receptionist</option>
+                        <option value="option3">Beautician</option>
                 </select>
                 </div>
          </div>
       
-  {/* <div className="name_container">
-  <select value={selectedValue}
-          onChange={(e)=>{
-              setSelectedValue(e.target.value);
-          }}
-  className="first_seelectbox">
-          <option value="">Select Group</option>
-          <option value="option1">Facial Service</option>
-          <option value="option2">Hair Service</option>
-  </select>
-  <input
-  type="text"
-  value={Name}
-  onChange={(e)=> {
-      e.preventDefault()
-      setName(e.target.value)
-  }}
-  placeholder="Name"
-  className="inputbox_container"
-  />
-  </div>
 
-
-
-  <div className="name_container">
-      <input
-          type="text"
-          value={Price}
-          onChange={(e)=> {
-              e.preventDefault()
-              setPrice(e.target.value)
-          }}
-          placeholder="Price"
-          className="inputbox_container"
-       />
-  <select value={selectedTimeValue}
-          onChange={(e)=>{
-              setselectedTimeValue(e.target.value);
-          }}
-  className="first_seelectbox">
-          <option value="">Select Sevice Time</option>
-          <option value="option1">00.00</option>
-          <option value="option2">00.05</option>
-          <option value="option1">00.10</option>
-
-  </select>
-  </div> */}
-  <p style={{
-      marginTop: '40px',
-  }}>Who can provide the service * </p>
   
   <button className="save-button">Save</button>
 
