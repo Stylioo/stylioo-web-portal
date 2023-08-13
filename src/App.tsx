@@ -10,8 +10,7 @@ import Services from "./pages/services/Services"
 import Package from "./pages/package/Package"
 import Leave from "./pages/leave/Leave"
 import AddEmployee from "./pages/addEmployee/AddEmployee"
-
-
+import StaffList from "./pages/staffList/StaffList"
 function App() {
 
   return (
@@ -27,7 +26,9 @@ function App() {
             <Route path="/services" element={<Services />}></Route>
             <Route path="/package" element={<Package />}></Route> 
             <Route path="/leave" element={<Leave />}></Route>
-            <Route path="/addEmployee" element={<AddEmployee />}></Route> 
+            <Route path="/addEmployee" element={<AddEmployee />}></Route>
+            <Route path="/staffList" element={<StaffList />}></Route> 
+ 
 
           </Routes>
         </SideBar>
