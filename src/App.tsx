@@ -5,7 +5,8 @@ import theme from "./theme"
 
 import Layout from "./Layout"
 
-import HomePage from "./pages/home/HomePage"
+import Signin from "./pages/signin/SigninPage"
+// import HomePage from "./pages/home/HomePage"
 import AppointmentPage from "./pages/appoinments/HomePage"
 import ReceptionistPage from "./pages/receptionist/HomePage"
 // import BeauticianPage from "./pages/beautician/HomePage"
@@ -13,34 +14,52 @@ import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
-import LeavePage from "./pages/leave/HomePage"
-import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
+import ReduxProvider from "./redux/Provider"
+import Services from "./pages/services/Services"
+import Package from "./pages/package/Package"
+// import LeavePage from "./pages/leave/HomePage"
+// import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
 
-
+// ['BEAUTICIAN', 'RECEPTIONIST', 'MANAGER', 'OWNER']
 
 function App() {
 
   return (
     <BrowserRouter>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/signin" element={<h1>login</h1>}></Route>
-          <Route path="/" element={<Layout><ReceptionistPage /></Layout>
-          }></Route>
-          {/* <Route path="/appointment" element={<Layout><AppointmentPage />}></Route> */}
-          <Route path="/client" element={<Layout><ClientPage /></Layout>}></Route>
-          {/* <Route path="/beautician" element={<Layout><BeauticianPage /></Layout>}></Route> */}
-          <Route path="/receptionist" element={<Layout><ReceptionistPage /></Layout>}></Route>
-          <Route path="/quicksale" element={<Layout><QuickSalePage /> </Layout>} />
-          <Route path="/staff" element={<Layout><StaffPage /></Layout>}></Route>
-          <Route path="/quick-sale-form" element={<Layout><QuickSaleForm /></Layout>}></Route>
-          <Route path="/leave" element={<Layout><LeavePage /></Layout>}></Route>
-          <Route path="/leavemanagement" element={<Layout><LeaveManagmentPage /></Layout>}></Route>
+      <ReduxProvider>
+        <ThemeProvider theme={theme}>
+          <Routes>
 
-        </Routes>
-      </ThemeProvider>
+            <Route path="/receptionist" element={<Layout allowedRoles='RECEPTIONIST' />} >
+              <Route path="" element={<ReceptionistPage />} />
+              <Route path="appointment" element={<AppointmentPage />} />
+              <Route path="client" element={<ClientPage />} />
+              <Route path="quicksale" element={<QuickSalePage />} />
+              <Route path="staff" element={<StaffPage />} />
+              <Route path="quick-sale-form" element={<QuickSaleForm />} />
+            </Route>
+
+            <Route path="/manager" element={<Layout allowedRoles='MANAGER' />} >
+              <Route path="" element={<Services />} />
+              <Route path="services" element={<Services />} />
+              <Route path="packages" element={<Package />} />
+              <Route path="products" element={<h1>Products</h1>} />
+            </Route>
+
+            <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
+              <Route path="" element={<h1>OWNER</h1>} />
+            </Route>
+
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/accessDenied" element={<h1>Access Denied</h1>} />
+            <Route path="*" element={<h1>Not Found</h1>} />
+
+          </Routes>
+
+        </ThemeProvider>
+      </ReduxProvider>
     </BrowserRouter>
   )
 }

@@ -1,16 +1,26 @@
 import SideBar from "./components/SideBar/SideBar"
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
+
+import { useAppDispatch, useAppSelector } from "./redux/store"
+import { isLoggedIn } from "./redux/features/authSlice"
+
 
 type layoutPropType = {
-    children: React.ReactNode
+    allowedRoles: string
 }
 
-function Layout({ children }: layoutPropType) {
+function Layout({ allowedRoles }: layoutPropType) {
+    const location = useLocation()
+    const dispatch = useAppDispatch()
+
+
     return (
-        <>
-            <SideBar>
-                {children}
-            </SideBar>
-        </>
+        allowedRoles === useAppSelector(state => state.auth.role) ?
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            <SideBar><Outlet /> </SideBar>
+            :
+            dispatch(isLoggedIn()) ? <Navigate to='/accessDenied' state={{ from: location }} replace /> :
+                <Navigate to='/signin' />
     )
 }
 

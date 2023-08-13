@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
 import { Box, SwipeableDrawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
@@ -7,10 +7,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { useAppSelector, useAppDispatch } from '../../redux/store';
+import { removeUser } from '../../redux/features/authSlice';
 
 const drawerWidth = 200;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const SidebarItems = ['Appointment', 'Client', 'Staff', 'QuickSale']
 
 interface sidebarPropType {
     children: React.ReactNode
@@ -25,6 +26,18 @@ interface RootState {
 export default function SideBar({ children }: sidebarPropType) {
 
     const user = useSelector((state: RootState) => state.user);
+    const currentUser = useAppSelector(state => state.auth);
+
+    const [menuItems, setMenuItems] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (currentUser.role === 'MANAGER') setMenuItems(['Services', 'Packages', 'Products'])
+        else if (currentUser.role === 'RECEPTIONIST') setMenuItems(['Appointment', 'Client', 'Staff', 'QuickSale'])
+        else if (currentUser.role === 'OWNER') setMenuItems(['Insights', 'Staff', 'Sales'])
+        else setMenuItems(settings)
+    }, [])
+
+
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -35,6 +48,17 @@ export default function SideBar({ children }: sidebarPropType) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(removeUser());
+        navigate('/signin');
+        handleCloseUserMenu()
+    }
+
+
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -68,7 +92,7 @@ export default function SideBar({ children }: sidebarPropType) {
                                 <IconButton
                                     onClick={handleOpenUserMenu}
                                     sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src={user.photoUrl} />
+                                    <Avatar alt="Remy Sharp" src={'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -87,11 +111,18 @@ export default function SideBar({ children }: sidebarPropType) {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
+                                {/* {settings.map((setting) => (
                                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
-                                ))}
+                                ))} */}
+
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">Profile</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleLogout}>
+                                    <Typography textAlign="center">Logout</Typography>
+                                </MenuItem>
                             </Menu>
                         </Box>
                     </Toolbar>
@@ -113,7 +144,7 @@ export default function SideBar({ children }: sidebarPropType) {
                 <Toolbar />
                 <Box sx={{ overflow: 'hidden', marginInline: '1.5rem' }}>
                     <List>
-                        {SidebarItems.map((text, index) => (
+                        {menuItems.map((text, index) => (
                             <ListItem key={text} disablePadding className='sidebar-link'>
                                 {/* <ListItemButton> */}
                                 {/* <ListItemIcon>
@@ -121,7 +152,7 @@ export default function SideBar({ children }: sidebarPropType) {
                                 </ListItemIcon> */}
                                 <Link
                                     className="sidebar-link-text"
-                                    to={text === 'Appointment' ? '/' : `/${text.toLowerCase()}`}
+                                    to={`/${currentUser.role.toLowerCase()}/${text.toLowerCase()}`}
                                 >
                                     <ListItemText primary={text} />
                                 </Link>

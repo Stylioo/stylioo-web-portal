@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import "../../styles/services/customdropdown.css";
 
 interface CheckboxDropdownProps {
   options: string[];
+  selectedOptions: string[];
+  setSelectedOptions: Dispatch<SetStateAction<string[]>>;
+
 }
 
-const CustomDropdown: React.FC<CheckboxDropdownProps> = ({ options }) => {
+const CustomDropdown: React.FC<CheckboxDropdownProps> = ({ options, selectedOptions, setSelectedOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -32,7 +34,7 @@ const CustomDropdown: React.FC<CheckboxDropdownProps> = ({ options }) => {
   return (
     <div className="checkbox-dropdown">
       <button className="dropdown-button" onClick={toggleDropdown}>
-       Staff List
+        Staff List
       </button>
       {isOpen && (
         <div className="dropdown-content">
@@ -45,18 +47,18 @@ const CustomDropdown: React.FC<CheckboxDropdownProps> = ({ options }) => {
             All Staff
           </label>
           <ul>
-          {options.map((option) => (
-            <li>
-            <label key={option}>
-              <input
-                type="checkbox"
-                checked={selectedOptions.includes(option)}
-                onChange={() => handleCheckboxChange(option)}
-              />
-              {option}
-            </label>
-            </li>
-          ))}
+            {options.map((option) => (
+              <li>
+                <label key={option}>
+                  <input
+                    type="checkbox"
+                    checked={selectedOptions.includes(option)}
+                    onChange={() => handleCheckboxChange(option)}
+                  />
+                  {option}
+                </label>
+              </li>
+            ))}
           </ul>
         </div>
       )}
