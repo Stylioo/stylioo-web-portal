@@ -28,13 +28,14 @@ function createData(
 }
 
 const rows = [
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2022/10/10', 'Beautician', 'vghsds'),
-
+  createData('Chirasi Amaya', '0711234567', 'chirasi@gmail.com', 'No/22,Araliya Road, Nugegoda, Colombo', 'Female', '2023/07/10', 'Beautician', 'vghsds'),
+  createData('Dasuni Dewani', '0716791207', 'dasuni@gmail.com', 'No/976,Melder Road, Nugegoda, Kirulapana', 'Female', '2022/10/06', 'Beautician', 'vghsds'),
+  createData('Ruwandi Mayunika', '0756781342', 'ruwandi@gmail.com', 'No/11,Ananda Road, Nugegoda, Navinna', 'Female', '2022/04/10', 'Beautician', 'vghsds'),
+  createData('Oshadee Dilthara', '0710986524', 'oshadee@gmail.com', 'No/27,Nalandarama Road, Kohuwala, Colombo', 'Female', '2021/08/10', 'Beautician', 'vghsds'),
+  createData('Nipuni Krishnajina', '0774151897', 'nipuni@gmail.com', 'No/687,Kadduwa Road, Dickwella, Matara', 'Female', '2021/05/21', 'Beautician', 'vghsds'),
+  createData('Kasuni Jayasinghe', '0762459913', 'kasuni@gmail.com', 'No/45,Hiriketiya Road, Delkanda Colombo', 'Female', '2021/05/21', 'Beautician', 'vghsds'),
+  createData('Pabasara Samarasinghe', '0774151460', 'pabasara@gmail.com', 'No/07,Samagi Road, Nilwella, Matara', 'Female', '2021/05/21', 'Receptionist', 'vghsds'),
+  createData('Janith Madarasinghe', '0715458769', 'janith@gmail.com', 'No/34,Ramaniya Road, Nugegoda, Colombo', 'Male', '2021/05/21', 'Manager', 'vghsds'),
 
 ];
 
@@ -98,7 +99,7 @@ function StaffList() {
             <TableCell align="left">Email</TableCell>
             <TableCell align="left">Address</TableCell>
             <TableCell align="left">Gender</TableCell>
-            <TableCell align="left">Date of joining</TableCell>
+            <TableCell align="left">Date of Joining</TableCell>
             <TableCell align="left">Role</TableCell>
             <TableCell align="left">Action</TableCell>
 
@@ -119,7 +120,7 @@ function StaffList() {
               <TableCell align="left">{row.gender}</TableCell>
               <TableCell align="left">{row.doj}</TableCell>
               <TableCell align="left">{row.role}</TableCell>
-              <TableCell align="left">
+              <TableCell width='120px' align="left">
                 <IconButton aria-label="edit">
                     <EditIcon />
                   </IconButton>
