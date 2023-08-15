@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../styles/receptionist/index.scss';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -20,17 +20,16 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'Date', headerName: 'Date', width: 130 },
-  { field: 'StartTime', headerName: 'Start Time', width: 130 },
-  { field: 'EndTime', headerName: 'End Time', width: 130 },
-  { field: 'ClientName', headerName: 'Client name', width: 130 },
-  { field: 'Service', headerName: 'Service', width: 130 },
-  { field: 'Beautician', headerName: 'Beautician', width: 130 },
-  { field: 'ServicePrice', headerName: 'Service Price', width: 130 },
+  { field: 'date', headerName: 'Date', width: 130 },
+  { field: 'startTime', headerName: 'Start Time', width: 130 },
+  { field: 'customer', headerName: 'Client name', width: 130 },
+  { field: 'services', headerName: 'Service', width: 330 },
+  { field: 'beautician', headerName: 'Beautician', width: 130 },
+  { field: 'totalPrice', headerName: 'Service Price', width: 130 },
 
   {
     field: 'Options',
@@ -86,25 +85,9 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  {
-    id: 1,
-    Date: '10/10/2021',
-    StartTime: '10:00 AM',
-    EndTime: '11:00 AM',
-    ClientName: 'John Doe',
-    Service: 'Haircut',
-    Beautician: 'Chirasi Walpola',
-    ServicePrice: 'Rs.1500.00'
-  },
+  { id: 1, Date: '10/10/2021', StartTime: '10:00 AM', EndTime: '11:00 AM', ClientName: 'John Doe', Service: 'Haircut', Beautician: 'Chirasi Walpola', ServicePrice: 'Rs.1500.00' },
 
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+
 ];
 
 
@@ -119,7 +102,6 @@ interface TabPanelProps {
 function CustomTabPanel(props: TabPanelProps) {
 
   const { children, value, index, ...other } = props;
-
 
   return (
     <div
@@ -148,6 +130,28 @@ function a11yProps(index: number) {
 export default function ReceptionistPage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+
+
+  const [tableData, setTableData] = useState<any[]>([])
+
+  const getAllAppointments = async () => {
+    try {
+      const response = await axios.get('http://localhost:5400/appointment')
+      if (response.data.success) {
+        setTableData(response.data.data)
+        console.log(response.data.data);
+
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getAllAppointments()
+  }, [])
+
 
   // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
   //   setValue(newValue);
@@ -285,9 +289,9 @@ export default function ReceptionistPage() {
         />
         <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop: '20px', width: '65%' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Ongoing Appoinments" {...a11yProps(0)} />
-            <Tab label="Today Appoinments" {...a11yProps(1)} />
-            <Tab label="Upcoming Appoinments" {...a11yProps(2)} />
+            <Tab label="Upcomming Appoinments" {...a11yProps(0)} />
+            <Tab label="Ongoing Appoinments" {...a11yProps(1)} />
+            <Tab label="Todays Appoinments" {...a11yProps(2)} />
             <Tab label="Past Appoinments" {...a11yProps(3)} />
           </Tabs>
         </Box>
@@ -296,7 +300,7 @@ export default function ReceptionistPage() {
 
         <CustomTabPanel value={value} index={0}>
           <DataGrid sx={{ width: '100%' }}
-            rows={rows}
+            rows={tableData}
             columns={columns}
             initialState={{
               pagination: {
@@ -326,7 +330,8 @@ export default function ReceptionistPage() {
 
         <CustomTabPanel value={value} index={2}>
           <DataGrid sx={{ width: '100%' }}
-            rows={rows}
+            rows={tableData}
+
             columns={columns}
             initialState={{
               pagination: {

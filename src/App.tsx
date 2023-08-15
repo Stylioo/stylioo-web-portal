@@ -35,7 +35,7 @@ function App() {
           <Routes>
 
             <Route path="/receptionist" element={<Layout allowedRoles='RECEPTIONIST' />} >
-              <Route path="" element={<ReceptionistPage />} />
+              <Route path="" element={<AppointmentPage />} />
               <Route path="appointment" element={<AppointmentPage />} />
               <Route path="client" element={<ClientPage />} />
               <Route path="quicksale" element={<QuickSalePage />} />
