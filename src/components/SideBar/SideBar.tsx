@@ -31,8 +31,8 @@ export default function SideBar({ children }: sidebarPropType) {
     const [menuItems, setMenuItems] = useState<string[]>([]);
 
     useEffect(() => {
-        if (currentUser.role === 'MANAGER') setMenuItems(['Services', 'Packages', 'Products'])
-        else if (currentUser.role === 'RECEPTIONIST') setMenuItems(['Appointment', 'Client', 'Staff', 'QuickSale'])
+        if (currentUser.role === 'MANAGER') setMenuItems(['Services', 'Packages', 'Products', 'LeaveManagement'])
+        else if (currentUser.role === 'RECEPTIONIST') setMenuItems(['Appointment', 'Client', 'Staff', 'QuickSale', 'Leave'])
         else if (currentUser.role === 'OWNER') setMenuItems(['Insights', 'Staff', 'Sales'])
         else setMenuItems(settings)
     }, [])

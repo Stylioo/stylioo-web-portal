@@ -20,6 +20,8 @@ import Package from "./pages/package/Package"
 import StaffList from "./pages/staffList/StaffList"
 import AddEmployee from "./pages/addEmployee/AddEmployee"
 import AddProduct from "./pages/addProducts/AddProduct"
+import LeavePage from "./pages/leave/LeavePage"
+import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 // import LeavePage from "./pages/leave/HomePage"
 // import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
@@ -42,6 +44,7 @@ function App() {
               <Route path="quicksale" element={<QuickSalePage />} />
               <Route path="staff" element={<StaffPage />} />
               <Route path="quick-sale-form" element={<QuickSaleForm />} />
+              <Route path="leave" element={<LeavePage />} />
             </Route>
 
             <Route path="/manager" element={<Layout allowedRoles='MANAGER' />} >
@@ -49,6 +52,7 @@ function App() {
               <Route path="services" element={<Services />} />
               <Route path="packages" element={<Package />} />
               <Route path="products" element={<AddProduct />} />
+              <Route path="leavemanagement" element={<LeaveManagmentPage />} />
             </Route>
 
             <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
