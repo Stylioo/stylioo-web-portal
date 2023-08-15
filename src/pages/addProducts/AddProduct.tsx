@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -22,17 +23,17 @@ import AddProductPopup from "../../components/Popups/AddProductPopup";
 
 interface Column {
   id:
-    | "Image"
-    | "Barcode"
-    | "Brand"
-    | "Product Type"
-    | "Product Name"
-    | "Business Price"
-    | "Full Price"
-    | "Sell Price"
-    | "Quantity"
-    | "Qty Alert"
-    | "Action";
+  | "Image"
+  | "Barcode"
+  | "Brand"
+  | "Product Type"
+  | "Product Name"
+  | "Business Price"
+  | "Full Price"
+  | "Sell Price"
+  | "Quantity"
+  | "Qty Alert"
+  | "Action";
   label: string;
   minWidth?: number;
   align?: "right";
@@ -184,7 +185,7 @@ function AddProduct() {
           >
             <FormControlLabel
               control={<Checkbox defaultChecked />}
-              label="Zero quantity products only"
+              label="High quantity products only"
             />
             <FormControlLabel
               control={<Checkbox defaultChecked />}
@@ -204,7 +205,7 @@ function AddProduct() {
         style={{ display: "flex", justifyContent: "flex-end", padding: "35px" }}
       >
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" startIcon={<AddIcon />} onClick={()=> setOpenPopup(true)}>
+          <Button variant="contained" startIcon={<AddIcon />} onClick={() => setOpenPopup(true)}>
             Add Product
           </Button>
           <Button variant="contained" startIcon={<EditIcon />}>

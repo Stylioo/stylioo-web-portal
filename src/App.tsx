@@ -19,6 +19,7 @@ import Services from "./pages/services/Services"
 import Package from "./pages/package/Package"
 import StaffList from "./pages/staffList/StaffList"
 import AddEmployee from "./pages/addEmployee/AddEmployee"
+import AddProduct from "./pages/addProducts/AddProduct"
 // import LeavePage from "./pages/leave/HomePage"
 // import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
@@ -47,7 +48,7 @@ function App() {
               <Route path="" element={<Services />} />
               <Route path="services" element={<Services />} />
               <Route path="packages" element={<Package />} />
-              <Route path="products" element={<h1>Products</h1>} />
+              <Route path="products" element={<AddProduct />} />
             </Route>
 
             <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
