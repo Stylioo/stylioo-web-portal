@@ -19,13 +19,14 @@ import QuickSaleForm from './QuickSaleForm';
 
 
 const columns: GridColDef[] = [
+
   { field: 'Name', headerName: 'Name', width: 150 },
   { field: 'Contact', headerName: 'Contact', width: 130 },
   { field: 'BillNo', headerName: 'Bill No', width: 70 },
   { field: 'Services', headerName: 'Services', width: 130 },
-  { field: 'Price/Paid/Balance', headerName: 'Price/Paid/Balance', width: 170 },
+  { field: 'PricePaidBalance', headerName: 'Price/Paid/Balance', width: 170 },
   { field: 'Date', headerName: 'Date', width: 150 },
-  { field: 'Feedback/Ratings', headerName: 'Feedback/Ratings', width: 150 },
+  { field: 'FeedbackRatings', headerName: 'Feedback/Ratings', width: 150 },
   { field: 'Status', headerName: 'Status', width: 130 },
 
   {
@@ -81,24 +82,68 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  { id: 1,
-    Date: '10/10/2021',
-    StartTime: '10:00 AM',
-    EndTime: '11:00 AM',
-    ClientName: 'John Doe',
-    Service: 'Haircut',
-    Beautician: 'Chirasi Walpola',
-    ServicePrice: 'Rs.1500.00'
+  { 
+  id:1,
+  Name: 'Oshadi Dilthara',
+  Contact: '0771234567',
+  BillNo: '001',
+  Services: 'Long Hair cut',
+  PricePaidBalance: 'Rs.1500.00',
+  Date: '2023-08-04',
+  FeedbackRatings: 'Good',
+  Status: 'Paid'
  },
 
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+
+ { 
+  id:2,
+  Name: 'Yasithra Gimhani',
+  Contact: '0777834567',
+  BillNo: '002',
+  Services: 'Hair Color',
+  PricePaidBalance: 'Rs.5000.00',
+  Date: '2023-08-05',
+  FeedbackRatings: 'Good',
+  Status: 'Paid'
+ },
+
+
+ { 
+  id:3,
+  Name: 'Nirmala Promodi',
+  Contact: '0771234569',
+  BillNo: '003',
+  Services: 'Hair Cut',
+  PricePaidBalance: 'Rs.1000.00',
+  Date: '2023-08-06',
+  FeedbackRatings: 'None',
+  Status: 'Paid'
+ },
+
+ { 
+  id:4,
+  Name: 'Oshaani Peris',
+  Contact: '0771774567',
+  BillNo: '004',
+  Services: 'Long Hair cut',
+  PricePaidBalance: 'Rs.1500.00',
+  Date: '2023-08-07',
+  FeedbackRatings: 'None',
+  Status: 'Paid'
+ },
+
+ { 
+  id:5,
+  Name: 'Kaveesha Thathsarani',
+  Contact: '0751234767',
+  BillNo: '005',
+  Services: 'Short Hair cut',
+  PricePaidBalance: 'Rs.900.00',
+  Date: '2023-08-10',
+  FeedbackRatings: 'None',
+  Status: 'Paid'
+ }
+  
 ];
 
 

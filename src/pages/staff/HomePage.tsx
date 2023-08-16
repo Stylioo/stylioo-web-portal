@@ -85,7 +85,7 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  {  
+  {
     id: 1,
     Role: 'Beautician',
     Name: 'Chirasi Walpola',
@@ -95,16 +95,16 @@ const rows = [
     Salary: 'Rs.50,000',
     JoinedDate: '2022-10-15',
     Status: 'Active'
- },
+  },
 
-//   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-//   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-//   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-//   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-//   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-//   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-//   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-//   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  //   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  //   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  //   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  //   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  //   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  //   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  //   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 
@@ -117,10 +117,10 @@ interface TabPanelProps {
 
 
 function CustomTabPanel(props: TabPanelProps) {
-  
+
   const { children, value, index, ...other } = props;
-  
-  
+
+
   return (
     <div
       role="tabpanel"
@@ -184,159 +184,159 @@ export default function StaffPage() {
 
   return (
     <React.Fragment>
-    <Box sx={{ width: '100%'}}>
-       <ButtonGroup
-            disableElevation
-            variant="contained"
-            aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'925.5px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add Staff</Button>
-                  
-                <Dialog open={open} onClose={handleClose}>
-                  
-                  <DialogTitle className='formHeader'>Add Staff</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
-                        <TextField
-                          label="Date"
-                          type="date"
-                          fullWidth
-                          value={selectedDate}
-                          onChange={(e) => setSelectedDate(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Time"
-                          type="time"
-                          fullWidth
-                          value={selectedTime}
-                          onChange={(e) => setSelectedTime(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Client Name"
-                          fullWidth
-                          value={clientName}
-                          onChange={(e) => setClientName(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Contact No"
-                          fullWidth
-                          value={contactNo}
-                          onChange={(e) => setContactNo(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Service Type"
-                          fullWidth
-                          value={serviceType}
-                          onChange={(e) => setServiceType(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Service Category"
-                          fullWidth
-                          value={serviceCategory}
-                          onChange={(e) => setServiceCategory(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
+      <Box sx={{ width: '100%' }}>
+        <ButtonGroup
+          disableElevation
+          variant="contained"
+          aria-label="Disabled elevation buttons"
+          sx={{ marginTop: '20px', marginLeft: '925.5px' }} >
+          {/* <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add Staff</Button> */}
 
-                        {/* Add more form fields here */}
-                        
-                        {/* <Divider sx={{ marginBottom: '10px' }} /> */}
+          <Dialog open={open} onClose={handleClose}>
 
-                        {/* Display the total price */}
-                        <TextField
-                          label="Total Price"
-                          fullWidth
-                          value={totalPrice}
-                          disabled
-                          sx={{ marginBottom: '10px' }}
-                        />
+            <DialogTitle className='formHeader'>Add Staff</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                <TextField
+                  label="Date"
+                  type="date"
+                  fullWidth
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Time"
+                  type="time"
+                  fullWidth
+                  value={selectedTime}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Client Name"
+                  fullWidth
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Contact No"
+                  fullWidth
+                  value={contactNo}
+                  onChange={(e) => setContactNo(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Service Type"
+                  fullWidth
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Service Category"
+                  fullWidth
+                  value={serviceCategory}
+                  onChange={(e) => setServiceCategory(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
 
-                      </DialogContentText>
-                    </DialogContent>
+                {/* Add more form fields here */}
 
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleSubmit} color="primary">
-                        Save
-                      </Button>
-                    </DialogActions>
-                </Dialog>
+                {/* <Divider sx={{ marginBottom: '10px' }} /> */}
 
-            <Button startIcon={<PersonAdd />}>Upload Attendance</Button>
-          </ButtonGroup>
-          <TextField
-            label="Search"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
+                {/* Display the total price */}
+                <TextField
+                  label="Total Price"
+                  fullWidth
+                  value={totalPrice}
+                  disabled
+                  sx={{ marginBottom: '10px' }}
+                />
+
+              </DialogContentText>
+            </DialogContent>
+
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit} color="primary">
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          {/* <Button startIcon={<PersonAdd />}>Upload Attendance</Button> */}
+        </ButtonGroup>
+        <TextField
+          label="Search"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton>
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          sx={{ marginTop: '15px' , marginLeft:'1000px'}} // Add margin top here
+        />
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop: '20px', width: '25%' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab label="Staff List" {...a11yProps(0)} />
+            {/* <Tab label="Staff Schedule" {...a11yProps(1)} /> */}
+            {/* <Tab label="Bussiness Offdays" {...a11yProps(2)} /> */}
+            <Tab label="Inactive Staff" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+
+
+
+        <CustomTabPanel value={value} index={0}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
             }}
-            sx={{ marginTop: '-45px'}} // Add margin top here
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
           />
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'50%'}}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Staff List" {...a11yProps(0)} />
-          <Tab label="Staff Schedule" {...a11yProps(1)} />
-          <Tab label="Bussiness Offdays" {...a11yProps(2)} />
-          <Tab label="Inactive Staff" {...a11yProps(3)} />
-        </Tabs>
+        </CustomTabPanel>
+
+
+        {/* <CustomTabPanel value={value} index={1}>
+
+        </CustomTabPanel>
+
+
+        <CustomTabPanel value={value} index={2}>
+
+        </CustomTabPanel> */}
+
+
+        <CustomTabPanel value={value} index={1}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
+        </CustomTabPanel>
       </Box>
-     
-      
-       
-      <CustomTabPanel value={value} index={0}>
-                      <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={1}>
-      
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={2}>
-          
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={3}>
-          <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-    </Box>
     </React.Fragment>
   );
 
 
-  
+
 }
 
