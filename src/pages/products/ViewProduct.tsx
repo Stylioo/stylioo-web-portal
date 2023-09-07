@@ -29,10 +29,25 @@ function ViewProduct() {
     const [product, setProduct] = useState<any>({})
 
     // edit product
+
+    const [editProductName, setEditProductName] = useState<string>('')
+    const [editProductDescription, setEditProductDescription] = useState<string>('')
+    const [editBrand, setEditBrand] = useState<string>('')
+    const [editCategory, setEditCategory] = useState<string>('')
+    const [eidtType, setEidtType] = useState<string>('')
+    const [editLowStockLevel, setEeditLowStockLevel] = useState<GLfloat>(0)
+    const [editVolume, setEditVolume] = useState<GLfloat>(0)
+    const [editVolumeUnits, setEditVolumeUnits] = useState<string>('')
+
     const [enableChangeDetails, setEnableChangeDetails] = useState<boolean>(false)
     const handleEditCancel = () => {
         setEnableChangeDetails(false)
         getProductById()
+    }
+
+    const handleEdit = () => {
+        console.log(editProductName, editBrand, editLowStockLevel);
+
     }
 
     //snakbar
@@ -151,7 +166,7 @@ function ViewProduct() {
                                             {
                                                 enableChangeDetails ?
                                                     <>
-                                                        <Button variant="contained" size="small" color="success">Save</Button>
+                                                        <Button variant="contained" size="small" color="success" onClick={handleEdit}>Save</Button>
                                                         <Button variant="contained" color="secondary" size="small"
                                                             onClick={handleEditCancel}
                                                         >Cancel</Button>
@@ -176,6 +191,7 @@ function ViewProduct() {
                                                 variant="outlined"
                                                 size="small"
                                                 defaultValue={product?.name}
+                                                onChange={(e) => setEditProductName(e.target.value)}
                                                 InputProps={{
                                                     readOnly: !enableChangeDetails,
                                                 }}
@@ -186,11 +202,12 @@ function ViewProduct() {
                                                 variant="outlined"
                                                 size="small"
                                                 defaultValue={product?.brand}
+                                                onChange={(e) => setEditBrand(e.target.value)}
                                                 InputProps={{
                                                     readOnly: !enableChangeDetails,
                                                 }}
                                             />
-                                            <TextArea onChange={() => console.log('test')} name="description" label="Description" defaultValue={product?.description} height="100px" disabled={!enableChangeDetails} />
+                                            <TextArea onChange={(e) => setEditProductDescription(e.target.value)} name="description" label="Description" defaultValue={product?.description} height="100px" disabled={!enableChangeDetails} />
                                         </Grid>
                                         <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                             <TextField
@@ -199,6 +216,7 @@ function ViewProduct() {
                                                 variant="outlined"
                                                 size="small"
                                                 defaultValue={product?.category}
+                                                onChange={(e) => setEditCategory(e.target.value)}
                                                 InputProps={{
                                                     readOnly: !enableChangeDetails,
                                                 }}
@@ -209,6 +227,7 @@ function ViewProduct() {
                                                 variant="outlined"
                                                 size="small"
                                                 defaultValue={product?.type}
+                                                onChange={(e) => setEidtType(e.target.value)}
                                                 InputProps={{
                                                     readOnly: !enableChangeDetails,
                                                 }}
@@ -230,6 +249,7 @@ function ViewProduct() {
                                                     variant="outlined"
                                                     size="small"
                                                     defaultValue={product?.low_stock_quantity}
+                                                    onChange={(e) => setEeditLowStockLevel(parseFloat(e.target.value))}
                                                     InputProps={{
                                                         readOnly: !enableChangeDetails,
                                                     }}
@@ -242,6 +262,7 @@ function ViewProduct() {
                                                     variant="outlined"
                                                     size="small"
                                                     defaultValue={product?.volume}
+                                                    onChange={(e) => setEditVolume(parseFloat(e.target.value))}
                                                     InputProps={{
                                                         readOnly: !enableChangeDetails,
                                                     }}
@@ -252,6 +273,7 @@ function ViewProduct() {
                                                     variant="outlined"
                                                     size="small"
                                                     defaultValue={product?.volume_unit}
+                                                    onChange={(e) => setEditVolumeUnits(e.target.value)}
                                                     InputProps={{
                                                         readOnly: !enableChangeDetails,
                                                     }}

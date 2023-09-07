@@ -18,12 +18,15 @@ import { useNavigate } from "react-router-dom"
 import AddStockModal from "./AddStockModal"
 import AddNewProductModal from "./AddNewProductModal"
 import SnakbarAlert from "../../components/SnakbarAlert"
+import DeleteAlert from "./DeleteAlert"
 
 
 type menuPropsType = {
   anchorEl: HTMLElement | null
   open: boolean
   handleClose: () => void
+  handleProductDeleteOption: () => void
+  productId: string
 }
 
 type SnakbarAlertMessage = {
@@ -31,7 +34,7 @@ type SnakbarAlertMessage = {
   message: string
 }
 
-function OptionMenu({ anchorEl, open, handleClose }: menuPropsType) {
+function OptionMenu({ anchorEl, open, handleClose, handleProductDeleteOption, productId }: menuPropsType) {
   return (
     <>
       <Menu
@@ -49,7 +52,7 @@ function OptionMenu({ anchorEl, open, handleClose }: menuPropsType) {
           </ListItemIcon>
           <ListItemText>Edit</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleProductDeleteOption()}>
           <ListItemIcon>
             <Delete fontSize="small" />
           </ListItemIcon>
@@ -59,6 +62,7 @@ function OptionMenu({ anchorEl, open, handleClose }: menuPropsType) {
     </>
   );
 }
+
 
 function Products() {
 
@@ -99,6 +103,18 @@ function Products() {
   }
 
 
+  //delete alert
+  const [openDeleteAlert, setOpenDeleteAlert] = useState<boolean>(false)
+
+  const handleDeleteAlertClose = () => {
+    setOpenDeleteAlert(false);
+  }
+
+  const handleProductDeleteOption = () => {
+    setOpenDeleteAlert(true)
+  }
+
+
   // add stock modal
   const [addStockModalOpen, setAddStockModalOpen] = useState<boolean>(false)
   const handleAddStockModelClose = () => {
@@ -119,11 +135,10 @@ function Products() {
   const handleClick = (event: MouseEvent<HTMLButtonElement>, row: any) => {
     setAnchorEl(event.currentTarget);
     setSelectedRow(row)
+    setProductId(row.id)
   };
   const handleClose = () => {
     setAnchorEl(null);
-    console.log(selectedRow);
-
   };
 
   // add new product modal
@@ -251,7 +266,21 @@ function Products() {
         handleSankbarShow={handleSankbarShow}
       />
 
-      <OptionMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
+      <DeleteAlert
+        open={openDeleteAlert}
+        handleClose={handleDeleteAlertClose}
+        productId={productId}
+        handleSankbarShow={handleSankbarShow}
+        refetch={getAllProducts}
+
+      />
+      <OptionMenu
+        anchorEl={anchorEl}
+        open={open}
+        handleClose={handleClose}
+        handleProductDeleteOption={handleProductDeleteOption}
+        productId={productId} />
+
       <Box className="page-header flex flex-between">
         <div className="flex gap-1">
           <TextField
