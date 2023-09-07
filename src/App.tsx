@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
+import ReduxProvider from "./redux/Provider"
+
 import theme from "./theme"
 
 import Layout from "./Layout"
@@ -14,14 +16,15 @@ import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
-import ReduxProvider from "./redux/Provider"
 import Services from "./pages/services/Services"
 import Package from "./pages/package/Package"
 import StaffList from "./pages/staffList/StaffList"
 import AddEmployee from "./pages/addEmployee/AddEmployee"
-import AddProduct from "./pages/addProducts/AddProduct"
 import LeavePage from "./pages/leave/LeavePage"
 import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
+import Products from "./pages/products/Products"
+import AddProducts from "./pages/products/AddProduct"
+import ViewProducts from "./pages/products/ViewProduct"
 // import LeavePage from "./pages/leave/HomePage"
 // import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
@@ -51,7 +54,9 @@ function App() {
               <Route path="" element={<Services />} />
               <Route path="services" element={<Services />} />
               <Route path="packages" element={<Package />} />
-              <Route path="products" element={<AddProduct />} />
+              <Route path="product" element={<Products />} />
+              <Route path="product/new" element={<AddProducts />} />
+              <Route path="product/:id" element={<ViewProducts />} />
               <Route path="leavemanagement" element={<LeaveManagmentPage />} />
             </Route>
 

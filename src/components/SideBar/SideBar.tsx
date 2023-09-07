@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../../styles/sidebar.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
@@ -70,22 +71,28 @@ export default function SideBar({ children }: sidebarPropType) {
                     <Toolbar disableGutters sx={{
 
                     }}>
-                        <IconButton
-                            sx={{
-                                marginRight: '1.5rem'
-                            }}
-                            onClick={() => setOpenDrawer(!openDrawer)}
-                        ><MenuIcon sx={{
-                            display: isMobile ? 'block' : 'none',
-                            color: 'white',
-                            fontSize: '1.5rem',
-                        }} /></IconButton>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                        >
-                            Stylioo
-                        </Typography>
+                        {
+                            isMobile ? <IconButton
+                                sx={{
+                                    marginRight: '1.5rem'
+                                }}
+                                onClick={() => setOpenDrawer(!openDrawer)}
+                            ><MenuIcon sx={{
+                                display: 'block',
+                                color: 'white',
+                                fontSize: '1.5rem',
+                            }} /></IconButton>
+                                :
+                                <Typography
+                                    variant="h6"
+                                    noWrap
+                                    sx={{ marginLeft: '0.75rem' }}
+                                >
+                                    Stylioo
+                                </Typography>
+                        }
+
+
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
@@ -162,12 +169,12 @@ export default function SideBar({ children }: sidebarPropType) {
                     </List>
                 </Box>
             </SwipeableDrawer>
-            <Box component="main" sx={{ flexGrow: 1, px: 3, minHeight: '100dvh' }}>
+            <div className='children'>
                 <Toolbar sx={{
                     marginBottom: '1rem',
                 }} />
                 {children}
-            </Box>
+            </div>
         </Box>
     );
 }

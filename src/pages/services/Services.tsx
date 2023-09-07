@@ -9,8 +9,9 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import axios from 'axios';
 
+import axios from '../../axios'
+import Loading from '../../components/Loading';
 
 type servicesType = {
   id: string;
@@ -23,13 +24,13 @@ type servicesType = {
 
 
 const Services = () => {
-    const [ searchValue, setSearchValue] = useState("");
-    const [selectedValue, setSelectedValue] = useState("10");
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
-    const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
-    const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
-    const [iseditPopupOpen, setIseditPopupOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("10");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
+  const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
+  const [isPopupViewtwoOpen, setIsPopupViewtwoOpen] = useState(false);
+  const [iseditPopupOpen, setIseditPopupOpen] = useState(false);
 
 
   const [services, setServices] = useState<servicesType[]>([]);
@@ -41,6 +42,8 @@ const Services = () => {
   const [Price, setPrice] = useState("");
   const [duration, setDuration] = useState("00:30");
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const [isLoading, setIsLoading] = useState(false)
 
 
 
@@ -132,25 +135,17 @@ const Services = () => {
 
   const openeditPopup = () => {
     setIseditPopupOpen(true);
-  
+
   };
-  
+
   const closeeditPopup = () => {
     setIseditPopupOpen(false);
   };
 
-  // const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
-  // const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedImage(file);
-  //   }
-  // };
-
   const fetchServices = async () => {
     try {
-      const response = await axios.get('http://localhost:5400/service')
+      setIsLoading(true)
+      const response = await axios.get('/service')
       if (response.status === 200) {
         const data = response.data
 
@@ -163,13 +158,16 @@ const Services = () => {
     } catch (error) {
       console.log(error);
     }
+    finally {
+      setIsLoading(false)
+    }
   }
 
   const handleAddService = async (e: any) => {
 
     try {
 
-      const response = await axios.post('http://localhost:5400/service', {
+      const response = await axios.post('/service', {
         category: category,
         name: Name,
         description: Description,
@@ -207,7 +205,7 @@ const Services = () => {
 
   const handleDeleteOk = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5400/service/${deleteOrUpdateId}`)
+      const response = await axios.delete(`/service/${deleteOrUpdateId}`)
       if (response.status === 200) {
         if (response.data.success) {
           console.log(response.data.data);
@@ -275,42 +273,41 @@ const Services = () => {
         />
       </div>
 
-
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Duration</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {
-            services.map(service => (
-              <tr key={service.id}>
-                <td>{service.name}</td>
-                <td>{service.category}</td>
-                <td style={{ maxWidth: '250px' }}>{service.description}</td>
-                <td>LKR {service.price}</td>
-                <td>{service.duration} hr</td>
-                <td>
-                  <div className="btn_delete_edit">
-                    <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
-                    <  RiDeleteBin5Line size={20} onClick={() => handleDelete(service.id)} />
-                  </div>
-                </td>
+      {
+        isLoading ? <Loading /> :
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Action</th>
               </tr>
-            ))
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
 
-
-
+              {
+                services.map(service => (
+                  <tr key={service.id}>
+                    <td>{service.name}</td>
+                    <td>{service.category}</td>
+                    <td style={{ maxWidth: '250px' }}>{service.description}</td>
+                    <td>LKR {service.price}</td>
+                    <td>{service.duration} hr</td>
+                    <td>
+                      <div className="btn_delete_edit">
+                        <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
+                        <  RiDeleteBin5Line size={20} onClick={() => handleDelete(service.id)} />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+      }
 
       <Modal
         isOpen={isPopupOpen}

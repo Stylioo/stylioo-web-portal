@@ -28,7 +28,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5400/auth/login', {
+      const response = await axios.post('https://stylioo-api-e55c1372a17b.herokuapp.com/auth/login', {
         email: email,
         password: password,
         type: 'EMPLOYEE'
