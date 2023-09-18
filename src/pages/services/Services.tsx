@@ -22,6 +22,17 @@ type servicesType = {
   category: string;
 }
 
+type editServicesType = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  duration: string;
+  category: string;
+}
+
+
+
 
 const Services = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -34,7 +45,9 @@ const Services = () => {
 
 
   const [services, setServices] = useState<servicesType[]>([]);
+  const [editServices, setEditServices] = useState<editServicesType>({});
   const [deleteOrUpdateId, setDeleteOrUpdateId] = useState<string>("");
+  const [editId, setEditId] = useState<string>("");
 
   const [category, setCategory] = useState('other');
   const [Name, setName] = useState("");
@@ -135,6 +148,12 @@ const Services = () => {
 
   const openeditPopup = () => {
     setIseditPopupOpen(true);
+  };
+
+  const handleEdit = (id: string) => {
+    setEditId(id);
+    openeditPopup();
+    fetchServicesEdit(id);
 
   };
 
@@ -151,7 +170,36 @@ const Services = () => {
 
         if (data.success) {
           console.log(data.data);
-          setServices(data.data)
+          setServices(data.data);
+          
+        }
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    finally {
+      setIsLoading(false)
+    }
+  }
+
+  const fetchServicesEdit = async (editId:string) => {
+    try {
+      setIsLoading(true)
+      const response = await axios.get(`/service/${editId}`)
+      console.log(response)
+      if (response.status === 200) {
+        const data = response.data
+
+        if (data.success) {
+          console.log(data.data);
+          setEditServices(data.data)
+          setName(data.data.name)
+          setDescription(data.data.description)
+          setPrice(data.data.price)
+          setDuration(data.data.duration)
+          setCategory(data.data.category)
+
         }
 
       }
@@ -198,6 +246,47 @@ const Services = () => {
     }
   }
 
+
+
+
+
+  
+  const handleUpdateService = async (e: any) => {
+
+    try {
+
+      const response = await axios.patch(`/service/${editId}`, {
+        category: category,
+        name: Name,
+        description: Description,
+        price: parseFloat(Price),
+        duration: duration,
+        status: "active",
+        // selectedOptions: selectedOptions
+      })
+
+      console.log(response.data);
+
+      if (response.status === 200) {
+        if (response.data.success) {
+          console.log(response.data.data);
+          setCategory('')
+          setName('')
+          setDescription('')
+          setPrice("")
+          setDuration('')
+          closePopup()
+          fetchServices()
+
+        }
+      }
+      closeeditPopup();
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleDelete = (id: string) => {
     openPopuptwo()
     setDeleteOrUpdateId(id)
@@ -213,7 +302,7 @@ const Services = () => {
           fetchServices()
         }
       }
-      setDeleteOrUpdateId("")
+      setDeleteOrUpdateId("") 
     } catch (error) {
       console.log(error);
     }
@@ -298,7 +387,7 @@ const Services = () => {
                     <td>{service.duration} hr</td>
                     <td>
                       <div className="btn_delete_edit">
-                        <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
+                        <  FaRegEdit size={20} onClick={() => handleEdit(service.id)} className="icon-with-gap" />
                         <  RiDeleteBin5Line size={20} onClick={() => handleDelete(service.id)} />
                       </div>
                     </td>
@@ -312,7 +401,7 @@ const Services = () => {
       <Modal
         isOpen={isPopupOpen}
         onRequestClose={closePopup}
-        contentLabel="Example Popup"
+        contentLabel="Add service"
         style={centerStyles}
       >
         <div>
@@ -546,8 +635,8 @@ const Services = () => {
       </Modal>
       <Modal
         isOpen={isPopupViewOpen}
-        onRequestClose={closePopupView}
-        contentLabel="Example Popup"
+        onRequestClose={closeeditPopup}
+        contentLabel="view Popup"
         style={centerStyles}
 
       >
@@ -560,7 +649,7 @@ const Services = () => {
 
 
                   <div className="close_btn">
-                    <  AiOutlineCloseCircle size={30} onClick={closePopupView} />
+                    <  AiOutlineCloseCircle size={30} onClick={closeeditPopup} />
                   </div>
                   <h2 style={{ textAlign: 'center' }}>View Service</h2>
                   <p className="intro_container">Generate diverse packages by including names, group, description, price and srvice time and sessions associated with each service.</p>
@@ -607,6 +696,240 @@ const Services = () => {
           </Card>
 
         </div>
+
+
+
+
+      </Modal>
+
+
+
+
+
+
+      <Modal
+        isOpen={iseditPopupOpen}
+        onRequestClose={closeeditPopup}
+        contentLabel="Edit Popup"
+        style={centerStyles}
+
+      >
+        <div>
+          <div className="close_btn">
+            <  AiOutlineCloseCircle size={30} onClick={closeeditPopup} />
+          </div>
+          <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Edit Service</h2>
+ 
+
+
+
+
+
+              
+
+          <div className="name_container">
+            <select value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+              className="first_seelectbox">
+              <option >Select Group</option>
+              <option value="facial">Facial</option>
+              <option value="hair">Hair</option>
+              <option value="pedicure">Pedicure</option>
+              <option value="menicure">Menicure</option>
+              <option value="other">Other</option>
+            </select>
+            <input
+              type="text"
+              value={Name}
+              onChange={(e) => {
+                e.preventDefault()
+                setName(e.target.value)
+              }}
+              placeholder="Name"
+              className="inputbox_container"
+            />
+          </div>
+
+          <textarea
+            value={Description}
+            onChange={(e) => {
+              e.preventDefault()
+              setDescription(e.target.value)
+            }}
+            rows={5}
+            placeholder="Description..."
+            className="inputbox_container_description"
+          />
+
+          <div className="name_container">
+            <input
+              type="text"
+              value={Price}
+              onChange={(e) => {
+                e.preventDefault()
+                setPrice(e.target.value)
+              }}
+              placeholder="Price"
+              className="inputbox_container"
+            />
+            <select value={duration}
+              onChange={(e) => {
+                setDuration(e.target.value);
+              }}
+              className="first_seelectbox">
+              <option value="">Duration</option>
+              <option value="00.10">00.10</option>
+              <option value="00.15">00.15</option>
+              <option value="00.20">00.20</option>
+              <option value="00.25">00.25</option>
+              <option value="00.30">00.30</option>
+              <option value="00.35">00.35</option>
+              <option value="00.40">00.40</option>
+              <option value="00.45">00.45</option>
+              <option value="00.50">00.50</option>
+              <option value="00.55">00.55</option>
+              <option value="01.00">01.00</option>
+              <option value="01.05">01.05</option>
+              <option value="01.10">01.10</option>
+              <option value="01.15">01.15</option>
+              <option value="01.20">01.20</option>
+              <option value="01.25">01.25</option>
+              <option value="01.30">01.30</option>
+              <option value="01.35">01.35</option>
+              <option value="01.40">01.40</option>
+              <option value="01.45">01.45</option>
+              <option value="01.50">01.50</option>
+              <option value="01.55">01.55</option>
+              <option value="02.00">02.00</option>
+              <option value="02.05">02.05</option>
+              <option value="02.10">02.10</option>
+              <option value="02.15">02.15</option>
+              <option value="02.20">02.20</option>
+              <option value="02.25">02.25</option>
+              <option value="02.30">02.30</option>
+              <option value="option2">02.35</option>
+              <option value="option1">02.40</option>
+              <option value="option2">02.45</option>
+              <option value="option1">02.50</option>
+              <option value="option2">02.55</option>
+              <option value="option1">03.00</option>
+              <option value="option2">03.05</option>
+              <option value="option1">03.10</option>
+              <option value="option2">03.15</option>
+              <option value="option1">03.20</option>
+              <option value="option2">03.25</option>
+              <option value="option1">03.30</option>
+              <option value="option2">03.35</option>
+              <option value="option1">03.40</option>
+              <option value="option2">03.45</option>
+              <option value="option1">03.50</option>
+              <option value="option2">03.55</option>
+              <option value="option1">04.00</option>
+              <option value="option1">04.00</option>
+              <option value="option2">04.05</option>
+              <option value="option1">04.10</option>
+              <option value="option2">04.15</option>
+              <option value="option1">04.20</option>
+              <option value="option2">04.25</option>
+              <option value="option1">04.30</option>
+              <option value="option2">04.35</option>
+              <option value="option1">04.40</option>
+              <option value="option2">04.45</option>
+              <option value="option1">04.50</option>
+              <option value="option2">04.55</option>
+              <option value="option1">05.00</option>
+              <option value="option2">05.05</option>
+              <option value="option1">05.10</option>
+              <option value="option2">05.15</option>
+              <option value="option1">05.20</option>
+              <option value="option2">05.25</option>
+              <option value="option1">05.30</option>
+              <option value="option2">05.35</option>
+              <option value="option1">05.40</option>
+              <option value="option2">05.45</option>
+              <option value="option1">05.50</option>
+              <option value="option2">05.55</option>
+              <option value="option1">06.00</option>
+              <option value="option2">06.05</option>
+              <option value="option1">06.10</option>
+              <option value="option2">06.15</option>
+              <option value="option1">06.20</option>
+              <option value="option2">06.25</option>
+              <option value="option1">06.30</option>
+              <option value="option2">06.35</option>
+              <option value="option1">06.40</option>
+              <option value="option2">06.45</option>
+              <option value="option1">06.50</option>
+              <option value="option2">06.55</option>
+              <option value="option1">07.00</option>
+              <option value="option2">07.05</option>
+              <option value="option1">07.10</option>
+              <option value="option2">07.15</option>
+              <option value="option1">07.20</option>
+              <option value="option2">07.25</option>
+              <option value="option1">07.30</option>
+              <option value="option2">07.35</option>
+              <option value="option1">07.40</option>
+              <option value="option2">07.45</option>
+              <option value="option1">07.50</option>
+              <option value="option2">07.55</option>
+              <option value="option1">08.00</option>
+              <option value="option1">08.00</option>
+              <option value="option2">08.05</option>
+              <option value="option1">08.10</option>
+              <option value="option2">08.15</option>
+              <option value="option1">08.20</option>
+              <option value="option2">08.25</option>
+              <option value="option1">08.30</option>
+              <option value="option2">08.35</option>
+              <option value="option1">08.40</option>
+              <option value="option2">08.45</option>
+              <option value="option1">08.50</option>
+              <option value="option2">08.55</option>
+              <option value="option1">08.00</option>
+              <option value="option2">08.05</option>
+              <option value="option1">08.10</option>
+              <option value="option2">08.15</option>
+              <option value="option1">08.20</option>
+              <option value="option2">08.25</option>
+              <option value="option1">08.30</option>
+              <option value="option2">08.35</option>
+              <option value="option1">08.40</option>
+              <option value="option2">08.45</option>
+              <option value="option1">08.50</option>
+              <option value="option2">08.55</option>
+              <option value="option1">09.00</option>
+              <option value="option1">09.00</option>
+              <option value="option2">09.05</option>
+              <option value="option1">09.10</option>
+              <option value="option2">09.15</option>
+              <option value="option1">09.20</option>
+              <option value="option2">09.25</option>
+              <option value="option1">09.30</option>
+              <option value="option2">09.35</option>
+              <option value="option1">09.40</option>
+              <option value="option2">09.45</option>
+              <option value="option1">09.50</option>
+              <option value="option2">09.55</option>
+              <option value="option1">10.00</option>
+            </select>
+          </div>
+      
+          <p style={{
+            marginTop: '40px',
+          }}>Who can provide the service * </p>
+
+          <div>
+            <CustomDropdown selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} options={dropdownOptions} />
+          </div>
+          <button className="save-button" onClick={handleUpdateService}>Update</button>
+          
+          </div>
+      
+
+        
 
 
 
