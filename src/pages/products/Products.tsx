@@ -349,10 +349,6 @@ function Products() {
         loading={isLoading}
         onRowClick={(params) => navigate(`/manager/product/${params.row.id}`)}
       />
-      <AddProductPopup
-        openPopup={openPopup}
-        setOpenPopup={setOpenPopup}
-      ></AddProductPopup>
     </>
   )
 }

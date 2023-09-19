@@ -12,21 +12,21 @@ import Signin from "./pages/signin/SigninPage"
 import AppointmentPage from "./pages/appoinments/HomePage"
 import ReceptionistPage from "./pages/receptionist/HomePage"
 // import BeauticianPage from "./pages/beautician/HomePage"
-import StaffPage from "./pages/staff/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
 import Services from "./pages/services/Services"
 import Package from "./pages/package/Package"
-import StaffList from "./pages/staffList/StaffList"
+import StaffList from "./pages/Staff/Staff"
 import AddEmployee from "./pages/addEmployee/AddEmployee"
 import LeavePage from "./pages/leave/LeavePage"
 import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 import Products from "./pages/products/Products"
-import AddProducts from "./pages/products/AddProduct"
+import AddProducts from "./pages/Staff/AddStaff"
 import ViewProducts from "./pages/products/ViewProduct"
+import AddStaff from "./pages/Staff/AddStaff"
+import ViewStaff from "./pages/Staff/ViewStaff"
 // import LeavePage from "./pages/leave/HomePage"
-// import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 
 
 // ['BEAUTICIAN', 'RECEPTIONIST', 'MANAGER', 'OWNER']
@@ -45,7 +45,6 @@ function App() {
               <Route path="appointment" element={<AppointmentPage />} />
               <Route path="client" element={<ClientPage />} />
               <Route path="quicksale" element={<QuickSalePage />} />
-              <Route path="staff" element={<StaffPage />} />
               <Route path="quick-sale-form" element={<QuickSaleForm />} />
               <Route path="leave" element={<LeavePage />} />
             </Route>
@@ -64,6 +63,8 @@ function App() {
               <Route path="" element={<h1>Insights</h1>} />
               <Route path="insights" element={<h1>Insights</h1>} />
               <Route path="staff" element={<StaffList />} />
+              <Route path="staff/add" element={<AddStaff />} />
+              <Route path="staff/:id" element={<ViewStaff />} />
               <Route path="addEmployee" element={<AddEmployee />} />
               <Route path="sales" element={<h1>Sales</h1>} />
             </Route>
