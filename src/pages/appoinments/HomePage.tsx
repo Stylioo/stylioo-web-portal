@@ -18,6 +18,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { FormLabel } from '@mui/material';
 import "../../styles/receptionist/form.scss";
+import { Link } from 'react-router-dom'; 
+import AddNewAppointment from './AddNewAppointment';
 
 const columns: GridColDef[] = [
   // { field: 'id', headerName: 'id', width: 10},
@@ -188,9 +190,9 @@ export default function AppoinmentPage() {
             variant="contained"
             aria-label="Disabled elevation buttons"
             sx={{ marginTop: '20px', marginLeft:'1050px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Appoinment</Button>
+            <Button startIcon={<AddCircleIcon />} color='accent' component={Link} to="/add-new-appointment">Add New Appoinment</Button>
                   
-                <Dialog open={open} onClose={handleClose}>
+                {/* <Dialog open={open} onClose={handleClose}>
                   
                   <DialogTitle className='formHeader'>Add New Client</DialogTitle>
                     <DialogContent sx={{marginTop:'20px'}}>
@@ -240,7 +242,7 @@ export default function AppoinmentPage() {
                         Save
                       </Button>
                     </DialogActions>
-                </Dialog>
+                </Dialog> */}
           </ButtonGroup>
           <TextField
             label="Search by Client Name"

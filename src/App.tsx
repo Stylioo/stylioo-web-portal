@@ -13,7 +13,7 @@ import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
 import LeavePage from "./pages/leave/HomePage"
 import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
-
+import AddNewAppointment from "./pages/appoinments/AddNewAppointment"
 
 function App() {
 
@@ -33,6 +33,7 @@ function App() {
             <Route path="/quick-sale-form" element={<QuickSaleForm />}></Route>
             <Route path="/leave" element={<LeavePage />}></Route>
             <Route path="/leavemanagement" element={<LeaveManagmentPage />}></Route>
+            <Route path="/add-new-appointment" element={<AddNewAppointment />}></Route>
            
           </Routes>
         </SideBar>
