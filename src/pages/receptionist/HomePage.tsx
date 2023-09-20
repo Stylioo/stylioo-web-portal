@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
 import { useState } from 'react';
 import '../../styles/receptionist/index.scss';
@@ -19,6 +20,7 @@ import { Menu, MenuItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 const columns: GridColDef[] = [
@@ -38,7 +40,7 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       const [anchorEl, setAnchorEl] = useState(null);
 
-      const handleClick = (event) => {
+      const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
       };
 
@@ -84,7 +86,8 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  { id: 1,
+  {
+    id: 1,
     Date: '10/10/2021',
     StartTime: '10:00 AM',
     EndTime: '11:00 AM',
@@ -92,7 +95,7 @@ const rows = [
     Service: 'Haircut',
     Beautician: 'Chirasi Walpola',
     ServicePrice: 'Rs.1500.00'
- },
+  },
 
   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
@@ -114,10 +117,10 @@ interface TabPanelProps {
 
 
 function CustomTabPanel(props: TabPanelProps) {
-  
+
   const { children, value, index, ...other } = props;
-  
-  
+
+
   return (
     <div
       role="tabpanel"
@@ -150,7 +153,7 @@ export default function ReceptionistPage() {
   //   setValue(newValue);
   // };
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: any, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
   };
 
@@ -181,179 +184,179 @@ export default function ReceptionistPage() {
 
   return (
     <React.Fragment>
-    <Box sx={{ width: '100%'}}>
-       <ButtonGroup
-            disableElevation
-            variant="contained"
-            aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'911.5px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Appoinment</Button>
-                  
-                <Dialog open={open} onClose={handleClose}>
-                  
-                  <DialogTitle className='formHeader'>Add New Appointment</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
-                        <TextField
-                          label="Date"
-                          type="date"
-                          fullWidth
-                          value={selectedDate}
-                          onChange={(e) => setSelectedDate(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Time"
-                          type="time"
-                          fullWidth
-                          value={selectedTime}
-                          onChange={(e) => setSelectedTime(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Client Name"
-                          fullWidth
-                          value={clientName}
-                          onChange={(e) => setClientName(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Contact No"
-                          fullWidth
-                          value={contactNo}
-                          onChange={(e) => setContactNo(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Service Type"
-                          fullWidth
-                          value={serviceType}
-                          onChange={(e) => setServiceType(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
-                        <TextField
-                          label="Service Category"
-                          fullWidth
-                          value={serviceCategory}
-                          onChange={(e) => setServiceCategory(e.target.value)}
-                          sx={{ marginBottom: '10px' }}
-                        />
+      <Box sx={{ width: '100%' }}>
+        <ButtonGroup
+          disableElevation
+          variant="contained"
+          aria-label="Disabled elevation buttons"
+          sx={{ marginTop: '20px', marginLeft: '911.5px' }} >
+          <Button startIcon={<AddCircleIcon />} color='accent' onClick={handleClickOpen}>Add New Appoinment</Button>
 
-                        {/* Add more form fields here */}
-                        
-                        {/* <Divider sx={{ marginBottom: '10px' }} /> */}
+          <Dialog open={open} onClose={handleClose}>
 
-                        {/* Display the total price */}
-                        <TextField
-                          label="Total Price"
-                          fullWidth
-                          value={totalPrice}
-                          disabled
-                          sx={{ marginBottom: '10px' }}
-                        />
+            <DialogTitle className='formHeader'>Add New Appointment</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                <TextField
+                  label="Date"
+                  type="date"
+                  fullWidth
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Time"
+                  type="time"
+                  fullWidth
+                  value={selectedTime}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Client Name"
+                  fullWidth
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Contact No"
+                  fullWidth
+                  value={contactNo}
+                  onChange={(e) => setContactNo(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Service Type"
+                  fullWidth
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
+                <TextField
+                  label="Service Category"
+                  fullWidth
+                  value={serviceCategory}
+                  onChange={(e) => setServiceCategory(e.target.value)}
+                  sx={{ marginBottom: '10px' }}
+                />
 
-                      </DialogContentText>
-                    </DialogContent>
+                {/* Add more form fields here */}
 
-                    <DialogActions>
-                      <Button onClick={handleClose} color="primary">
-                        Cancel
-                      </Button>
-                      <Button onClick={handleSubmit} color="primary">
-                        Save
-                      </Button>
-                    </DialogActions>
-                </Dialog>
+                {/* <Divider sx={{ marginBottom: '10px' }} /> */}
 
-            <Button startIcon={<ReceiptIcon />}>Quick Sale</Button>
-          </ButtonGroup>
-          <TextField
-            label="Search"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
+                {/* Display the total price */}
+                <TextField
+                  label="Total Price"
+                  fullWidth
+                  value={totalPrice}
+                  disabled
+                  sx={{ marginBottom: '10px' }}
+                />
+
+              </DialogContentText>
+            </DialogContent>
+
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit} color="primary">
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          <Button component={Link} sx={{ marginLeft: '1rem' }} to="/quick-sale-form" startIcon={<ReceiptIcon />}>Quick Sale</Button>
+        </ButtonGroup>
+        <TextField
+          label="Search"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton>
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          sx={{ marginTop: '-45px' }} // Add margin top here
+        />
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop: '20px', width: '65%' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab label="Ongoing Appoinments" {...a11yProps(0)} />
+            <Tab label="Today Appoinments" {...a11yProps(1)} />
+            <Tab label="Upcoming Appoinments" {...a11yProps(2)} />
+            <Tab label="Past Appoinments" {...a11yProps(3)} />
+          </Tabs>
+        </Box>
+
+
+
+        <CustomTabPanel value={value} index={0}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
             }}
-            sx={{ marginTop: '-45px'}} // Add margin top here
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
           />
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'65%'}}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Ongoing Appoinments" {...a11yProps(0)} />
-          <Tab label="Today Appoinments" {...a11yProps(1)} />
-          <Tab label="Upcoming Appoinments" {...a11yProps(2)} />
-          <Tab label="Past Appoinments" {...a11yProps(3)} />
-        </Tabs>
+        </CustomTabPanel>
+
+
+        <CustomTabPanel value={value} index={1}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
+        </CustomTabPanel>
+
+
+        <CustomTabPanel value={value} index={2}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
+        </CustomTabPanel>
+
+
+        <CustomTabPanel value={value} index={3}>
+          <DataGrid sx={{ width: '100%' }}
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
+        </CustomTabPanel>
       </Box>
-     
-      
-       
-      <CustomTabPanel value={value} index={0}>
-                      <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={1}>
-      <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={2}>
-           <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-
-
-      <CustomTabPanel value={value} index={3}>
-          <DataGrid sx={{ width:'100%' }}
-                        rows={rows}
-                        columns={columns}
-                        initialState={{
-                          pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                          },
-                        }}
-                        pageSizeOptions={[5, 10]}
-                        checkboxSelection
-                      />
-      </CustomTabPanel>
-    </Box>
     </React.Fragment>
   );
 
 
-  
+
 }
 

@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 *,
 ::after,
 ::before {
@@ -6,18 +8,47 @@
     box-sizing: border-box;
 }
 
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+.sidebar-link {
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    .sidebar-link-text {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: $primary;
+
+        .sidebar-link-text {
+            color: #fff;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2b3467d5;
+    border-radius: 5px;
+    filter: brightness(0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $primary-light;
 }

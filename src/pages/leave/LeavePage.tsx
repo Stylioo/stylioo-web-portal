@@ -76,16 +76,57 @@ const columns: GridColDef[] = [
 const rows = [
   {  
     id: 1,
-    Name: 'Chirasi Walpola',
-    ContactNo: '0711234569',
-    Email: 'amaya99@gmail.com',
-    Notes: 'Good',
-    Service: 'Hair Cut',
-    Price : 'Rs 1000.00',
-    Status: 'Paid',
-    Date: '2021-10-10',
+    StartDate: '2023-07-05',
+    EndDate: '2023-07-05',
+    Reason: 'Sick Leave',
+    NoofDays: '1',
+    NoofHours: '24',
+    Notes : 'No Notes',
+    Status: 'Approved',
+    Deduction: '-',
     CancelledReason: 'No Reason'
  },
+
+ {  
+  id: 2,
+  StartDate: '2023-07-15',
+  EndDate: '2023-07-17',
+  Reason: 'Sick Leave',
+  NoofDays: '2',
+  NoofHours: '48',
+  Notes : 'No Notes',
+  Status: 'Approved',
+  Deduction: '-',
+  CancelledReason: 'No Reason'
+},
+
+{  
+  id: 3,
+  StartDate: '2023-07-27',
+  EndDate: '2023-07-27',
+  Reason: 'Sick Leave',
+  NoofDays: '1',
+  NoofHours: '24',
+  Notes : 'No Notes',
+  Status: 'Rejected',
+  Deduction: '-',
+  CancelledReason: 'Reason is not justified'
+},
+
+{  
+  id: 4,
+  StartDate: '2023-08-01',
+  EndDate: '2023-08-01',
+  Reason: 'Sick Leave',
+  NoofDays: '1',
+  NoofHours: '24',
+  Notes : 'No Notes',
+  Status: 'Rejected',
+  Deduction: '-',
+  CancelledReason: 'Reason is not justified'
+},
+
+
 
 //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
 //   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },

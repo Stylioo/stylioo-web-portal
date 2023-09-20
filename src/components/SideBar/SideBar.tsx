@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import '../../styles/sidebar.scss'
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
 import { Box, SwipeableDrawer, AppBar, Toolbar, List, Typography, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, Container, Avatar, Tooltip, MenuItem, IconButton, useMediaQuery } from '@mui/material';
@@ -7,10 +8,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { useAppSelector, useAppDispatch } from '../../redux/store';
+import { removeUser } from '../../redux/features/authSlice';
 
-const drawerWidth = 220;
+const drawerWidth = 200;
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const SidebarItems = ['Home', 'Appointment', 'Client', 'Beautician','Receptionist','Staff','QuickSale', 'Leave','LeaveManagement']
 
 interface sidebarPropType {
     children: React.ReactNode
@@ -25,6 +27,18 @@ interface RootState {
 export default function SideBar({ children }: sidebarPropType) {
 
     const user = useSelector((state: RootState) => state.user);
+    const currentUser = useAppSelector(state => state.auth);
+
+    const [menuItems, setMenuItems] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (currentUser.role === 'MANAGER') setMenuItems(['Services', 'Packages', 'Products', 'LeaveManagement'])
+        else if (currentUser.role === 'RECEPTIONIST') setMenuItems(['Appointment', 'Client', 'Staff', 'QuickSale', 'Leave'])
+        else if (currentUser.role === 'OWNER') setMenuItems(['Insights', 'Staff', 'Sales'])
+        else setMenuItems(settings)
+    }, [])
+
+
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -35,6 +49,17 @@ export default function SideBar({ children }: sidebarPropType) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(removeUser());
+        navigate('/signin');
+        handleCloseUserMenu()
+    }
+
+
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -46,29 +71,35 @@ export default function SideBar({ children }: sidebarPropType) {
                     <Toolbar disableGutters sx={{
 
                     }}>
-                        <IconButton
-                            sx={{
-                                marginRight: '1.5rem'
-                            }}
-                            onClick={() => setOpenDrawer(!openDrawer)}
-                        ><MenuIcon sx={{
-                            display: isMobile ? 'block' : 'none',
-                            color: 'white',
-                            fontSize: '1.5rem',
-                        }} /></IconButton>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                        >
-                            Stylioo
-                        </Typography>
+                        {
+                            isMobile ? <IconButton
+                                sx={{
+                                    marginRight: '1.5rem'
+                                }}
+                                onClick={() => setOpenDrawer(!openDrawer)}
+                            ><MenuIcon sx={{
+                                display: 'block',
+                                color: 'white',
+                                fontSize: '1.5rem',
+                            }} /></IconButton>
+                                :
+                                <Typography
+                                    variant="h6"
+                                    noWrap
+                                    sx={{ marginLeft: '0.75rem' }}
+                                >
+                                    Stylioo
+                                </Typography>
+                        }
+
+
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton
                                     onClick={handleOpenUserMenu}
                                     sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src={user.photoUrl} />
+                                    <Avatar alt="Remy Sharp" src={'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -87,11 +118,18 @@ export default function SideBar({ children }: sidebarPropType) {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
+                                {/* {settings.map((setting) => (
                                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
-                                ))}
+                                ))} */}
+
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">Profile</Typography>
+                                </MenuItem>
+                                <MenuItem onClick={handleLogout}>
+                                    <Typography textAlign="center">Logout</Typography>
+                                </MenuItem>
                             </Menu>
                         </Box>
                     </Toolbar>
@@ -111,29 +149,17 @@ export default function SideBar({ children }: sidebarPropType) {
 
             >
                 <Toolbar />
-                <Box sx={{ overflow: 'auto' }}>
+                <Box sx={{ overflow: 'hidden', marginInline: '1.5rem' }}>
                     <List>
-                        {SidebarItems.map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {SidebarItems.map((text, index) => (
-                            <ListItem key={text} disablePadding>
+                        {menuItems.map((text, index) => (
+                            <ListItem key={text} disablePadding className='sidebar-link'>
                                 {/* <ListItemButton> */}
-                                <ListItemIcon>
+                                {/* <ListItemIcon>
                                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
+                                </ListItemIcon> */}
                                 <Link
-                                    to={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                                    className="sidebar-link-text"
+                                    to={`/${currentUser.role.toLowerCase()}/${text.toLowerCase()}`}
                                 >
                                     <ListItemText primary={text} />
                                 </Link>
@@ -143,12 +169,12 @@ export default function SideBar({ children }: sidebarPropType) {
                     </List>
                 </Box>
             </SwipeableDrawer>
-            <Box component="main" sx={{ flexGrow: 1, px: 3, minHeight: '100dvh' }}>
+            <div className='children'>
                 <Toolbar sx={{
                     marginBottom: '1rem',
                 }} />
                 {children}
-            </Box>
+            </div>
         </Box>
     );
 }

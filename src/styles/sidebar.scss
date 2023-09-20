@@ -1,0 +1,14 @@
+.children {
+    min-height: 100dvh;
+    overflow: hidden;
+    flex-grow: 1;
+    margin-inline: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 768px) {
+        margin-inline: 1rem;
+    }
+
+}
