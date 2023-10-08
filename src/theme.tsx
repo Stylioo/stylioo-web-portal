@@ -5,13 +5,16 @@ const theme = responsiveFontSizes(createTheme({
     palette: {
         type: 'light',
         primary: {
-            main: '#2b3467',
-            light: '#bad7e9',
-            contrastText: '#fcffe7',
+            main: '#043aa7',
+            light: '#2363e2',
+            contrastText: '#d4eefb',
         },
         secondary: {
-            main: '#eb455f',
+            main: '#2f2f2f',
+            light: '#656565',
+            contrastText: '#d9d9d9'
         },
+
     },
     typography: {
         fontFamily: '"Roboto", "Lato", "Arial", sans-serif',

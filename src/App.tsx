@@ -1,11 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import ReduxProvider from "./redux/Provider"
-
-import theme from "./theme"
-
-import Layout from "./Layout"
+import ReduxProvider from "@/redux/Provider"
+import theme from "@/theme"
+import ROLE from "@/constants/roles"
 
 import Signin from "./pages/signin/SigninPage"
 // import HomePage from "./pages/home/HomePage"
@@ -26,10 +24,10 @@ import AddProducts from "./pages/Staff/AddStaff"
 import ViewProducts from "./pages/products/ViewProduct"
 import AddStaff from "./pages/Staff/AddStaff"
 import ViewStaff from "./pages/Staff/ViewStaff"
+import DashboardLayout from "./components/DashboardLayout"
+import ProtectedLayout from "./components/ProtectedLayout"
 // import LeavePage from "./pages/leave/HomePage"
 
-
-// ['BEAUTICIAN', 'RECEPTIONIST', 'MANAGER', 'OWNER']
 
 function App() {
 
@@ -40,6 +38,50 @@ function App() {
         <ThemeProvider theme={theme}>
           <Routes>
 
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/accessDenied" element={<h1>Access Denied</h1>} />
+
+            <Route element={<DashboardLayout />}>
+
+              <Route path="/" element={<h1>dashboard</h1>} />
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.OWNER]} />}>
+                <Route path="staff" element={<StaffList />} />
+                <Route path="staff/add" element={<AddStaff />} />
+                <Route path="staff/:id" element={<ViewStaff />} />
+              </Route>
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.RECEPTIONIST]} />}>
+                <Route path="appointments" element={<AppointmentPage />} />
+                <Route path="client" element={<ClientPage />} />
+                <Route path="quicksale" element={<QuickSalePage />} />
+                <Route path="quick-sale-form" element={<QuickSaleForm />} />
+                <Route path="leave" element={<LeavePage />} />
+              </Route>
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER]} />}>
+                <Route path="services" element={<Services />} />
+                <Route path="products" element={<Products />} />
+                <Route path="products/new" element={<AddProducts />} />
+                <Route path="products/:id" element={<ViewProducts />} />
+              </Route>
+
+            </Route>
+
+            <Route path="*" element={<h1>Not Found</h1>} />
+
+          </Routes>
+        </ThemeProvider>
+      </ReduxProvider>
+    </BrowserRouter>
+  )
+}
+
+export default App
+
+
+
+{/* <Routes>
             <Route path="/receptionist" element={<Layout allowedRoles='RECEPTIONIST' />} >
               <Route path="" element={<AppointmentPage />} />
               <Route path="appointment" element={<AppointmentPage />} />
@@ -51,34 +93,16 @@ function App() {
 
             <Route path="/manager" element={<Layout allowedRoles='MANAGER' />} >
               <Route path="" element={<Services />} />
-              <Route path="services" element={<Services />} />
-              <Route path="packages" element={<Package />} />
-              <Route path="product" element={<Products />} />
-              <Route path="product/new" element={<AddProducts />} />
-              <Route path="product/:id" element={<ViewProducts />} />
               <Route path="leavemanagement" element={<LeaveManagmentPage />} />
             </Route>
 
             <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
               <Route path="" element={<h1>Insights</h1>} />
               <Route path="insights" element={<h1>Insights</h1>} />
-              <Route path="staff" element={<StaffList />} />
-              <Route path="staff/add" element={<AddStaff />} />
-              <Route path="staff/:id" element={<ViewStaff />} />
-              <Route path="addEmployee" element={<AddEmployee />} />
               <Route path="sales" element={<h1>Sales</h1>} />
             </Route>
 
             <Route path="/signin" element={<Signin />} />
             <Route path="/accessDenied" element={<h1>Access Denied</h1>} />
             <Route path="*" element={<h1>Not Found</h1>} />
-
-          </Routes>
-
-        </ThemeProvider>
-      </ReduxProvider>
-    </BrowserRouter>
-  )
-}
-
-export default App
+          </Routes> */}

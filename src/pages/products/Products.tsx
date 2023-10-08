@@ -347,7 +347,7 @@ function Products() {
           loadingOverlay: LoadingOverlay
         }}
         loading={isLoading}
-        onRowClick={(params) => navigate(`/manager/product/${params.row.id}`)}
+        onRowClick={(params) => navigate(`/products/${params.row.id}`)}
       />
     </>
   )

@@ -217,7 +217,7 @@ function Staff() {
         <Button
           variant="contained"
           startIcon={<Add />}
-          onClick={() => navigate('/owner/staff/add')}
+          onClick={() => navigate('/staff/add')}
         >
           Add staff
         </Button>
@@ -241,7 +241,7 @@ function Staff() {
           loadingOverlay: LoadingOverlay
         }}
         loading={isLoading}
-        onRowClick={(params) => navigate(`/owner/staff/${params.row.id}`)}
+        onRowClick={(params) => navigate(`/staff/${params.row.id}`)}
       />
 
     </>

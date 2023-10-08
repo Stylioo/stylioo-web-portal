@@ -1,20 +1,25 @@
-import React from "react";
 import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { Height } from "@mui/icons-material";
-import axios from "axios"
+import { Box, Button, FormControl, FormControlLabel, Switch, TextField, Typography } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "../../redux/store"
-import { setUser, isLoggedIn } from "../../redux/features/authSlice";
+import { setUser } from "../../redux/features/authSlice";
+
+import im from '@/assets/images/signIn.png'
+
+import axios from "@/axios";
+import useAuth from "@/hooks/useAuth";
 
 function LoginPage() {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [isSignup, setIsSignup] = useState(false);
+  const auth = useAuth()
+
+  const from = location.state?.from?.pathname || "/";
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +33,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await axios.post('https://stylioo-api-e55c1372a17b.herokuapp.com/auth/login', {
+      const response = await axios.post('/auth/signin', {
         email: email,
         password: password,
         type: 'EMPLOYEE'
@@ -39,13 +44,14 @@ function LoginPage() {
           const data = response.data.data;
           console.log(data);
           dispatch(setUser({
-            uid: data.uid,
+            id: data.id,
             first_name: data.first_name,
             last_name: data.last_name,
             email: data.email,
             role: data.role,
           }));
-          navigate(`/${data.role.toLowerCase()} `);
+          navigate(from, { replace: true })
+
         }
         else {
           alert('Invalid credentials');
@@ -62,65 +68,87 @@ function LoginPage() {
 
   }
 
-  return (
-    <div style={{ minHeight: "100vh" }}>
-      <form style={{ paddingTop: "50px", justifyContent: "center" }}>
+  if (!auth.isAuthenticated) {
+    return (
+      <Box className="mainContainer" >
         <Box
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={400}
-          alignItems="center"
-          justifyContent={"center"}
-          margin="auto"
-          marginTop={5}
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          border={'1px solid #ccc'}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 10px #ccc",
-            },
-          }}
+          className="signInBox"
         >
-          <Typography variant="h2" padding={3} textAlign={"center"}>
-            {isSignup ? "Signup" : "Login"}
+          <Typography
+            variant="h4"
+          >Sign In
           </Typography>
-          <TextField
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            margin="normal"
-            type="email"
-            variant="outlined"
-            placeholder="Email"
-          />
-          <TextField
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            margin="normal"
-            type="password"
-            variant="outlined"
-            placeholder="Password"
-          />
-          <Button
-            sx={{ marginTop: 3, borderRadius: 3 }}
-            variant="contained"
-            color="warning"
-            onClick={handleSubmit}
-          >
-            Sign In
-          </Button>
-          {/* <Button onClick={() => setIsSignup(!isSignup)}
-            sx={{ marginTop: 3, borderRadius: 3 }}
-          >
-            {isSignup ? "Already have an account? Login" : "Don't have an account? Signup"}
-          </Button> */}
+          <Typography
+          // variant="h6"
+          >Welcome back! Please enter your details
+          </Typography>
+          <Box className="signInForm">
+            <FormControl >
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                size="small"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+
+              />
+            </FormControl>
+            <FormControl>
+              <TextField
+                fullWidth
+                label="Password"
+                variant="outlined"
+                type="password"
+                size="small"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormControl>
+            <Box className='rememberMe'>
+              <FormControlLabel
+                control={<Switch color="default" />}
+                label={
+                  <Typography variant="body2" style={{ fontSize: '14px' }}>
+                    Remember me
+                  </Typography>
+                }
+                labelPlacement="end"
+                color="default"
+              />
+              {/* <Link ref="#" underline="always" style={{ fontSize: '14px' }}>
+              {'Forgot Password?'}
+            </Link> */}
+            </Box>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={(e) => {
+                // navigate('/auth/classes')
+                handleSubmit(e)
+              }}
+            >Sign In
+            </Button>
+            <Box className='signUp'>
+              <Typography style={{ fontSize: '14px', marginRight: '10px' }}>
+                Don't you have an account?
+              </Typography>
+              {/* <Link href="/auth/signup" underline="always" style={{ fontSize: '14px' }}>
+              {'Sign Up'}
+            </Link> */}
+            </Box>
+          </Box>
         </Box>
-      </form>
-    </div>
-  );
+        <Box className="imageBox" >
+          <img src={im} alt="" className="signInImg" />
+        </Box>
+      </Box >
+    )
+  } else {
+    return (
+      <Navigate to={from} />
+    )
+  }
 }
 
 export default LoginPage;
