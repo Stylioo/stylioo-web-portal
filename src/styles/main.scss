@@ -28,6 +28,11 @@
     flex-grow: 1;
 }
 
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
 .gap-1 {
     gap: 1rem;
 }
@@ -39,6 +44,21 @@
 .table-row-img-icon {
     width: 4rem;
     height: 4rem;
+    overflow: hidden;
+    border-radius: 5px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}
+
+
+.customer-img-icon {
+    width: 3rem;
+    height: 3rem;
     overflow: hidden;
     border-radius: 5px;
 
@@ -88,4 +108,3 @@
     border: #d39e00;
     color: #fff;
 }
-

@@ -14,13 +14,12 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Menu, MenuItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '@/axios';
 
 
 const columns: GridColDef[] = [
@@ -136,7 +135,7 @@ export default function ReceptionistPage() {
 
   const getAllAppointments = async () => {
     try {
-      const response = await axios.get('http://localhost:5400/appointment')
+      const response = await axios.get('/appointment')
       if (response.data.success) {
         setTableData(response.data.data)
         console.log(response.data.data);

@@ -6,19 +6,12 @@ import theme from "@/theme"
 import ROLE from "@/constants/roles"
 
 import Signin from "./pages/signin/SigninPage"
-// import HomePage from "./pages/home/HomePage"
-import AppointmentPage from "./pages/appoinments/HomePage"
-import ReceptionistPage from "./pages/receptionist/HomePage"
-// import BeauticianPage from "./pages/beautician/HomePage"
 import QuickSalePage from "./pages/quicksale/QuickSalePage"
 import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
 import Services from "./pages/services/Services"
-import Package from "./pages/package/Package"
 import StaffList from "./pages/Staff/Staff"
-import AddEmployee from "./pages/addEmployee/AddEmployee"
 import LeavePage from "./pages/leave/LeavePage"
-import LeaveManagmentPage from "./pages/leavemanagment/HomePage"
 import Products from "./pages/products/Products"
 import AddProducts from "./pages/Staff/AddStaff"
 import ViewProducts from "./pages/products/ViewProduct"
@@ -26,7 +19,8 @@ import AddStaff from "./pages/Staff/AddStaff"
 import ViewStaff from "./pages/Staff/ViewStaff"
 import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
-// import LeavePage from "./pages/leave/HomePage"
+import Appointments from "./pages/appoinments/Appointments"
+import NewAppointment from "./pages/appoinments/newAppointment"
 
 
 function App() {
@@ -52,7 +46,8 @@ function App() {
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.RECEPTIONIST]} />}>
-                <Route path="appointments" element={<AppointmentPage />} />
+                <Route path="appointments" element={<Appointments />} />
+                <Route path="appointments/new" element={<NewAppointment />} />
                 <Route path="client" element={<ClientPage />} />
                 <Route path="quicksale" element={<QuickSalePage />} />
                 <Route path="quick-sale-form" element={<QuickSaleForm />} />

@@ -1,0 +1,225 @@
+   @import '../variables.scss';
+   // ::-webkit-scrollbar {
+   //     display: none;
+   // }
+
+   // ::-webkit-scrollbar-track {
+   //     background: transparent;
+   // }
+
+   // ::-webkit-scrollbar-thumb {
+   //     background: #888;
+   // }
+
+   .profilePicture {
+       width: 3rem;
+       height: 3rem;
+       overflow: hidden;
+       border-radius: 100%;
+   }
+
+   .hiddenCheckbox {
+       display: none;
+   }
+
+   .service-box {
+       margin-bottom: 1rem;
+       margin-right: 1.5rem;
+   }
+
+   .select-service-label {
+       display: block;
+       width: 100%;
+       padding: 0.75rem 1rem;
+       border: 1px solid #ccc;
+       border-radius: 5px;
+       cursor: pointer;
+
+       .service-name {
+           font-size: 1.1rem;
+           font-weight: 600;
+           margin-bottom: 0.25rem;
+       }
+
+       .price {
+           font-size: 1.1rem;
+           font-weight: 500;
+       }
+   }
+
+   .select-service-checkbox:checked~.select-service-label {
+       border: 1px solid #2f2f2f;
+       background-color: #2f2f2f;
+
+       .service-name {
+           color: #fff;
+       }
+
+       .price {
+           color: #fff;
+       }
+
+       .duration {
+           color: #e3e3e3;
+       }
+
+       //    border: 1px solid #2e6be4;
+       //       background-color: #2e6be4;
+
+       //    .service-name {
+       //        color: #2e6be4;
+       //    }
+
+       //    .price {
+       //        color: #2e6be4;
+       //    }
+
+       //    .duration {
+       //        color: #2e6be4;
+       //    }
+   }
+
+   .category-box {
+       min-width: 90px;
+   }
+
+   .select-category-label {
+       display: flex;
+       width: 100%;
+       padding: 0.5rem;
+       border: 1px solid #ccc;
+       border-radius: 20px;
+       cursor: pointer;
+       justify-content: center;
+       align-items: center;
+       user-select: none;
+
+
+       .category-name {
+           font-size: 0.8rem;
+       }
+   }
+
+   .select-category-checkbox:checked~.select-category-label {
+       border: 1px solid #2f2f2f;
+       background-color: #2f2f2f;
+
+       .category-name {
+           color: #fff;
+       }
+   }
+
+
+   .select-beautician-label {
+       display: flex;
+       width: 100%;
+       padding: 0.5rem;
+       border: 1px solid #ccc;
+       border-radius: 10px;
+       cursor: pointer;
+       gap: 1rem;
+       padding: 0.5rem 1rem;
+       align-items: center;
+       user-select: none;
+
+       .beautician-name {
+           font-size: 1rem;
+           font-weight: 600;
+       }
+
+       .rounded-border {
+           border: 2px solid #ccc;
+       }
+
+   }
+
+   .select-beautician-checkbox:checked~.select-beautician-label {
+       border: 1px solid #2f2f2f;
+       background-color: #2f2f2f;
+
+       .beautician-name {
+           color: #fff;
+       }
+
+       .type {
+           color: #d9d9d9;
+       }
+
+       .rounded-border {
+           border: 2px solid #fff;
+       }
+
+       .no-preference {
+           filter: invert(1);
+       }
+   }
+
+
+   .select-date-label {
+       display: flex;
+       width: 100%;
+       padding: 0.5rem;
+       border: 1px solid #ccc;
+       border-radius: 10px;
+       cursor: pointer;
+       gap: 0.2rem;
+       flex-direction: column;
+       padding: 0.5rem 1rem;
+       align-items: center;
+       user-select: none;
+
+       .date {
+           font-size: 1.1rem;
+           font-weight: 600;
+       }
+   }
+
+   .select-date-checkbox:checked~.select-date-label {
+       border: 1px solid #2f2f2f;
+       background-color: #2f2f2f;
+
+       .date {
+           color: #fff;
+       }
+
+       .month {
+           color: #d9d9d9;
+       }
+   }
+
+   .select-time-label {
+       display: flex;
+       width: 100%;
+       padding: 0.5rem;
+       border: 1px solid #ccc;
+       border-radius: 10px;
+       cursor: pointer;
+       gap: 0.2rem;
+       flex-direction: column;
+       padding: 0.5rem 1rem;
+       align-items: center;
+       user-select: none;
+
+       .time {
+           font-size: 0.9rem;
+           font-weight: 600;
+       }
+   }
+
+   .select-time-checkbox:checked~.select-time-label {
+       border: 1px solid #2f2f2f;
+       background-color: #2f2f2f;
+
+       .time {
+           color: #fff;
+       }
+
+       .ampm {
+           color: #d9d9d9;
+       }
+   }
+
+
+   .no-preference {
+       padding: 10px;
+   }
