@@ -331,13 +331,13 @@ function Appointments() {
                     >
                         New Appointment
                     </Button>
-                    <Button
+                    {/* <Button
                         variant="contained"
                         startIcon={<MonetizationOn />}
                         onClick={() => setOpenAddProductModal(true)}
                     >
                         Quick Sale
-                    </Button>
+                    </Button> */}
                 </div>
             </Box>
 
