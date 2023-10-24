@@ -9,6 +9,9 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import {Search} from '@mui/icons-material';
+// import Button from '@mui/material/Button'; 
+import { Button } from "@mui/material"
 
 import axios from '../../axios'
 import Loading from '../../components/Loading';
@@ -55,7 +58,7 @@ const Services = () => {
   const [Price, setPrice] = useState("");
   const [duration, setDuration] = useState("00:30");
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
+  const [searchTerm, setSearchTerm] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
 
 
@@ -102,6 +105,8 @@ const Services = () => {
   const closePopuptwo = () => {
     setIsPopuptwoOpen(false);
   };
+
+
 
 
 
@@ -181,6 +186,41 @@ const Services = () => {
     finally {
       setIsLoading(false)
     }
+  }
+
+  const handleSearchService = (value: string) => {
+    value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    setSearchTerm(value)
+    if (value === '') {
+      <p>Not found Service</p>
+    }
+  }
+
+  const searchSevice = () => {
+    // setIsLoading(true)
+    const res = await axios.get(`/product/search?term=${searchTerm}&quantityOnly=true`)
+    // setProsucts(res.data.data)
+    // setIsLoading(false)
+    try {
+      setIsLoading(true)
+      const response = await axios.get('/service')
+      if (response.status === 200) {
+        const data = response.data
+
+        if (data.success) {
+          console.log(data.data);
+          setServices(data.data);
+          
+        }
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    finally {
+      setIsLoading(false)
+    }
+  
   }
 
   const fetchServicesEdit = async (editId:string) => {
@@ -349,18 +389,29 @@ const Services = () => {
           </div>
         </div>
 
-
+       <div>
         <input
           type="text"
           value={searchValue}
-          onChange={(e) => {
-            e.preventDefault()
-            setSearchValue(e.target.value)
-          }}
+          // onChange={(e) => {
+          //   e.preventDefault()
+          //   setSearchValue(e.target.value)
+          // }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearchService(e.target.value)}
           placeholder="Search..."
           className="searchbar"
         />
-      </div>
+        <Button
+            color="primary"
+            variant="contained"
+            sx={{ py: 1 }}
+            onClick={searchSevice}
+          >
+            <Search />
+        </Button>
+        </div>
+        </div>
+      
 
       {
         isLoading ? <Loading /> :
