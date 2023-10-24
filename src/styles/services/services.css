@@ -128,5 +128,40 @@
   margin: 20px 0px 10000px 0px;
 }
 
+.deleteclose_icon{
+  text-align: center;
+}
+
+.cancel_button{
+  background-color: #6a6b6a;
+  color: white;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 80px;
+  margin-top: 20px;
+
+}
+
+.delete_button{
+  background-color: #922525;
+  color: white;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 80px;
+  margin-top: 20px;
+}
+
+.YesNo_button_Gap{
+  display: flex;
+  justify-content:center;
+}
 
 

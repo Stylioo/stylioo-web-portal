@@ -387,8 +387,8 @@ const Services = () => {
                     <td>{service.duration} hr</td>
                     <td>
                       <div className="btn_delete_edit">
-                        <  FaRegEdit size={20} onClick={() => handleEdit(service.id)} className="icon-with-gap" />
-                        <  RiDeleteBin5Line size={20} onClick={() => handleDelete(service.id)} />
+                        <  FaRegEdit style={{cursor: 'pointer'}} size={20} onClick={() => handleEdit(service.id)} className="icon-with-gap" />
+                        <  RiDeleteBin5Line style={{cursor: 'pointer'}} size={20} onClick={() => handleDelete(service.id)} />
                       </div>
                     </td>
                   </tr>
@@ -621,7 +621,7 @@ const Services = () => {
 
       >
         <div className="deleteclose_icon">
-          <  AiOutlineCloseCircle size={80} style={{ color: '#990000' }} onClick={closePopup} />
+          <  AiOutlineCloseCircle size={80} style={{ color: '#990000' }} onClick={closePopuptwo} />
         </div>
         <h2 style={{ textAlign: 'center' }}>Are you sure?</h2>
         <p style={{ textAlign: 'center' }}>Do you really want to delete theser records? This process cannot be undone.</p>
