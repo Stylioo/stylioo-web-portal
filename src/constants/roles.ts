@@ -1,0 +1,9 @@
+const ROLE = {
+    ADMIN: "ADMIN",
+    RECEPTIONIST: "RECEPTIONIST",
+    MANAGER: "MANAGER",
+    OWNER: "OWNER",
+    BEAUTICIAN: "BEAUTICIAN",
+}
+
+export default ROLE;
