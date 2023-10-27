@@ -16,6 +16,7 @@
     "@fontsource/roboto": "^5.0.4",
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
+    "@mui/x-charts": "^6.0.0-alpha.16",
     "@mui/x-data-grid": "^6.10.0",
     "@mui/x-date-pickers": "^6.12.1",
     "@reduxjs/toolkit": "^1.9.5",
@@ -27,6 +28,8 @@
     "react-icons": "^4.10.1",
     "react-modal": "^3.16.1",
     "react-redux": "^8.1.2",
+    "react-spring": "^9.7.3",
+    "recharts": "^2.9.0",
     "redux-persist": "^6.0.0",
     "sass": "^1.63.6",
     "uuid": "^9.0.1"
