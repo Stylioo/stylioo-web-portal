@@ -16,6 +16,7 @@ import { Button } from "@mui/material"
 import axios from '../../axios'
 import Loading from '../../components/Loading';
 
+
 type servicesType = {
   id: string;
   name: string;
@@ -38,7 +39,7 @@ type editServicesType = {
 
 
 const Services = () => {
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
   const [selectedValue, setSelectedValue] = useState("10");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
@@ -48,6 +49,8 @@ const Services = () => {
 
 
   const [services, setServices] = useState<servicesType[]>([]);
+  const [saerchServices, setSaerchServices] = useState<servicesType[]>([]);
+
   const [editServices, setEditServices] = useState<editServicesType>({});
   const [deleteOrUpdateId, setDeleteOrUpdateId] = useState<string>("");
   const [editId, setEditId] = useState<string>("");
@@ -188,40 +191,46 @@ const Services = () => {
     }
   }
 
+
+
+  // const searchSevice = () => {
+  //   setIsLoading(true)
+  //   // const res = await axios.get(`/product/search term=${searchTerm}&quantityOnly=true`);
+  //   // console.log(res.data); 
+
+  //     const res = await axios.get(`/service/search?term=${searchTerm}`)
+  //     console.log(res.data); 
+  //     setServices(res.data.data)
+  //     setIsLoading(false)
+  
+  
+  // }
+
+  const searchService = async () => {
+    setIsLoading(true);
+  
+    try {
+      const res = await axios.get(`/service/search?term=${searchTerm}`)
+      console.log(res.data);
+      setSaerchServices(res.data.data);
+      setServices(saerchServices);
+
+    } catch (error) {
+      console.error("Error occurred while fetching data:", error);
+      
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   const handleSearchService = (value: string) => {
-    value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    // value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     setSearchTerm(value)
     if (value === '') {
-      <p>Not found Service</p>
+      fetchServices()
     }
   }
-
-  const searchSevice = () => {
-    // setIsLoading(true)
-    const res = await axios.get(`/product/search?term=${searchTerm}&quantityOnly=true`)
-    // setProsucts(res.data.data)
-    // setIsLoading(false)
-    try {
-      setIsLoading(true)
-      const response = await axios.get('/service')
-      if (response.status === 200) {
-        const data = response.data
-
-        if (data.success) {
-          console.log(data.data);
-          setServices(data.data);
-          
-        }
-
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    finally {
-      setIsLoading(false)
-    }
   
-  }
 
   const fetchServicesEdit = async (editId:string) => {
     try {
@@ -392,7 +401,7 @@ const Services = () => {
        <div>
         <input
           type="text"
-          value={searchValue}
+          value={searchTerm}
           // onChange={(e) => {
           //   e.preventDefault()
           //   setSearchValue(e.target.value)
@@ -405,7 +414,7 @@ const Services = () => {
             color="primary"
             variant="contained"
             sx={{ py: 1 }}
-            onClick={searchSevice}
+            onClick={searchService}
           >
             <Search />
         </Button>
@@ -1054,6 +1063,8 @@ const Services = () => {
 
 
       </Modal>
+
+      
     </div>
   )
 }
