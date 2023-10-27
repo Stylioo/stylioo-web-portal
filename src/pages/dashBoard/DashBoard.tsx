@@ -110,6 +110,81 @@ const dataset = [
 ];
 
 const valueFormatter = (value: number) => `${value}`;
+
+
+
+
+
+
+
+
+
+const chartSetting2 = {
+  yAxis: [
+    {
+      label: 'Income',
+    },
+  ],
+  width: 700,
+  height: 300,
+  sx: {
+    [`.${axisClasses.left} .${axisClasses.label}`]: {
+      transform: 'translate(-20px, 0)',
+    },
+  },
+};
+const dataset2 = [
+  {
+    income: 60000,
+    month: 'Jan',
+  },
+  {
+    income: 70000,
+    month: 'Fev',
+  },
+  {
+    income: 65000,
+    month: 'Mar',
+  },
+  {
+    income: 93000,
+    month: 'Apr',
+  },
+  {
+    income: 77000,
+    month: 'May',
+  },
+  {
+    income: 120000,
+    month: 'June',
+  },
+  {
+    income: 80000,
+    month: 'July',
+  },
+  {
+    income: 110000,
+    month: 'Aug',
+  },
+  {
+    income: 70000,
+    month: 'Sept',
+  },
+  {
+    income: 95000,
+    month: 'Oct',
+  },
+  {
+    income: 0,
+    month: 'Nov',
+  },
+  {
+    income: 0,
+    month: 'Dec',
+  },
+];
+
+// const valueFormatter = (value: number) => `${value}`;
 // import Box from '@mui/material/Box';
 
 
@@ -207,24 +282,33 @@ const DashBoard = () => {
       {...chartSetting}
     />
 
-      <div style={{ display: 'inline-block', margin: '40px 20px 0px 0px', border: '0px solid black', background: '#F1F2ED', borderRadius: '10px', height: '170px', width: '500px'  }}>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '40px'}}>  
+      <div style={{ display: 'inline-block', margin: '40px 20px 0px 0px', border: '0px solid black', background: '#F1F2ED', borderRadius: '10px', height: '190px', width: '500px'  }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: '40px', fontSize:'30px'}}>  
           <div style={{textAlign: 'center'}}>
-            <p style={{fontSize:'30px'}}>Attendence</p>
-            <b style={{fontSize:'30px'}}>10</b>
+            <p style={{marginBottom: '15px'}}>Attendence</p>
+            <b>6</b>
           </div>
           <div style={{textAlign: 'center'}}>
-            <p style={{fontSize:'30px'}}>Late</p>
-            <b style={{fontSize:'30px'}}>10</b>
+            <p style={{marginBottom: '15px'}}>Late</p>
+            <b>2</b>
           </div>
           <div style={{textAlign: 'center'}}>
-            <p style={{fontSize:'30px'}}>Absent</p>
-            <b style={{fontSize:'30px'}}>10</b>
+            <p style={{marginBottom: '15px'}}>Absent</p>
+            <b>2</b>
           </div>
          </div> 
       </div>
 
       </div>
+
+      <BarChart 
+      dataset={dataset2}
+      xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
+      series={[
+        { dataKey: 'income', label: 'Monthly Income', valueFormatter },
+      ]}
+      {...chartSetting}
+    />
     
 
 
