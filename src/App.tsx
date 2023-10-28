@@ -38,14 +38,14 @@ function App() {
             <Route element={<DashboardLayout />}>
 
               <Route path="/" element={<Dashboard />} />
-              
-              <Route element={<ProtectedLayout allowedRole={[ROLE.OWNER]} />}>
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.OWNER, ROLE.ADMIN]} />}>
                 <Route path="staff" element={<StaffList />} />
                 <Route path="staff/add" element={<AddStaff />} />
                 <Route path="staff/:id" element={<ViewStaff />} />
               </Route>
 
-              <Route element={<ProtectedLayout allowedRole={[ROLE.RECEPTIONIST]} />}>
+              <Route element={<ProtectedLayout allowedRole={[ROLE.RECEPTIONIST, ROLE.ADMIN]} />}>
                 <Route path="appointments" element={<Appointments />} />
                 <Route path="appointments/new" element={<NewAppointment />} />
                 <Route path="client" element={<ClientPage />} />
@@ -53,7 +53,7 @@ function App() {
                 <Route path='beauticians' element={<AllBeauticianPage />} />
               </Route>
 
-              <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER]} />}>
+              <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN]} />}>
                 <Route path="services" element={<Services />} />
                 <Route path="products" element={<Products />} />
                 <Route path="products/new" element={<AddProducts />} />

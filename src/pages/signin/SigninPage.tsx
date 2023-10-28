@@ -1,6 +1,5 @@
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,7 +9,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
@@ -37,7 +36,6 @@ function Copyright(props: any) {
   );
 }
 
-const defaultTheme = createTheme();
 export default function LoginPage() {
 
   const dispatch = useAppDispatch();
@@ -76,6 +74,7 @@ export default function LoginPage() {
             last_name: data.last_name,
             email: data.email,
             role: data.role,
+            profile_picture: data.image
           }));
           navigate(from, { replace: true })
 
