@@ -6,8 +6,6 @@ import theme from "@/theme"
 import ROLE from "@/constants/roles"
 
 import Signin from "./pages/signin/SigninPage"
-import QuickSalePage from "./pages/quicksale/QuickSalePage"
-import QuickSaleForm from "./pages/quicksale/QuickSaleForm"
 import ClientPage from "./pages/client/HomePage"
 import Services from "./pages/services/Services"
 import StaffList from "./pages/Staff/Staff"
@@ -21,8 +19,8 @@ import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
-import AllBeauticianPage  from "./pages/allbeautician/HomePage"
-import ReceptionistInsigntsPage from "./pages/receptionistHome/HomePage"
+import AllBeauticianPage from "./pages/allbeautician/HomePage"
+import Dashboard from "./pages/dashboard/HomePage"
 
 
 function App() {
@@ -39,8 +37,8 @@ function App() {
 
             <Route element={<DashboardLayout />}>
 
-              <Route path="/" element={<h1>dashboard</h1>} />
-
+              <Route path="/" element={<Dashboard />} />
+              
               <Route element={<ProtectedLayout allowedRole={[ROLE.OWNER]} />}>
                 <Route path="staff" element={<StaffList />} />
                 <Route path="staff/add" element={<AddStaff />} />
@@ -51,11 +49,8 @@ function App() {
                 <Route path="appointments" element={<Appointments />} />
                 <Route path="appointments/new" element={<NewAppointment />} />
                 <Route path="client" element={<ClientPage />} />
-                <Route path="quicksale" element={<QuickSalePage />} />
-                <Route path="quick-sale-form" element={<QuickSaleForm />} />
                 <Route path="leave" element={<LeavePage />} />
-                <Route path='receptionistInsights' element={<ReceptionistInsigntsPage/>} />
-                <Route path='allBeauticians' element={<AllBeauticianPage/>} />
+                <Route path='beauticians' element={<AllBeauticianPage />} />
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER]} />}>
