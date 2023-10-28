@@ -38,7 +38,7 @@ function App() {
             <Route element={<DashboardLayout />}>
 
               <Route path="/" element={<Dashboard />} />
-              
+
               <Route element={<ProtectedLayout allowedRole={[ROLE.OWNER]} />}>
                 <Route path="staff" element={<StaffList />} />
                 <Route path="staff/add" element={<AddStaff />} />
