@@ -275,7 +275,7 @@ export default function LoginPage() {
           sm={4}
           md={7}
           sx={{
-          
+          // random image generated from unsplash
             // backgroundImage:'url(https://source.unsplash.com/random?wallpapers)',
             backgroundImage:'url(https://source.unsplash.com/400x400/?salon)',
             backgroundRepeat: 'no-repeat',
@@ -394,5 +394,6 @@ export default function LoginPage() {
     )
   }
   
+
 }
 

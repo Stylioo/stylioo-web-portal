@@ -4,11 +4,10 @@ import Typography from '@mui/material/Typography';
 import Title from './Title';
 
 
-
-export default function Deposits() {
+export default function AppointmentOverview() {
   return (
     <React.Fragment>
-      <Title>Deposits</Title>
+      <Title>AppointmentOverview</Title>
       <Typography component="p" variant="h4">
         15
       </Typography>

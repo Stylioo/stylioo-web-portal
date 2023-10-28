@@ -8,6 +8,7 @@ function createData(time: string, amount?: number) {
   return { time, amount };
 }
 
+// add time to the data and change the data to the following format
 const data = [
   createData('00:00', 0),
   createData('03:00', 300),

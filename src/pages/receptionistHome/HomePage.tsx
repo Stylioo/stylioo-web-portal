@@ -30,6 +30,14 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import TodayAppoinment from './TodayAppoinments';
+import PastAppoinment from './PastAppoinments';
+import UpcomingAppoinment from './UpcomingAppoinments ';
+import TotalCustomers from './TotalCustomers';
+import TotalStaff from './TotalStaff';
+import AppointmentOverview from './AppointmentOverview';
+import StaffOverview from './StaffOverview';
+
+
 
 function Copyright(props: any) {
   return (
@@ -212,7 +220,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <PastAppoinment />
                 </Paper>
               </Grid>
               {/* Upcoming Appoinments- Deposits */}
@@ -225,7 +233,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <UpcomingAppoinment />
                 </Paper>
               </Grid>
 
@@ -239,7 +247,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <TotalCustomers />
                 </Paper>
               </Grid>
               {/* Total No of Staff Members- Deposits */}
@@ -252,7 +260,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <TotalStaff />
                 </Paper>
               </Grid>
         
@@ -266,7 +274,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 300,
                   }}
                 >
-                  <Deposits />
+                  <AppointmentOverview />
                 </Paper>
               </Grid>
         
@@ -280,7 +288,7 @@ export default function ReceptionistInsigntsPage() {
                     height: 300,
                   }}
                 >
-                  <Deposits />
+                  <StaffOverview />
                 </Paper>
               </Grid>
         
