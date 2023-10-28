@@ -1,0 +1,24 @@
+.siteContent {
+    overflow: hidden;
+    flex-grow: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.children {
+    overflow: hidden;
+    flex-grow: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    @media screen and (max-width: 768px) {
+        margin-inline: 1rem;
+        margin-right: 1rem;
+    }
+}
