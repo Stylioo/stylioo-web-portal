@@ -69,7 +69,7 @@ function AddStaff() {
             console.log(err);
         }
         finally {
-            navigate('/owner/staff')
+            navigate('/staff')
         }
     }
 
@@ -413,9 +413,9 @@ function AddStaff() {
                                     value={formData?.role}
                                 // size="small"
                                 >
-                                    <MenuItem value='Beautician'>Beautician</MenuItem>
-                                    <MenuItem value='Receptionist'>Receptionist</MenuItem>
-                                    <MenuItem value='Manager'>Manager</MenuItem>
+                                    <MenuItem value='BEAUTICIAN'>Beautician</MenuItem>
+                                    <MenuItem value='RECEPTIONIST'>Receptionist</MenuItem>
+                                    <MenuItem value='MANAGER'>Manager</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid>

@@ -40,11 +40,12 @@ function AddEmployee() {
                 role: roleValue,
             })
 
+            console.log(response.data);
             const data = response.data
             if (response.status === 200) {
                 if (data.success) {
                     console.log(data.data);
-                    navigate("../staff")
+                    navigate("/staff")
 
                 }
             }
