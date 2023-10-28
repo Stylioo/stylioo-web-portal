@@ -9,7 +9,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import {Search} from '@mui/icons-material';
+import { Search } from '@mui/icons-material';
 // import Button from '@mui/material/Button'; 
 import { Button } from "@mui/material"
 
@@ -179,7 +179,7 @@ const Services = () => {
         if (data.success) {
           console.log(data.data);
           setServices(data.data);
-          
+
         }
 
       }
@@ -202,13 +202,13 @@ const Services = () => {
   //     console.log(res.data); 
   //     setServices(res.data.data)
   //     setIsLoading(false)
-  
-  
+
+
   // }
 
   const searchService = async () => {
     setIsLoading(true);
-  
+
     try {
       const res = await axios.get(`/service/search?term=${searchTerm}`)
       console.log(res.data);
@@ -217,7 +217,7 @@ const Services = () => {
 
     } catch (error) {
       console.error("Error occurred while fetching data:", error);
-      
+
     } finally {
       setIsLoading(false);
     }
@@ -230,9 +230,9 @@ const Services = () => {
       fetchServices()
     }
   }
-  
 
-  const fetchServicesEdit = async (editId:string) => {
+
+  const fetchServicesEdit = async (editId: string) => {
     try {
       setIsLoading(true)
       const response = await axios.get(`/service/${editId}`)
@@ -299,7 +299,7 @@ const Services = () => {
 
 
 
-  
+
   const handleUpdateService = async (e: any) => {
 
     try {
@@ -351,7 +351,7 @@ const Services = () => {
           fetchServices()
         }
       }
-      setDeleteOrUpdateId("") 
+      setDeleteOrUpdateId("")
     } catch (error) {
       console.log(error);
     }
@@ -398,29 +398,29 @@ const Services = () => {
           </div>
         </div>
 
-       <div>
-        <input
-          type="text"
-          value={searchTerm}
-          // onChange={(e) => {
-          //   e.preventDefault()
-          //   setSearchValue(e.target.value)
-          // }}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearchService(e.target.value)}
-          placeholder="Search..."
-          className="searchbar"
-        />
-        <Button
+        <div>
+          <input
+            type="text"
+            value={searchTerm}
+            // onChange={(e) => {
+            //   e.preventDefault()
+            //   setSearchValue(e.target.value)
+            // }}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearchService(e.target.value)}
+            placeholder="Search..."
+            className="searchbar"
+          />
+          <Button
             color="primary"
             variant="contained"
             sx={{ py: 1 }}
             onClick={searchService}
           >
             <Search />
-        </Button>
+          </Button>
         </div>
-        </div>
-      
+      </div>
+
 
       {
         isLoading ? <Loading /> :
@@ -447,8 +447,8 @@ const Services = () => {
                     <td>{service.duration} hr</td>
                     <td>
                       <div className="btn_delete_edit">
-                        <  FaRegEdit style={{cursor: 'pointer'}} size={20} onClick={() => handleEdit(service.id)} className="icon-with-gap" />
-                        <  RiDeleteBin5Line style={{cursor: 'pointer'}} size={20} onClick={() => handleDelete(service.id)} />
+                        <FaRegEdit style={{ cursor: 'pointer' }} size={20} onClick={() => handleEdit(service.id)} className="icon-with-gap" />
+                        <RiDeleteBin5Line style={{ cursor: 'pointer' }} size={20} onClick={() => handleDelete(service.id)} />
                       </div>
                     </td>
                   </tr>
@@ -779,13 +779,13 @@ const Services = () => {
             <  AiOutlineCloseCircle size={30} onClick={closeeditPopup} />
           </div>
           <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Edit Service</h2>
- 
 
 
 
 
 
-              
+
+
 
           <div className="name_container">
             <select value={category}
@@ -976,7 +976,7 @@ const Services = () => {
               <option value="option1">10.00</option>
             </select>
           </div>
-      
+
           <p style={{
             marginTop: '40px',
           }}>Who can provide the service * </p>
@@ -985,11 +985,11 @@ const Services = () => {
             <CustomDropdown selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} options={dropdownOptions} />
           </div>
           <button className="save-button" onClick={handleUpdateService}>Update</button>
-          
-          </div>
-      
 
-        
+        </div>
+
+
+
 
 
 
@@ -1064,7 +1064,7 @@ const Services = () => {
 
       </Modal>
 
-      
+
     </div>
   )
 }
