@@ -21,6 +21,8 @@ import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
+import AllBeauticianPage  from "./pages/allbeautician/HomePage"
+import ReceptionistInsigntsPage from "./pages/receptionistHome/HomePage"
 
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
                 <Route path="quicksale" element={<QuickSalePage />} />
                 <Route path="quick-sale-form" element={<QuickSaleForm />} />
                 <Route path="leave" element={<LeavePage />} />
+                <Route path='receptionistInsights' element={<ReceptionistInsigntsPage/>} />
+                <Route path='allBeauticians' element={<AllBeauticianPage/>} />
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER]} />}>
