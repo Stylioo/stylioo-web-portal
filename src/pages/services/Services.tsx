@@ -40,7 +40,7 @@ type editServicesType = {
 
 const Services = () => {
   // const [searchValue, setSearchValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("10");
+  const [selectedValue, setSelectedValue] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
   const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
@@ -169,10 +169,11 @@ const Services = () => {
     setIseditPopupOpen(false);
   };
 
-  const fetchServices = async () => {
+  const fetchServices = async (value: string = "") => {
     try {
       setIsLoading(true)
-      const response = await axios.get('/service')
+      setSelectedValue(value);
+      const response = await axios.get(`/service/fetch?term=${value}`)
       if (response.status === 200) {
         const data = response.data
 
@@ -206,14 +207,18 @@ const Services = () => {
   
   // }
 
-  const searchService = async () => {
+  const searchService = async (searchTerm: string) => {
     setIsLoading(true);
+    setSearchTerm(searchTerm)
+    if (searchTerm === '') {
+      fetchServices()
+    }
   
     try {
       const res = await axios.get(`/service/search?term=${searchTerm}`)
       console.log(res.data);
       setSaerchServices(res.data.data);
-      setServices(saerchServices);
+      setServices(res.data.data);
 
     } catch (error) {
       console.error("Error occurred while fetching data:", error);
@@ -386,14 +391,15 @@ const Services = () => {
             <p>Show</p>
             <select value={selectedValue}
               onChange={(e) => {
-                setSelectedValue(e.target.value);
+                fetchServices(e.target.value)
               }}
               className="selectbox_container"
             >
-              <option value="">5</option>
-              <option value="option1">10</option>
-              <option value="option2">25</option>
-              <option value="option3">50</option>
+              <option value="">All</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
             </select>
           </div>
         </div>
@@ -406,7 +412,7 @@ const Services = () => {
           //   e.preventDefault()
           //   setSearchValue(e.target.value)
           // }}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearchService(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => searchService(e.target.value)}
           placeholder="Search..."
           className="searchbar"
         />
@@ -414,7 +420,7 @@ const Services = () => {
             color="primary"
             variant="contained"
             sx={{ py: 1 }}
-            onClick={searchService}
+            onClick={() => searchService(searchTerm)}
           >
             <Search />
         </Button>

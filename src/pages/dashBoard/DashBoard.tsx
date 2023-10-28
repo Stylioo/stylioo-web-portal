@@ -237,21 +237,21 @@ const DashBoard = () => {
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Pending Appointments</p>
       <p style={{fontSize:'50px', textAlign: 'center'}}>12</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since last week</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since this month</p>
 
     </div>
 
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Complted Appointments</p>
       <p style={{fontSize:'50px', textAlign: 'center'}}>16</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since last week</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since this month</p>
 
     </div>
 
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Canceled Appointments</p>
       <p style={{fontSize:'50px', textAlign: 'center'}}>4</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#7a7a7a'}}>Since last week</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#7a7a7a'}}>Since this month</p>
 
     </div>
     </div>
@@ -307,7 +307,7 @@ const DashBoard = () => {
       series={[
         { dataKey: 'income', label: 'Monthly Income', valueFormatter },
       ]}
-      {...chartSetting}
+      {...chartSetting2}
     />
     
 
