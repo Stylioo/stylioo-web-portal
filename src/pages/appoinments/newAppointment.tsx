@@ -23,6 +23,8 @@ type serviceType = {
     categoryId: string
 }
 
+const downPayment = 0.5
+
 function NewAppointment() {
 
 
@@ -37,7 +39,9 @@ function NewAppointment() {
     const handleAdvancedPaymentAmountInput = (e: ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value
         value = value.replace(/[^\d]/g, '')
+
         if (!isNaN(Number(value))) {
+            if (Number(value) > total || Number(value) < 0) return
             setAdvancedPaymentAmount(Number(value))
         }
     }
@@ -193,7 +197,12 @@ function NewAppointment() {
     //appointment summary
     const [appointmentSummaryModalOpen, setAppointmentSummaryModalOpen] = useState<boolean>(false)
     const handleAppointmentSummaryModalOpen = () => {
-        setAppointmentSummaryModalOpen(true)
+        if (selectedCustomer === null || selectedServices.length === 0 || selectedDate === "" || selectedTime === "") {
+            alert('Please fill all the fields')
+        } else {
+            setAppointmentSummaryModalOpen(true)
+            setAdvancedPaymentAmount(total * downPayment)
+        }
     }
     const handleAppointmentSummaryModalClose = () => {
         setAppointmentSummaryModalOpen(false)
@@ -404,15 +413,40 @@ function NewAppointment() {
     }, [advancedPaymentAmount, total])
 
 
-    useEffect(() => {
-        console.log(customerSearchResults)
-    }, [customerSearchResults])
+
+    //save appointment information
+    const handleSaveAppointment = async () => {
+        try {
+            const response = await axios.post('/appointment', {
+                customer_id: selectedCustomer.id,
+                date: selectedDate,
+                time: selectedTime,
+                beautician_id: selectedBeautician,
+                services: selectedServices,
+                total: total,
+                advanced_payment_amount: advancedPaymentAmount,
+                sub_total: subTotal,
+            })
+            if (response.data.success) {
+                alert('Appointment created successfully')
+                window.location.reload()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // useEffect(() => {
+    //     console.log(customerSearchResults)
+    // }, [customerSearchResults])
+
+
 
     return (
 
         <>
 
-
+            {/* new customer */}
             <Modal
                 open={newCustomerModalOpen}
 
@@ -567,6 +601,7 @@ function NewAppointment() {
                 </Box>
             </Modal>
 
+            {/* summary */}
             <Modal
                 open={appointmentSummaryModalOpen}
             >
@@ -596,15 +631,15 @@ function NewAppointment() {
                         >
                             <Grid item xs={12} md={6} lg={3}>
                                 <Typography variant='caption'>Customer Name</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>Janith Madarasinghe</Typography>
+                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.first_name} {selectedCustomer?.first_name}</Typography>
                             </Grid>
                             <Grid item xs={12} md={6} lg={3}>
                                 <Typography variant='caption'>Contact Number</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>070 468 5081</Typography>
+                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.contact_no}</Typography>
                             </Grid>
                             <Grid item xs={12} md={6} lg={6}>
                                 <Typography variant='caption'>Residencial Address</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>49/1/A, Dewsirigama Road, Kokawala, Kekandura</Typography>
+                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.address_line_1} {selectedCustomer?.address_line_1} {selectedCustomer?.city}</Typography>
                             </Grid>
                             <Grid item xs={12} md={6} lg={3}>
                                 <Typography variant='caption'>Appointment Date</Typography>
@@ -618,7 +653,7 @@ function NewAppointment() {
                             <Grid item xs={12} md={6} lg={6}>
                                 <Typography variant='caption'>Beautician</Typography>
                                 <Typography variant='body1' sx={{ fontWeight: '500' }}>
-                                    {selectedBeautician === '' ? 'No Preference' : beauticians.find(beautician => beautician.id === selectedBeautician)?.name}
+                                    {selectedBeautician === '' ? 'No Preference' : beauticians.find(beautician => beautician.id === selectedBeautician)?.first_name}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -660,9 +695,42 @@ function NewAppointment() {
                             <Grid container sx={{
                                 mt: 4
                             }}>
-                                <Grid item sm={6} lg={8}>
+                                <Grid item sm={6} lg={8} spacing={16}>
                                     <Box
+                                        sx={{
+                                            px: 2,
+                                            py: 1,
+                                            // border: '1px solid #ccc',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'flex-start',
+                                            alignItems: 'flex-start',
+
+                                        }}
                                     >
+                                        <Box
+                                            sx={{
+                                                // px: 2,
+                                                pb: 1,
+                                                mb: 2,
+                                                flexGrow: 1,
+                                                gap: 6,
+                                                // border: '1px solid #ccc',
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                                // borderBottom: '1px solid #ccc',
+                                            }}
+                                        >
+                                            <Typography
+                                                variant='body1'
+                                                sx={{ fontWeight: 400, fontSize: '13px' }}
+                                            >Down Payment ({downPayment * 100}%) :</Typography>
+                                            <Typography
+                                                sx={{ fontWeight: 400, fontSize: '13px' }}
+                                                variant='body1'
+                                            >LKR {formatNumber(total * downPayment)}</Typography>
+                                        </Box>
                                         <FormControl >
                                             <InputLabel htmlFor="outlined-adornment-amount">Advanced Payment Amount</InputLabel>
                                             <OutlinedInput
@@ -682,7 +750,7 @@ function NewAppointment() {
                                         sx={{
                                             px: 2,
                                             py: 1,
-                                            // border: '1px solid #ccc',
+                                            borderBottom: '1px solid #ccc',
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                             alignItems: 'center',
@@ -698,10 +766,9 @@ function NewAppointment() {
                                             variant='body1'
                                         >LKR {formatNumber(total)}</Typography>
                                     </Box>
-
                                     <Box
                                         sx={{
-                                            mt: 2,
+                                            mt: 1,
                                             px: 2,
                                             py: 1,
                                             // border: '1px solid #ccc',
@@ -735,7 +802,7 @@ function NewAppointment() {
                     >
                         <Button
                             variant='contained'
-                            onClick={handleAppointmentSummaryModalClose}
+                            onClick={handleSaveAppointment}
                         >
                             Save
                         </Button>
