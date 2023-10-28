@@ -72,7 +72,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// add dumy data to the table
 const rows = [
   {  
     id: 1,

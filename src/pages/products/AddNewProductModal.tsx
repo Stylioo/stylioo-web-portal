@@ -186,3 +186,5 @@ function AddNewProductModal({ open, handleClose, handleSankbarShow, refetch }: A
 }
 
 export default AddNewProductModal
+
+// add new product modal 

@@ -161,3 +161,6 @@ function AddQualificationModal({ open, handleClose, qualifications, setQualifica
 }
 
 export default AddQualificationModal
+
+
+// adding qualifications to the staff member

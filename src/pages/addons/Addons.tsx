@@ -7,9 +7,7 @@ import React from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
-
-
-
+// add styles 
 import "../../styles/addons/addons.css";
 
 const Addons = () => {

@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import "../../styles/quicksale/quicksale.css";
 
 const Quicksale = () => {
+  // set values 
     const [ searchValue, setSearchValue] = useState("");
     const [ calanderValue, setCalanderValue] = useState(new Date());
     return (
@@ -27,6 +28,7 @@ const Quicksale = () => {
           }}
         />
         <div className='billdatebox'>
+
         <p>Bill Date</p>
         <DatePicker
         selected={calanderValue}

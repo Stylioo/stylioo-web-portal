@@ -328,3 +328,6 @@ function ViewProduct() {
 }
 
 export default ViewProduct
+
+
+// View all products page

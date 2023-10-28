@@ -147,6 +147,7 @@ function AddEmployee() {
                 />
             </div>
             <div className="name_container">
+                {/* add inputs  */}
                 <input
                     type="text"
                     value={cityValue}
@@ -212,6 +213,7 @@ function AddEmployee() {
                             setroleValue(e.target.value);
                         }}
                         className="first_seelectbox">
+                            {/* select the user role  */}
                         <option value="">Role</option>
                         <option value="MANAGER">Manager</option>
                         <option value="BEAUTICIAN">Beautician</option>

@@ -83,7 +83,8 @@ function Leave() {
             {...a11yProps(0)}
             sx={{
               backgroundColor: value === 0 ? '#009933' : 'inherit',
-              color: value === 0 ? 'white' : 'black', // Change the text color of non-active tabs
+              color: value === 0 ? 'white' : 'black', 
+              // Change the text color of non-active tabs
             }}
           />
           <Tab
@@ -91,7 +92,8 @@ function Leave() {
             {...a11yProps(1)}
             sx={{
               backgroundColor: value === 1 ? '#009933' : 'inherit',
-              color: value === 1 ? 'white' : 'black', // Change the text color of non-active tabs
+              color: value === 1 ? 'white' : 'black', 
+              // Change the text color of non-active tabs
             }}
           />
           <Tab
@@ -99,7 +101,8 @@ function Leave() {
             {...a11yProps(2)}
             sx={{
               backgroundColor: value === 2 ? '#009933' : 'inherit',
-              color: value === 2 ? 'white' : 'black', // Change the text color of non-active tabs
+              color: value === 2 ? 'white' : 'black', 
+              // Change the text color of non-active tabs
             }}
           />
         </Tabs>

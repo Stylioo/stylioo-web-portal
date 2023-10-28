@@ -71,6 +71,7 @@ const columns: GridColDef[] = [
               },
             }}
           >
+            {/* add buttons */}
             <MenuItem onClick={handleClose} >View Details</MenuItem>
             <MenuItem onClick={handleClose} >Invoice</MenuItem>
           </Menu>
@@ -172,7 +173,6 @@ export default function QuickSalePage() {
             }}
             sx={{ marginTop: '-45px'}} // Add margin top here
           />
-     
                       <DataGrid sx={{ width:'100%' }}
                         rows={rows}
                         columns={columns}
@@ -184,6 +184,7 @@ export default function QuickSalePage() {
                         pageSizeOptions={[5, 10]}
                         checkboxSelection
                       />
+
     
     </Box>
     </React.Fragment>

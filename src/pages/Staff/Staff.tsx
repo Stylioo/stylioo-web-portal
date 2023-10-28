@@ -250,3 +250,6 @@ function Staff() {
 
 
 export default Staff
+
+
+// Display staff details 

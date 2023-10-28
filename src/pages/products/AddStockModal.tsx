@@ -66,3 +66,5 @@ function AddStockModal({ open, handleClose, productId, refetch, handleSankbarSho
 }
 
 export default AddStockModal
+
+// add stock model 

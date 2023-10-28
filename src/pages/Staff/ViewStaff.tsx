@@ -556,3 +556,6 @@ function ViewStaff() {
 }
 
 export default ViewStaff
+
+
+// view all staff details 

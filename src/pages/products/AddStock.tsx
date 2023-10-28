@@ -200,3 +200,5 @@ function AddStock({ setSupplierModal, productId, refetch, handleModalClose, hand
 }
 
 export default AddStock
+
+// add new stock modal

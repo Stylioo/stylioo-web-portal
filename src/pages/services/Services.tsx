@@ -327,6 +327,7 @@ const Services = () => {
                 setCategory(e.target.value);
               }}
               className="first_seelectbox">
+                {/* add menu list  */}
               <option >Select Group</option>
               <option value="facial">Facial</option>
               <option value="hair">Hair</option>

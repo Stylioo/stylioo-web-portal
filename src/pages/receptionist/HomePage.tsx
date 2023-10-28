@@ -242,11 +242,6 @@ export default function ReceptionistPage() {
                   sx={{ marginBottom: '10px' }}
                 />
 
-                {/* Add more form fields here */}
-
-                {/* <Divider sx={{ marginBottom: '10px' }} /> */}
-
-                {/* Display the total price */}
                 <TextField
                   label="Total Price"
                   fullWidth

@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, useMemo, useEffect, MouseEvent } from "react"
 
+// add styles 
+
 import '../../styles/main.scss'
 import '../../styles/product.scss'
 import AddProductPopup from "../../components/Popups/AddProductPopup"

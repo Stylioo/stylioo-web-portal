@@ -18,3 +18,6 @@ const Closebutton = () => {
   }
   
   export default Closebutton
+
+
+//   add close button

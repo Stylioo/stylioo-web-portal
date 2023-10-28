@@ -8,6 +8,8 @@
 
 // export default AllBeauticianPage
 
+// display all beauticians in a card view 
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';

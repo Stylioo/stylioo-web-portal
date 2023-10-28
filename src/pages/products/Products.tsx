@@ -354,3 +354,6 @@ function Products() {
 }
 
 export default Products
+
+
+// display whole products 

@@ -49,6 +49,7 @@ const columns: GridColDef[] = [
 
       return (
         <div>
+          {/* add icon buttons for edit delete  */}
           <IconButton aria-label="edit" color="primary">
             <EditIcon />
           </IconButton>

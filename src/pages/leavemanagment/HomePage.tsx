@@ -261,6 +261,7 @@ export default function LeaveManagmentPage() {
             aria-label="Disabled elevation buttons"
             sx={{ marginTop: '20px', marginLeft:'1100px'}} >
             <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Request Leave</Button>
+                  {/* create request leave form */}
                   
                 <Dialog open={open} onClose={handleClose}>
                   

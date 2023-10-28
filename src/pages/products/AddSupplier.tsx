@@ -142,3 +142,5 @@ function AddSupplier({ setSupplierModal, handleSankbarShow }: { setSupplierModal
 }
 
 export default AddSupplier
+
+// add supplier 

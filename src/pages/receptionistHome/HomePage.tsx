@@ -197,7 +197,7 @@ export default function ReceptionistInsigntsPage() {
                   <Chart />
                 </Paper>
               </Grid>
-              {/* Today's Appoinments- Deposits */}
+              {/* Today's Appoinments */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -210,7 +210,7 @@ export default function ReceptionistInsigntsPage() {
                   <TodayAppoinment />
                 </Paper>
               </Grid>
-               {/* Past Appoinments- Deposits */}
+               {/* Past Appoinments */}
                <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -223,7 +223,7 @@ export default function ReceptionistInsigntsPage() {
                   <PastAppoinment />
                 </Paper>
               </Grid>
-              {/* Upcoming Appoinments- Deposits */}
+              {/* Upcoming Appoinments */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -237,7 +237,7 @@ export default function ReceptionistInsigntsPage() {
                 </Paper>
               </Grid>
 
-              {/* Total No of Customers- Deposits */}
+              {/* Total No of Customers */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -250,7 +250,7 @@ export default function ReceptionistInsigntsPage() {
                   <TotalCustomers />
                 </Paper>
               </Grid>
-              {/* Total No of Staff Members- Deposits */}
+              {/* Total No of Staff Members */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -306,3 +306,7 @@ export default function ReceptionistInsigntsPage() {
     </ThemeProvider>
   );
 }
+
+
+
+// dashboard for insights page 

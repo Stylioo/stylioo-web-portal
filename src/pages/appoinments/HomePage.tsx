@@ -244,12 +244,6 @@ export default function ReceptionistPage() {
                   onChange={(e) => setServiceCategory(e.target.value)}
                   sx={{ marginBottom: '10px' }}
                 />
-
-                {/* Add more form fields here */}
-
-                {/* <Divider sx={{ marginBottom: '10px' }} /> */}
-
-                {/* Display the total price */}
                 <TextField
                   label="Total Price"
                   fullWidth

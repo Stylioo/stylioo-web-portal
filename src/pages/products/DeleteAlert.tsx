@@ -69,3 +69,6 @@ function DeleteAlert({ open, handleClose, productId, handleSankbarShow, refetch 
 }
 
 export default DeleteAlert
+
+
+// create delete alert component

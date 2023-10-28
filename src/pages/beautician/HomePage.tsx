@@ -77,12 +77,10 @@ const BeauticianPage = () => {
         subheaderTypographyProps={{ color: '#1E1E1E' , fontSize:'15px' , fontWeight:'bold'}} 
       />
        <div className='userDetails' >
-      {/* Other content */}
 
       <img src='https://stylioo.blob.core.windows.net/images/chirasi.jpeg' className='userImg'/>
       <p className='service'>Kithmi Amaya</p>
 
-      {/* Other content */}
     </div>
       <CardContent>
       <div className="cardDetails">
@@ -175,12 +173,11 @@ const BeauticianPage = () => {
         subheaderTypographyProps={{ color: '#1E1E1E' , fontSize:'15px' , fontWeight:'bold'}} 
       />
        <div className='userDetails' >
-      {/* Other content */}
 
       <img src='https://stylioo.blob.core.windows.net/images/chirasi.jpeg' className='userImg'/>
       <p className='service'>Kithmi Amaya</p>
 
-      {/* Other content */}
+      
     </div>
       <CardContent>
       <div className="cardDetails">

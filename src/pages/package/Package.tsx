@@ -329,6 +329,7 @@ const Package = () => {
                 <option value="option1">Clean-up facial(Price: 15.00)</option>
                 <option value="option2">Hair Coloring(Price: 15.00)</option>
         </select>
+        {/* create table for display package details  */}
         <table className="table">
         <thead>
           <tr>
