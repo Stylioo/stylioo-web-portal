@@ -8,9 +8,9 @@ import { Box, Button, Tab, Tabs, Typography, useMediaQuery } from "@mui/material
 import { Add } from '@mui/icons-material'
 import { useNavigate } from "react-router-dom"
 
-import TodaysAppoitments from "./TodaysAppoitments"
 import UpcommingAppoitments from "./UpcommingAppoitments"
-import PastAppoitments from "./PastAppoitments"
+import CompletedAppoitments from "./CompletedAppoitments"
+import CanceledAppoitments from "./CanceledAppoitments"
 
 
 function Appointments() {
@@ -67,9 +67,9 @@ function Appointments() {
             <Box className="page-header flex flex-between gap-1">
                 <Box sx={{ borderBottom: 1, borderColor: 'divider', flexGrow: 1 }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Todays Appointments" {...a11yProps(0)} />
-                        <Tab label="Upcomming Appointments" {...a11yProps(1)} />
-                        <Tab label="Past Appointments" {...a11yProps(2)} />
+                        <Tab label="Upcomming Appointments" {...a11yProps(0)} />
+                        <Tab label="Completed Appointments" {...a11yProps(1)} />
+                        <Tab label="Canceled Appointments" {...a11yProps(1)} />
                     </Tabs>
                 </Box>
                 <div className="flex gap-1">
@@ -87,14 +87,15 @@ function Appointments() {
 
 
             <CustomTabPanel value={value} index={0}>
-                <TodaysAppoitments />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
                 <UpcommingAppoitments />
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                <PastAppoitments />
+            <CustomTabPanel value={value} index={1}>
+                <CompletedAppoitments />
             </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+                <CanceledAppoitments />
+            </CustomTabPanel>
+
 
 
         </>

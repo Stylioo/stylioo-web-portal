@@ -435,7 +435,7 @@ function NewAppointment() {
             })
             if (response.data.success) {
                 navigate('/appointments')
-                alert('Appointment created successfully')
+                // alert('Appointment created successfully')
             } else {
                 console.log(response.data.error);
                 alert('Something went wrong. Please try again.')

@@ -12,6 +12,8 @@ import LoadingOverlay from '../../components/Loading'
 import CustomNoRowsOverlay from '../../components/NoData'
 import moment from "moment";
 
+import '@/styles/main.scss'
+
 type menuPropsType = {
     anchorEl: HTMLElement | null
     open: boolean
@@ -53,7 +55,7 @@ function OptionMenu({ anchorEl, open, handleClose, handleProductDeleteOption }: 
         </>
     );
 }
-function TodaysAppoitments() {
+function CanceledAppoitments() {
 
     const navigate = useNavigate();
 
@@ -126,6 +128,25 @@ function TodaysAppoitments() {
             }
         },
         {
+            field: "status", headerName: "Status", width: 120, renderCell: (params: any) => {
+                let status = "pending"
+                let className = "badge-primary"
+
+                if (params.row.status === 'paid') {
+                    status = "Paid"
+                    className = "badge-success"
+                }
+                else if (params.row.status === 'canceled') {
+                    status = "Canceled"
+                    className = "badge-danger"
+                } else {
+                    status = "Pending"
+                    className = "badge-primary"
+                }
+                return <div className={`badge ${className}`}><p className="capitalize">{status}</p></div>;
+            }
+        },
+        {
             field: "date", headerName: "Date", width: 130, renderCell: (params: any) => {
                 return <Box
                     sx={{
@@ -150,7 +171,7 @@ function TodaysAppoitments() {
         },
 
         {
-            field: "service", headerName: "Services", width: 375, renderCell: (params: any) => {
+            field: "service", headerName: "Services", width: 300, renderCell: (params: any) => {
                 return <Box
                     sx={{
                         display: "flex",
@@ -182,7 +203,7 @@ function TodaysAppoitments() {
         },
 
         {
-            field: 'beautician', headerName: "Beautician", filterable: false, width: 175, renderCell: (params: any) => {
+            field: 'beautician', headerName: "Beautician", filterable: false, width: 150, renderCell: (params: any) => {
                 return <Box sx={{ display: "flex", alignItems: 'center', gap: 1 }}>
                     <img style={{
                         width: 30,
@@ -200,7 +221,7 @@ function TodaysAppoitments() {
         },
 
         {
-            field: 'actions', headerName: "", type: 'actions', width: 25, renderCell: (params: any) => {
+            field: 'actions', headerName: "", type: 'actions', width: 10, renderCell: (params: any) => {
                 return <IconButton onClick={(event: MouseEvent<HTMLButtonElement>) => handleClick(event, params.row)} aria-label="delete">
                     <MoreVert />
                 </IconButton>
@@ -228,7 +249,7 @@ function TodaysAppoitments() {
 
     const getAllProducts = async () => {
         setIsLoading(true)
-        const res = await axios.get('/appointment?range=today')
+        const res = await axios.get('/appointment?type=canceled')
         if (res.data.success) {
             if (res.data.data.length === 0) {
                 setappointments([])
@@ -237,14 +258,12 @@ function TodaysAppoitments() {
             } else {
                 setappointments(res.data.data)
             }
-        }
-
-        setIsLoading(false)
+        } setIsLoading(false)
     }
 
     const searchProducts = async () => {
         setIsLoading(true)
-        const res = await axios.get(`/appointment/search?term=${searchTerm}&range=todays`)
+        const res = await axios.get(`/appointment/search?term=${searchTerm}&type=canceled`)
         if (res.data.success) {
             if (res.data.data.length === 0) {
                 setappointments([])
@@ -253,8 +272,7 @@ function TodaysAppoitments() {
             } else {
                 setappointments(res.data.data)
             }
-        }
-        setIsLoading(false)
+        } setIsLoading(false)
     }
 
     useEffect(() => {
@@ -304,6 +322,8 @@ function TodaysAppoitments() {
                 closeSummaryModal={closeSummaryModal}
                 selectedRow={selectedRow}
                 isLoading={isLoading}
+                refetch={getAllProducts}
+
             />
             <div className="flex gap-1">
                 <TextField
@@ -356,4 +376,4 @@ function TodaysAppoitments() {
     )
 }
 
-export default TodaysAppoitments
+export default CanceledAppoitments
