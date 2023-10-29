@@ -12,6 +12,7 @@ import formatNumber from '@/utils/formatNumber'
 import noPreferenceImage from '@/assets/icons8-team-64.png'
 import axios from '@/axios'
 import Loading from '@/components/Loading'
+import { useNavigate } from 'react-router-dom'
 
 
 type serviceType = {
@@ -31,6 +32,9 @@ function NewAppointment() {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
+    const navigate = useNavigate()
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [total, setTotal] = useState<number>(0)
     const [advancedPaymentAmount, setAdvancedPaymentAmount] = useState<number>(0)
@@ -345,7 +349,6 @@ function NewAppointment() {
             const response = await axios.get('/employee/role/beautician')
             if (response.data.success) {
                 console.log(response.data.data);
-
                 setBeauticians(response.data.data)
             }
         } catch (error) {
@@ -416,31 +419,33 @@ function NewAppointment() {
 
     //save appointment information
     const handleSaveAppointment = async () => {
+        // console.log(selectedBeautician, selectedCustomer, selectedServices, selectedDate, selectedTime);
         try {
+            setIsLoading(true)
             const response = await axios.post('/appointment', {
                 customer_id: selectedCustomer.id,
                 date: selectedDate,
-                time: selectedTime,
+                startTime: selectedTime,
+                duration: selectedServices.reduce((total, service) => total + service.duration, 0),
                 beautician_id: selectedBeautician,
-                services: selectedServices,
+                services: selectedServices.map(service => service.id),
                 total: total,
                 advanced_payment_amount: advancedPaymentAmount,
                 sub_total: subTotal,
             })
             if (response.data.success) {
+                navigate('/appointments')
                 alert('Appointment created successfully')
-                window.location.reload()
+            } else {
+                console.log(response.data.error);
+                alert('Something went wrong. Please try again.')
             }
         } catch (error) {
             console.log(error)
+        } finally {
+            setIsLoading(false)
         }
     }
-
-    // useEffect(() => {
-    //     console.log(customerSearchResults)
-    // }, [customerSearchResults])
-
-
 
     return (
 
@@ -623,196 +628,201 @@ function NewAppointment() {
                     <Typography variant='h6' sx={{ mb: 1, fontWeight: '500' }}>
                         Appointment Summary
                     </Typography>
-                    <Box>
-                        <Grid container spacing={1}
-                            sx={{
-                                mt: 1
-                            }}
-                        >
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant='caption'>Customer Name</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.first_name} {selectedCustomer?.first_name}</Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant='caption'>Contact Number</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.contact_no}</Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={6}>
-                                <Typography variant='caption'>Residencial Address</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.address_line_1} {selectedCustomer?.address_line_1} {selectedCustomer?.city}</Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant='caption'>Appointment Date</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedDate}</Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={3}>
+                    {
+                        isLoading ? <Loading /> :
+                            <>
+                                <Box>
+                                    <Grid container spacing={1}
+                                        sx={{
+                                            mt: 1
+                                        }}
+                                    >
+                                        <Grid item xs={12} md={6} lg={3}>
+                                            <Typography variant='caption'>Customer Name</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.first_name} {selectedCustomer?.first_name}</Typography>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={3}>
+                                            <Typography variant='caption'>Contact Number</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.contact_no}</Typography>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <Typography variant='caption'>Residencial Address</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedCustomer?.address_line_1} {selectedCustomer?.address_line_1} {selectedCustomer?.city}</Typography>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={3}>
+                                            <Typography variant='caption'>Appointment Date</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedDate}</Typography>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={3}>
 
-                                <Typography variant='caption'>Appointment Time</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedTime}</Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} lg={6}>
-                                <Typography variant='caption'>Beautician</Typography>
-                                <Typography variant='body1' sx={{ fontWeight: '500' }}>
-                                    {selectedBeautician === '' ? 'No Preference' : beauticians.find(beautician => beautician.id === selectedBeautician)?.first_name}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Box
-                            sx={{
-                                mt: 3
-                            }}
-                        >
+                                            <Typography variant='caption'>Appointment Time</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedTime}</Typography>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <Typography variant='caption'>Beautician</Typography>
+                                            <Typography variant='body1' sx={{ fontWeight: '500' }}>
+                                                {selectedBeautician === '' ? 'No Preference' : beauticians.find(beautician => beautician.id === selectedBeautician)?.first_name}
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
+                                    <Box
+                                        sx={{
+                                            mt: 3
+                                        }}
+                                    >
 
-                            <Grid container sx={{
-                                maxHeight: '200px',
-                                overflowY: 'auto',
-                            }}>
-                                {
-                                    selectedServices && selectedServices.length > 0 && selectedServices.map((selectedService, index) => (
-                                        <>
-                                            <Grid item sm={6} lg={8}
-                                                sx={{
-                                                    px: 2,
-                                                    py: 1,
-                                                    border: '1px solid #ccc',
-                                                }}
-                                            >
-                                                {selectedService.name}
+                                        <Grid container sx={{
+                                            maxHeight: '200px',
+                                            overflowY: 'auto',
+                                        }}>
+                                            {
+                                                selectedServices && selectedServices.length > 0 && selectedServices.map((selectedService, index) => (
+                                                    <>
+                                                        <Grid item sm={6} lg={8}
+                                                            sx={{
+                                                                px: 2,
+                                                                py: 1,
+                                                                border: '1px solid #ccc',
+                                                            }}
+                                                        >
+                                                            {selectedService.name}
+                                                        </Grid>
+                                                        <Grid item sm={6} lg={4}
+                                                            sx={{
+                                                                px: 2,
+                                                                py: 1,
+                                                                border: '1px solid #ccc',
+                                                            }}
+                                                        >
+                                                            {selectedService.price === 0 ? "Free" : `LKR ${formatNumber(selectedService.price)}`}
+                                                        </Grid >
+                                                    </>
+                                                ))
+                                            }
+                                        </Grid>
+                                        <Grid container sx={{
+                                            mt: 4
+                                        }}>
+                                            <Grid item sm={6} lg={8} spacing={16}>
+                                                <Box
+                                                    sx={{
+                                                        px: 2,
+                                                        py: 1,
+                                                        // border: '1px solid #ccc',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        justifyContent: 'flex-start',
+                                                        alignItems: 'flex-start',
+
+                                                    }}
+                                                >
+                                                    <Box
+                                                        sx={{
+                                                            // px: 2,
+                                                            pb: 1,
+                                                            mb: 2,
+                                                            flexGrow: 1,
+                                                            gap: 6,
+                                                            // border: '1px solid #ccc',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            // borderBottom: '1px solid #ccc',
+                                                        }}
+                                                    >
+                                                        <Typography
+                                                            variant='body1'
+                                                            sx={{ fontWeight: 400, fontSize: '13px' }}
+                                                        >Down Payment ({downPayment * 100}%) :</Typography>
+                                                        <Typography
+                                                            sx={{ fontWeight: 400, fontSize: '13px' }}
+                                                            variant='body1'
+                                                        >LKR {formatNumber(total * downPayment)}</Typography>
+                                                    </Box>
+                                                    <FormControl >
+                                                        <InputLabel htmlFor="outlined-adornment-amount">Advanced Payment Amount</InputLabel>
+                                                        <OutlinedInput
+                                                            id="outlined-adornment-amount"
+                                                            size='small'
+                                                            startAdornment={<InputAdornment position="start">LKR</InputAdornment>}
+                                                            label="Advanced Payment Amount"
+                                                            value={advancedPaymentAmount}
+                                                            onChange={handleAdvancedPaymentAmountInput}
+                                                        />
+                                                    </FormControl>
+                                                </Box>
                                             </Grid>
-                                            <Grid item sm={6} lg={4}
-                                                sx={{
-                                                    px: 2,
-                                                    py: 1,
-                                                    border: '1px solid #ccc',
-                                                }}
-                                            >
-                                                {selectedService.price === 0 ? "Free" : `LKR ${formatNumber(selectedService.price)}`}
-                                            </Grid >
-                                        </>
-                                    ))
-                                }
-                            </Grid>
-                            <Grid container sx={{
-                                mt: 4
-                            }}>
-                                <Grid item sm={6} lg={8} spacing={16}>
-                                    <Box
-                                        sx={{
-                                            px: 2,
-                                            py: 1,
-                                            // border: '1px solid #ccc',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            justifyContent: 'flex-start',
-                                            alignItems: 'flex-start',
 
-                                        }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                // px: 2,
-                                                pb: 1,
-                                                mb: 2,
-                                                flexGrow: 1,
-                                                gap: 6,
-                                                // border: '1px solid #ccc',
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                // borderBottom: '1px solid #ccc',
-                                            }}
-                                        >
-                                            <Typography
-                                                variant='body1'
-                                                sx={{ fontWeight: 400, fontSize: '13px' }}
-                                            >Down Payment ({downPayment * 100}%) :</Typography>
-                                            <Typography
-                                                sx={{ fontWeight: 400, fontSize: '13px' }}
-                                                variant='body1'
-                                            >LKR {formatNumber(total * downPayment)}</Typography>
-                                        </Box>
-                                        <FormControl >
-                                            <InputLabel htmlFor="outlined-adornment-amount">Advanced Payment Amount</InputLabel>
-                                            <OutlinedInput
-                                                id="outlined-adornment-amount"
-                                                size='small'
-                                                startAdornment={<InputAdornment position="start">LKR</InputAdornment>}
-                                                label="Advanced Payment Amount"
-                                                value={advancedPaymentAmount}
-                                                onChange={handleAdvancedPaymentAmountInput}
-                                            />
-                                        </FormControl>
+                                            <Grid item sm={6} lg={4}>
+                                                <Box
+                                                    sx={{
+                                                        px: 2,
+                                                        py: 1,
+                                                        borderBottom: '1px solid #ccc',
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        mb: 1
+                                                    }}
+                                                >
+                                                    <Typography
+                                                        variant='body1'
+                                                        sx={{ fontWeight: 500 }}
+                                                    >Total :</Typography>
+                                                    <Typography
+                                                        sx={{ fontWeight: 500 }}
+                                                        variant='body1'
+                                                    >LKR {formatNumber(total)}</Typography>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        mt: 1,
+                                                        px: 2,
+                                                        py: 1,
+                                                        // border: '1px solid #ccc',
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                    }}
+                                                >
+                                                    <Typography
+                                                        variant='body1'
+                                                        sx={{ fontWeight: 500 }}
+                                                    >Sub Total :</Typography>
+                                                    <Typography
+                                                        sx={{ fontWeight: 500 }}
+                                                        variant='body1'
+                                                    >LKR {formatNumber(subTotal)}</Typography>
+                                                </Box>
+
+                                            </Grid>
+                                        </Grid>
+
                                     </Box>
-                                </Grid>
-
-                                <Grid item sm={6} lg={4}>
-                                    <Box
-                                        sx={{
-                                            px: 2,
-                                            py: 1,
-                                            borderBottom: '1px solid #ccc',
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                            mb: 1
-                                        }}
+                                </Box>
+                                <Box
+                                    sx={{
+                                        mt: 2,
+                                        display: 'flex',
+                                        gap: 2,
+                                        justifyContent: 'flex-end'
+                                    }}
+                                >
+                                    <Button
+                                        variant='contained'
+                                        onClick={handleSaveAppointment}
                                     >
-                                        <Typography
-                                            variant='body1'
-                                            sx={{ fontWeight: 500 }}
-                                        >Total :</Typography>
-                                        <Typography
-                                            sx={{ fontWeight: 500 }}
-                                            variant='body1'
-                                        >LKR {formatNumber(total)}</Typography>
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            mt: 1,
-                                            px: 2,
-                                            py: 1,
-                                            // border: '1px solid #ccc',
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                        }}
+                                        Save
+                                    </Button>
+                                    <Button
+                                        variant='outlined'
+                                        onClick={handleAppointmentSummaryModalClose}
                                     >
-                                        <Typography
-                                            variant='body1'
-                                            sx={{ fontWeight: 500 }}
-                                        >Sub Total :</Typography>
-                                        <Typography
-                                            sx={{ fontWeight: 500 }}
-                                            variant='body1'
-                                        >LKR {formatNumber(subTotal)}</Typography>
-                                    </Box>
-
-                                </Grid>
-                            </Grid>
-
-                        </Box>
-                    </Box>
-                    <Box
-                        sx={{
-                            mt: 2,
-                            display: 'flex',
-                            gap: 2,
-                            justifyContent: 'flex-end'
-                        }}
-                    >
-                        <Button
-                            variant='contained'
-                            onClick={handleSaveAppointment}
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            variant='outlined'
-                            onClick={handleAppointmentSummaryModalClose}
-                        >
-                            Cancel
-                        </Button>
-                    </Box>
+                                        Cancel
+                                    </Button>
+                                </Box>
+                            </>
+                    }
 
                 </Box>
 
