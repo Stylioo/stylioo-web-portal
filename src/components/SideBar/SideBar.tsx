@@ -46,18 +46,27 @@ export default function SideBar({ children }: sidebarPropType) {
             [
                 { title: 'Insights', slug: '/', icon: <Assessment /> },
                 { title: 'Appointments', slug: '/appointments', icon: <Event /> },
-                // { title: 'Quick Sale', slug: '/quicksale', icon: <MonetizationOn /> },
                 { title: 'Customers', slug: '/customers', icon: <People /> },
                 { title: 'Beauticians', slug: '/beauticians', icon: <Person /> },
-                { title: 'Services', slug: '/services', icon: <Assessment /> }
+                { title: 'Services', slug: '/services', icon: <Business /> }
             ])
         else if (currentUser.role === ROLE.OWNER) setMenuItems([
             { title: 'Insights', slug: '/', icon: <Assessment /> },
-            // { title: 'Sales', slug: '/sales', icon: <MonetizationOn /> },
             { title: 'Services', slug: '/services', icon: <Business /> },
             { title: 'Products', slug: '/products', icon: <LocalMall /> },
             { title: 'Staff', slug: '/staff', icon: <People /> }
         ])
+
+        else if (currentUser.role === ROLE.ADMIN) setMenuItems([
+            { title: 'Insights', slug: '/', icon: <Assessment /> },
+            { title: 'Appointments', slug: '/appointments', icon: <Event /> },
+            { title: 'Customers', slug: '/customers', icon: <People /> },
+            { title: 'Beauticians', slug: '/beauticians', icon: <Person /> },
+            { title: 'Services', slug: '/services', icon: <Business /> },
+            { title: 'Products', slug: '/products', icon: <LocalMall /> },
+            { title: 'Staff', slug: '/staff', icon: <People /> }
+        ])
+
         else setMenuItems([])
     }, [])
 
@@ -164,7 +173,7 @@ export default function SideBar({ children }: sidebarPropType) {
                                             height: '2.2rem',
                                         }}
 
-                                        alt="Remy Sharp" src={'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'} />
+                                        alt="Remy Sharp" src={currentUser && currentUser.isAuthenticated && currentUser.profile_picture ? `https://stylioo.blob.core.windows.net/images/${currentUser.profile_picture}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'} />
                                 </IconButton>
                             </Tooltip>
                             <Menu

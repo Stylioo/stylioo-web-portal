@@ -91,9 +91,15 @@
     text-align: center;
 }
 
-.badge-success {
+.badge-primary {
     background-color: #007bff;
     border: #0862c3;
+    color: #fff;
+}
+
+.badge-success {
+    background-color: #1fa863;
+    border: #1fa863;
     color: #fff;
 }
 

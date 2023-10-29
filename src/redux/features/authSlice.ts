@@ -6,6 +6,7 @@ type userType = {
     last_name: string,
     email: string,
     role: string,
+    profile_picture: string,
 }
 
 
@@ -16,6 +17,7 @@ const initialState = {
     email: "",
     role: "",
     isAuthenticated: false,
+    profile_picture: "",
 }
 
 const authSlice = createSlice({
@@ -29,6 +31,7 @@ const authSlice = createSlice({
             state.email = action.payload.email
             state.role = action.payload.role
             state.isAuthenticated = true
+            state.profile_picture = action.payload.profile_picture
         },
         removeUser: (state) => {
             // remove user from state
@@ -38,6 +41,7 @@ const authSlice = createSlice({
             state.email = ""
             state.role = ""
             state.isAuthenticated = false
+            state.profile_picture = ""
         }
 
     },
