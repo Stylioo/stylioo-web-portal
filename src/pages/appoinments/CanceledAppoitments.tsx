@@ -147,6 +147,24 @@ function CanceledAppoitments() {
             }
         },
         {
+            field: 'status_changed_by', headerName: "Cancelled By", filterable: false, width: 150, renderCell: (params: any) => {
+                return <Box sx={{ display: "flex", alignItems: 'center', gap: 1 }}>
+                    <img style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: "50%"
+                    }} src={params.row.status_changed_by.image ? `https://stylioo.blob.core.windows.net/images/${params.row.status_changed_by.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
+                    <Box sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: '5px'
+                    }}>
+                        <Typography variant="caption">{params.row.status_changed_by?.first_name}</Typography> <Typography variant="caption"> {params.row.status_changed_by?.last_name}</Typography>
+                    </Box>
+                </Box >
+            }
+        },
+        {
             field: "date", headerName: "Date", width: 130, renderCell: (params: any) => {
                 return <Box
                     sx={{
@@ -164,14 +182,9 @@ function CanceledAppoitments() {
                 return <Typography>LKR {formatNumber(params.row.total_price)}</Typography>
             }
         },
-        {
-            field: "advanced_payment_amount", headerName: "Advance", width: 150, renderCell: (params: any) => {
-                return <Typography>LKR {formatNumber(params.row.advanced_payment_amount)}</Typography>
-            }
-        },
 
         {
-            field: "service", headerName: "Services", width: 300, renderCell: (params: any) => {
+            field: "service", headerName: "Services", width: 275, renderCell: (params: any) => {
                 return <Box
                     sx={{
                         display: "flex",
@@ -203,7 +216,7 @@ function CanceledAppoitments() {
         },
 
         {
-            field: 'beautician', headerName: "Beautician", filterable: false, width: 150, renderCell: (params: any) => {
+            field: 'beautician', headerName: "Beautician", filterable: false, width: 180, renderCell: (params: any) => {
                 return <Box sx={{ display: "flex", alignItems: 'center', gap: 1 }}>
                     <img style={{
                         width: 30,
@@ -212,7 +225,8 @@ function CanceledAppoitments() {
                     }} src={params.row.beautician.image ? `https://stylioo.blob.core.windows.net/images/${params.row.beautician.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
                     <Box sx={{
                         display: "flex",
-                        flexDirection: "column",
+                        gap: '5px',
+                        flexWrap: "wrap",
                     }}>
                         <Typography variant="caption">{params.row.beautician?.first_name}</Typography> <Typography variant="caption"> {params.row.beautician?.last_name}</Typography>
                     </Box>

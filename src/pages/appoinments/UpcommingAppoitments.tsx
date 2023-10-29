@@ -171,7 +171,7 @@ function UpcommingAppoitments() {
         },
 
         {
-            field: "service", headerName: "Services", width: 300, renderCell: (params: any) => {
+            field: "service", headerName: "Services", width: 275, renderCell: (params: any) => {
                 return <Box
                     sx={{
                         display: "flex",
@@ -203,7 +203,7 @@ function UpcommingAppoitments() {
         },
 
         {
-            field: 'beautician', headerName: "Beautician", filterable: false, width: 150, renderCell: (params: any) => {
+            field: 'beautician', headerName: "Beautician", filterable: false, width: 180, renderCell: (params: any) => {
                 return <Box sx={{ display: "flex", alignItems: 'center', gap: 1 }}>
                     <img style={{
                         width: 30,
@@ -212,7 +212,8 @@ function UpcommingAppoitments() {
                     }} src={params.row.beautician.image ? `https://stylioo.blob.core.windows.net/images/${params.row.beautician.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
                     <Box sx={{
                         display: "flex",
-                        flexDirection: "column",
+                        gap: '5px',
+                        flexWrap: "wrap",
                     }}>
                         <Typography variant="caption">{params.row.beautician?.first_name}</Typography> <Typography variant="caption"> {params.row.beautician?.last_name}</Typography>
                     </Box>

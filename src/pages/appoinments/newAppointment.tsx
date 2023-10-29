@@ -13,6 +13,7 @@ import noPreferenceImage from '@/assets/icons8-team-64.png'
 import axios from '@/axios'
 import Loading from '@/components/Loading'
 import { useNavigate } from 'react-router-dom'
+import useAuth from '@/hooks/useAuth'
 
 
 type serviceType = {
@@ -33,6 +34,8 @@ function NewAppointment() {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
     const navigate = useNavigate()
+
+    const currentUser = useAuth()
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -432,6 +435,7 @@ function NewAppointment() {
                 total: total,
                 advanced_payment_amount: advancedPaymentAmount,
                 sub_total: subTotal,
+                status_changed_by: currentUser.uid,
             })
             if (response.data.success) {
                 navigate('/appointments')
@@ -703,7 +707,7 @@ function NewAppointment() {
                                         <Grid container sx={{
                                             mt: 4
                                         }}>
-                                            <Grid item sm={6} lg={8} spacing={16}>
+                                            <Grid item sm={6} lg={8}>
                                                 <Box
                                                     sx={{
                                                         px: 2,

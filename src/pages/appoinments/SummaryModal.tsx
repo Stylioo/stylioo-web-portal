@@ -1,5 +1,6 @@
 import axios from '@/axios'
 import Loading from '@/components/Loading'
+import useAuth from '@/hooks/useAuth'
 import formatNumber from '@/utils/formatNumber'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Modal, Typography } from '@mui/material'
 import moment from 'moment'
@@ -11,11 +12,14 @@ function SummaryModal({ isOpenSummayModal, closeSummaryModal, selectedRow, isLoa
 
     const [isOpenDeleteDialog, setIsOpenDeleteDialog] = useState(false)
 
+    const currentUser = useAuth()
+
     const pay = async () => {
         setIsModalLoading(true)
         try {
             const res = await axios.patch(`/appointment/status/${selectedRow?.id}`, {
-                status: 'paid'
+                status: 'paid',
+                status_changed_by: currentUser.uid
             })
             if (res.data.success) {
                 closeSummaryModal()
@@ -38,7 +42,8 @@ function SummaryModal({ isOpenSummayModal, closeSummaryModal, selectedRow, isLoa
         setIsModalLoading(true)
         try {
             const res = await axios.patch(`/appointment/status/${selectedRow?.id}`, {
-                status: 'canceled'
+                status: 'canceled',
+                status_changed_by: currentUser.uid
             })
             if (res.data.success) {
                 closeSummaryModal()
@@ -136,7 +141,7 @@ function SummaryModal({ isOpenSummayModal, closeSummaryModal, selectedRow, isLoa
                     isModalLoading || isLoading ? <Loading /> :
                         <>
                             <Box>
-                                <Grid container spacing={1}
+                                <Grid container spacing={2}
                                     sx={{
                                         mt: 1
                                     }}
@@ -162,12 +167,38 @@ function SummaryModal({ isOpenSummayModal, closeSummaryModal, selectedRow, isLoa
                                         <Typography variant='caption'>Appointment Time</Typography>
                                         <Typography variant='body1' sx={{ fontWeight: '500' }}>{selectedRow?.start_time}</Typography>
                                     </Grid>
-                                    <Grid item xs={12} md={6} lg={6}>
+                                    <Grid item xs={12} md={6} lg={3}>
                                         <Typography variant='caption'>Beautician</Typography>
                                         <Typography variant='body1' sx={{ fontWeight: '500' }}>
                                             {selectedRow?.beautician === '' ? 'No Preference' : `${selectedRow?.beautician?.first_name} ${selectedRow?.beautician?.last_name}`}
                                         </Typography>
                                     </Grid>
+                                    {
+                                        selectedRow?.status === 'paid' || selectedRow?.status === 'canceled' ?
+                                            <Grid item xs={12} md={6} lg={3}>
+
+                                                <Typography variant='caption'>{selectedRow?.status === 'paid' ? "Accepted" : "Cancelled"} By</Typography>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        gap: 1,
+                                                        alignItems: 'center',
+                                                        mt: '5px'
+                                                    }}
+                                                >
+                                                    <img style={{
+                                                        width: 30,
+                                                        height: 30,
+                                                        borderRadius: "50%"
+                                                    }} src={selectedRow?.status_changed_by.image ? `https://stylioo.blob.core.windows.net/images/${selectedRow?.status_changed_by.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
+                                                    <Typography variant='body1' sx={{ fontWeight: '500' }}>
+                                                        {selectedRow?.beautician === '' ? 'No Preference' : `${selectedRow?.status_changed_by?.first_name} ${selectedRow?.status_changed_by?.last_name}`}
+                                                    </Typography>
+                                                </Box>
+                                            </Grid>
+                                            : null
+
+                                    }
                                 </Grid>
                                 <Box
                                     sx={{
