@@ -67,7 +67,7 @@ function SummaryModal({ isOpenSummayModal, closeSummaryModal, selectedRow, isLoa
                     transform: 'translate(-50%, -50%)',
                     bgcolor: 'background.paper',
                     boxShadow: 24,
-                    minHeight: 300,
+                    minHeight: 400,
                     minWidth: 1000,
                     borderRadius: 1,
                     p: 3,
