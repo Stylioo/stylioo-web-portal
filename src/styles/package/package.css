@@ -1,5 +1,6 @@
 /* Start styles here  */
 
+/* Style for primary button with green background */
 .primary-button {
     background-color: #1E8449;
     color: white;
@@ -12,6 +13,7 @@
     width: 130px;
   }
   
+  /* Container for headers with a flexible layout */
   .header_container{
     display: flex;
     justify-content: space-between;
@@ -19,38 +21,46 @@
     margin: 20px 0px 20px 0px;
   }
   
+  /* Container for search elements with a flexible layout */
   .search_container{
     display: flex;
     justify-content: space-between;
     /* margin-top: 20px; */
   }
+
+  /* Container for showing elements with gap */
   .show_container{
     display: flex;
     gap: 10px;
   }
   
+  /* Table style */
   .table {
     border-collapse: separate;
     width: 100%;
     margin-top: 20px;
   }
   
+  /* Table header and cell styles */
   .table th,.table td {
     padding: 8px; 
     border: none; 
     text-align: left; 
   }
   
+  /* Table header style with gray background and bold text */
   .table th {
     background-color: #cccccc; 
     font-weight: bold; 
   }
   
+  /* Container for names with a flexible layout */
   .name_container{
     display: flex;
     gap: 20px;
   }
   
+  /* Input box container with padding, border, and rounded corners */
   .inputbox_container{
     padding: 10px;
     border: 1px solid black;
@@ -61,7 +71,7 @@
   
   }
   
-  
+  /* Save button style */
   .save_button{
     background-color: #1E8449;
     color: white;
@@ -75,25 +85,32 @@
     margin-top: 20px;
 
   }
+
+  /* Container for positioning save button */
   .save_button_possition{
     display: flex;
     justify-content: flex-end;
   }
   
+  /* Container for closing button */
   .close_btn{
     display: flex;
     justify-content: flex-end;
   }
 
+  /* Container for buttons with space-around alignment */
   .btn_delete_edit{
     justify-content: space-around;
     text-align: center;
     
   }
+
+  /* Icon with gap margin */
   .icon-with-gap {
     margin-right: 20px; 
   }
   
+  /* Container for an introductory message with padding and background color */
   .intro_container{
     padding: 10px;
     border: none;
@@ -104,6 +121,7 @@
     margin: 20px 0px 10px 0px;
   }
 
+  /* First select box style with padding, border-radius, and width */
 .first_seelectbox{
     padding: 12px 10px;
     border-radius: 6px;
@@ -112,13 +130,14 @@
 
 }
 
+/* Container for select boxes with padding and border-radius */
 .selectbox_container{
     padding: 2px;
     border-radius: 20px;
     width: 70px;
 }
 
-
+/* Search bar style with padding, border, border-radius, and width */
 .searchbar{
     padding: 7px;
     border: 2px solid black;
@@ -127,12 +146,14 @@
     width: 20%;
 }
 
+/* Container for Yes/No buttons with center alignment and gap */
 .YesNo_button_Gap{
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
+/* Cancel button style with gray background */
 .cancel_button{
   background-color: #b9bab9;
   color: white;
@@ -145,6 +166,7 @@
   width: 130px;
 }
 
+/* Delete button style with red background */
 .delete_button{
   background-color: #9c2020;
   color: white;
@@ -156,11 +178,14 @@
   margin-top: 10px;
   width: 130px;
 }
+
+/* Container for delete button and close icon with center alignment */
  .deleteclose_icon{
   display: flex;
   justify-content: center;
  }
 
+ /* Container for edit and delete buttons with center alignment */
  .editdlt_btn{
   display: flex;
   justify-content: center;

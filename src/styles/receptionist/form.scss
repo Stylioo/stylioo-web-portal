@@ -1,5 +1,6 @@
 /* Start styles here  */
 
+/* Style for a search bar with date */
 .searchBarWithDate{
         margin-top:15px;
         display:flex;
@@ -11,6 +12,7 @@
         border-radius: 5px;
 }
 
+/* Style for other details section */
 .otherDetails{
         margin-top:3px;
         width:100%;
@@ -19,6 +21,7 @@
         border-radius: 5px;
 }
 
+/* Style for the search bar */
 .searchBar{
         width:50%;
         color:black;
@@ -28,28 +31,33 @@
 
 }
 
+/* Style for a label with date */
 .labelforDate{
         display: flex;
         justify-content:space-between;
         align-items:center;
 }
+
+/* Style for the bill date */
 .bill_date{
         margin-right:30px;
         color:#723D46;
 }
 
+/* Style for a date element */
 .date{
         margin-left:10px;
         margin-right:10px;
 }
 
+/* Style for buttons with a specific class */
 .btn-class Button{
         margin-left:10px;
         margin-right:10px;
         margin-top:30px;
 }
 
-
+/* Style for client details section */
 .clientDetails {
         display: flex; /* Use flexbox to align items in a row */
         flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
@@ -59,7 +67,8 @@
         margin-top: 15px;
         
 }
-      
+    /* Style for text field elements */
+  
 /* Optional: Style the TextField element */
 .TextField {
         width: 100%; /* Optional: Make the text field occupy the entire available width */
@@ -68,6 +77,7 @@
         border-radius: 4px;
 }
 
+/* Style for charges section */
 .charges{
         display: flex;
         justify-content:space-between;
@@ -76,14 +86,17 @@
         margin-top: 25px;
 }
 
+/* Style for text fields within charges */
 .charges TextField{
         width: 50%;
 }
 
+/* Style for discount type */
 .discountType{
         padding:10px;
 }
 
+/* Style for a table */
 .table{
         margin-top: 50px;
         width: 40%;
@@ -91,16 +104,19 @@
         display: table;
 }
 
+/* Style for buttons with a specific class */
 .btn-class2{
         float: right;
         margin-bottom:30px;
 }
 
+/* Style for buttons within btn-class2 */
 .btn-class2 Button{
         margin-right:10px;
         margin-top:50px;
 }
 
+/* Style for the Apply button on hover */
 .btn-class2 {
         display: flex;
         gap: 10px;
@@ -124,30 +140,34 @@
         box-shadow: 0 4px 12px rgba(255, 64, 129, 0.2);
       }
 
+/* Style for a specific element with ID */
 #outlined-adornment-amount{
         text-align: right;
 }
 
+/* Style for amount details with margin-right */
 .amoutnDetails{
         margin-right:50px;
 }
 
-
+/* Style for search element */
 .Search{
         margin-right: -250px;
 }
 
-
+/* Style for a label for client name */
 .client_name_label{
         margin-left: 10px;
         margin-top:5px;
 }
 
+/* Style for a label for contact number */
 .contactNoLable{
         margin-left: -20px;
         margin-top:5px;
 }
 
+/* Style for dates section */
 .dates{
         display: flex;
         justify-content:space-between;
