@@ -208,7 +208,9 @@ const Services = () => {
   // }
 
   const searchService = async (searchTerm: string) => {
+    // searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     setIsLoading(true);
+    // let loop = "abc";
     setSearchTerm(searchTerm)
     if (searchTerm === '') {
       fetchServices()
@@ -217,8 +219,17 @@ const Services = () => {
     try {
       const res = await axios.get(`/service/search?term=${searchTerm}`)
       console.log(res.data);
-      setSaerchServices(res.data.data);
+      // loop = res.data.error;
+      // console.log(res.data.error)
+      // // setSaerchServices(res.data.data);
+      // if(loop === "No Services found"){
+      //   // loop =  true;
+      //   while(7){
+      //     setIsLoading(true);
+      //   }
+      // }
       setServices(res.data.data);
+
 
     } catch (error) {
       console.error("Error occurred while fetching data:", error);

@@ -112,13 +112,6 @@ const dataset = [
 const valueFormatter = (value: number) => `${value}`;
 
 
-
-
-
-
-
-
-
 const chartSetting2 = {
   yAxis: [
     {
@@ -225,7 +218,7 @@ const DashBoard = () => {
 
   return (
     <div>
-    <h2>Dashboard</h2>
+    <h1>Dashboard</h1>
     <hr style={{marginBottom: '10px'}}></hr>
       {/* <Grid container spacing={4}> */}
 
