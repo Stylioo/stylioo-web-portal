@@ -4,17 +4,23 @@ import TextArea from "../../components/TextArea"
 import Loading from "../../components/Loading"
 import axios from "../../axios"
 
+// Define the prop types for the AddNewProductModal component
+
 type AddNewProductModalPropsType = {
-    open: boolean
-    handleClose: () => void
-    refetch: () => void
-    handleSankbarShow: (msg: SnakbarAlertMessage) => void
+    open: boolean // Whether the modal is open or not
+    handleClose: () => void // Function to close the modal
+    refetch: () => void // Function to refetch data
+    handleSankbarShow: (msg: SnakbarAlertMessage) => void // Function to display a snackbar alert message
 }
+
+// Define the data structure for the snackbar alert message
 
 type SnakbarAlertMessage = {
     type: AlertColor,
     message: string
 }
+
+// Define the AddNewProductModal component
 
 function AddNewProductModal({ open, handleClose, handleSankbarShow, refetch }: AddNewProductModalPropsType) {
     const style = {
@@ -30,18 +36,31 @@ function AddNewProductModal({ open, handleClose, handleSankbarShow, refetch }: A
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+        // Initialize the data state to store form input values
+
     const [data, setData] = useState({ name: '', brand: '', low_stock_quantity: '', category: '', type: '', volume: '', volume_unit: '', description: '' })
+   
+        // Handle changes in form input fields
+
     const handleDataInput = (e: any) => {
         const { name, value } = e.target
         setData({ ...data, [name]: value })
     }
 
+        // Handle the "Cancel" button click
+
     const handleCancel = () => {
+                // Clear the form data and close the modal
+
         setData({ name: '', brand: '', low_stock_quantity: '', category: '', type: '', volume: '', volume_unit: '', description: '', })
         handleClose()
     }
 
+        // Handle the "Add" button click
+
     const handleSave = async () => {
+                // Validate the form data
+
         if (!data.name || !data.category || !data.brand || !data.low_stock_quantity || !data.type || !data.volume || !data.volume_unit) {
             handleSankbarShow({
                 type: "error",
@@ -52,9 +71,13 @@ function AddNewProductModal({ open, handleClose, handleSankbarShow, refetch }: A
 
         setIsLoading(true)
         try {
+                        // Send a POST request to add a new product
+
             const res = await axios.post('/product', data)
             if (res.data.success) {
                 console.log("added", res.data);
+                                // Product added successfully
+
                 handleCancel()
                 refetch()
                 handleSankbarShow({

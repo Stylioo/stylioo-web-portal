@@ -1,9 +1,12 @@
+// Import necessary modules and dependencies.
 import React, { useState } from 'react'
 import "../../styles/addEmployee/addEmployee.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+// Define the AddEmployee component.
 function AddEmployee() {
+    // Define state variables to manage form input values.
     const [firstNameValue, setfirstNameValue] = useState("")
     const [secondNameValue, setsecondNameValue] = useState("")
     const [contactValue, setcontactValue] = useState("")
@@ -15,9 +18,11 @@ function AddEmployee() {
     const [joindateValue, setjoindateValue] = useState("")
     const [genderValue, setgenderValue] = useState("")
     const [roleValue, setroleValue] = useState("")
+    // Use the useNavigate hook from react-router to navigate between pages.
 
     const navigate = useNavigate()
 
+    // Define a function to handle adding a new employee.
 
     const handleAddNewEmployee = async () => {
         if (firstNameValue === "" || secondNameValue === "" || contactValue === "" || emailValue === "" || joindateValue === "" || genderValue === "" || roleValue === "") {
@@ -27,6 +32,7 @@ function AddEmployee() {
 
         try {
             console.log("clicked");
+            // Make a POST request to the server to add a new employee.
 
             const response = await axios.post("http://localhost:5400/employee", {
                 email: emailValue,
@@ -61,6 +67,8 @@ function AddEmployee() {
             <hr></hr>
 
             <p style={{ textAlign: 'left', marginBottom: '10px', fontSize: '20px', margin: '20px 0px 20px 0px' }}>Details : </p>
+                           {/* Input fields for first name and last name. */}
+
             <div className="name_container">
                 <div className='div_container'>
                     <p>First Name: </p>
@@ -93,6 +101,8 @@ function AddEmployee() {
 
 
             <div className="name_container">
+                                {/* Input fields for contact number and email. */}
+
                 <div className='div_container'>
                     <p style={{ marginTop: '10px' }}>Contact Number: </p>
 

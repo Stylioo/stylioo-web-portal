@@ -19,6 +19,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } 
 import { FormLabel } from '@mui/material';
 import "../../styles/receptionist/form.scss";
 
+// Define the columns for the data grid
 const columns: GridColDef[] = [
   // { field: 'id', headerName: 'id', width: 10},
   { field: 'Name', headerName: 'Name', width: 130 },
@@ -30,17 +31,20 @@ const columns: GridColDef[] = [
   { field: 'Status', headerName: 'Status', width: 100 },
   { field: 'Date', headerName: 'Date', width: 100 },
   { field: 'CancelledReason', headerName: 'Cancelled Reason', width: 130 },
+  // Add a column for options (Edit, Delete, View Details)
 
   {
     field: 'Options',
     headerName: 'Options',
     width: 130,
     renderCell: (params) => {
+      // Initialize state for the menu anchor
       const [anchorEl, setAnchorEl] = useState(null);
-
+      // Open the menu when an option is clicked
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
       };
+      // Close the menu
 
       const handleClose = () => {
         setAnchorEl(null);
@@ -83,6 +87,7 @@ const columns: GridColDef[] = [
   },
 ];
 
+// Sample data rows
 
 const rows = [
   {  
@@ -108,6 +113,7 @@ const rows = [
 //   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
+// Define a function for rendering tab panels
 
 
 interface TabPanelProps {
@@ -138,6 +144,7 @@ function CustomTabPanel(props: TabPanelProps) {
     </div>
   );
 }
+// Define a function for setting accessibility properties
 
 function a11yProps(index: number) {
   return {
@@ -146,6 +153,7 @@ function a11yProps(index: number) {
   };
 }
 
+// Define the main component for the appointment page
 export default function AppoinmentPage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
@@ -153,7 +161,7 @@ export default function AppoinmentPage() {
   // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
   //   setValue(newValue);
   // };
-
+  // Define the handleChange function for tab switching
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -165,7 +173,7 @@ export default function AppoinmentPage() {
   const handleClose = () => {
     setOpen(false);
   };
-
+  // Define a function for handling form submission
   const handleSubmit = () => {
     // Handle form submission here
     // You can access form data using state or useRef

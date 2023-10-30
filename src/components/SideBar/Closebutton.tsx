@@ -1,3 +1,5 @@
+// Define a functional component named Closebutton
+
 const Closebutton = () => {
     return (
         <svg
@@ -16,5 +18,7 @@ const Closebutton = () => {
     </svg>
     )
   }
+  
+  // Export the Closebutton component for use in other parts of the application
   
   export default Closebutton

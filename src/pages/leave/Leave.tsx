@@ -11,6 +11,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+// Helper function to create data for the table rows
+
 function createData(
   name: string,
   calories: string,
@@ -21,6 +23,7 @@ function createData(
   return { name, calories, fat, carbs, protein };
 }
 
+// Sample data for the table rows
 const rows = [
   createData('Frozen yoghurt', '2023/03/23', 'bgv', 'hvgh', 'hfh'),
 //   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
@@ -29,12 +32,14 @@ const rows = [
 //   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
+// Define the props for the tab panel
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
 
+// Custom TabPanel component
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -55,6 +60,7 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
+// Helper function to provide accessibility properties for tabs
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -62,9 +68,11 @@ function a11yProps(index: number) {
   };
 }
 
+// Leave component
 function Leave() {
   const [value, setValue] = React.useState(0);
 
+// Handle tab change
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

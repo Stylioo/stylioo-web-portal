@@ -22,6 +22,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Link } from 'react-router-dom';
 
+// Define columns for the DataGrid
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -37,6 +38,8 @@ const columns: GridColDef[] = [
     field: 'Options',
     headerName: 'Options',
     width: 130,
+        // Custom rendering for the "Options" column
+
     renderCell: (params) => {
       const [anchorEl, setAnchorEl] = useState(null);
 
@@ -84,6 +87,7 @@ const columns: GridColDef[] = [
   },
 ];
 
+// Sample data for the DataGrid
 
 const rows = [
   {
@@ -108,6 +112,7 @@ const rows = [
 ];
 
 
+// Define the TabPanel component
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -115,6 +120,7 @@ interface TabPanelProps {
   value: number;
 }
 
+// Function to generate accessibility properties for tabs
 
 function CustomTabPanel(props: TabPanelProps) {
 
@@ -145,8 +151,12 @@ function a11yProps(index: number) {
   };
 }
 
+// Define the ReceptionistPage component
+
 export default function ReceptionistPage() {
+  // State for controlling selected tab
   const [value, setValue] = React.useState(0);
+  // State for controlling the dialog's open/close
   const [open, setOpen] = React.useState(false);
 
   // const handleChange = (event: React.SyntheticEvent, newValue: number) => {

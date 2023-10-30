@@ -1,3 +1,4 @@
+// Import necessary modules and dependencies.
 import * as React from 'react';
 import { useState } from 'react';
 import '../../styles/receptionist/index.scss';
@@ -23,7 +24,9 @@ import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mu
 import { Select, InputLabel } from '@mui/material';
 import "../../styles/receptionist/form.scss";
 
+// Define the columns for the data grid
 const columns: GridColDef[] = [
+    // Define more fields as per your requirements
   { field: 'id', headerName: 'id', width: 10},
   { field: 'Name', headerName: 'Name', width: 130 },
   { field: 'Address', headerName: 'Address', width: 100 },
@@ -39,6 +42,7 @@ const columns: GridColDef[] = [
     headerName: 'Options',
     width: 130,
     renderCell: (params) => {
+    // Define functions and components for cell rendering
       const [anchorEl, setAnchorEl] = useState(null);
 
       const handleClick = (event) => {
@@ -87,7 +91,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// Sample data rows for the data grid
 const rows = [
   {  
     id: 1,
@@ -100,6 +104,7 @@ const rows = [
     TotalVisit: '5',
     Status: 'Active'
  },
+  // Define more fields as per your requirements
 
 //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
 //   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
@@ -112,6 +117,7 @@ const rows = [
 ];
 
 
+// Define TabPanelProps interface
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -119,9 +125,9 @@ interface TabPanelProps {
   value: number;
 }
 
-
+// Define a component for custom tab panels
 function CustomTabPanel(props: TabPanelProps) {
-  
+    // Component code for custom tab panels
   const { children, value, index, ...other } = props;
   
   
@@ -142,6 +148,7 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
+// Define function for generating props for accessibility (a11y)
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -150,6 +157,7 @@ function a11yProps(index: number) {
 }
 
 export default function ClientPage() {
+    // Define handleChange function and other related functions
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 

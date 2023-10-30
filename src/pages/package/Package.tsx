@@ -10,6 +10,8 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 
 
 const Package = () => {
+    // State variables for managing input fields and modals
+
     const [ searchValue, setSearchValue] = useState("");
     const [selectedValue, setSelectedValue] = useState("10");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -26,6 +28,7 @@ const Package = () => {
     const [selecteddayValue, setSelectedDayValue] = useState("Choose Services");
 
 
+  // Define functions for opening and closing other modals
 
     const openPopup = () => {
         setIsPopupOpen(true);

@@ -28,7 +28,7 @@ type AddStockPropType = {
 }
 
 function AddStock({ setSupplierModal, productId, refetch, handleModalClose, handleSankbarShow }: AddStockPropType) {
-
+    // Form input values
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [supplierList, setSupplierList] = useState<SupplierList[]>([])
@@ -40,6 +40,7 @@ function AddStock({ setSupplierModal, productId, refetch, handleModalClose, hand
     const [manufacturerDate, setManufacturerDate] = useState<Date | null>()
     const [expiryDate, setExpiryDate] = useState<Date | null>()
 
+        // Handle modal close
     const handleClose = () => {
         handleModalClose()
         setUnitPrice(0)
@@ -47,7 +48,7 @@ function AddStock({ setSupplierModal, productId, refetch, handleModalClose, hand
         setManufacturerDate(null)
         setExpiryDate(null)
     }
-
+    // Handle save action
     const handleSave = async () => {
         try {
             setIsLoading(true)
@@ -96,6 +97,7 @@ function AddStock({ setSupplierModal, productId, refetch, handleModalClose, hand
         }
     }
 
+        // Fetch the list of suppliers
     const getAllSupplierList = async () => {
         try {
             setIsLoading(true)
@@ -116,6 +118,7 @@ function AddStock({ setSupplierModal, productId, refetch, handleModalClose, hand
         }
     }
 
+        // Fetch suppliers on component mount
     useEffect(() => {
         getAllSupplierList()
     }, [])

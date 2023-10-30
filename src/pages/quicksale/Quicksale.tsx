@@ -1,10 +1,19 @@
+// Import the useState hook from React
 import { useState } from 'react';
+
+// Import the DatePicker component
 import DatePicker from 'react-datepicker';
+
+// Import the DatePicker component's styles
 import 'react-datepicker/dist/react-datepicker.css';
+
+// Import the custom styles for your component
 import "../../styles/quicksale/quicksale.css";
 
 const Quicksale = () => {
   // set values 
+    // Define and initialize state variables
+
     const [ searchValue, setSearchValue] = useState("");
     const [ calanderValue, setCalanderValue] = useState(new Date());
     return (

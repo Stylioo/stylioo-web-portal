@@ -1,3 +1,5 @@
+// Import necessary modules and dependencies.
+
 import TextArea from '@/components/TextArea'
 import { serviceCategories } from '@/constants/services'
 import { Add, ArrowBackIos, ArrowBackIosNew, ArrowForwardIos, CalendarTodayOutlined, Close, Search } from '@mui/icons-material'

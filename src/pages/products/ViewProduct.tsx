@@ -12,15 +12,18 @@ import AddStockModal from "./AddStockModal"
 import SnakbarAlert from "../../components/SnakbarAlert"
 import CustomNoRowsOverlay from '../../components/NoData'
 
+// Define a type for snack bar alert messages
+
 type SnakbarAlertMessage = {
     type: AlertColor,
     message: string
 }
 
+// ViewProduct component
 
 function ViewProduct() {
     const theme = useTheme()
-
+    // Get parameters from the URL using useParams
     const params = useParams()
 
     // this page data
@@ -39,12 +42,14 @@ function ViewProduct() {
     const [editVolume, setEditVolume] = useState<GLfloat>(0)
     const [editVolumeUnits, setEditVolumeUnits] = useState<string>('')
 
+        // Enable/disable edit mode
     const [enableChangeDetails, setEnableChangeDetails] = useState<boolean>(false)
     const handleEditCancel = () => {
         setEnableChangeDetails(false)
         getProductById()
     }
 
+        // Cancel edit mode and revert changes
     const handleEdit = () => {
         console.log(editProductName, editBrand, editLowStockLevel);
 
@@ -54,6 +59,7 @@ function ViewProduct() {
     const [openSnakbar, setOpenSnakbar] = useState<boolean>(false)
     const [snakbarAlertMessage, setSnakbarAlertMessage] = useState<SnakbarAlertMessage>({ type: 'success', message: 'This is a test message' })
 
+        // Function to close the snack bar alert
     const handleSnakbarClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
             return;
@@ -61,6 +67,7 @@ function ViewProduct() {
         setOpenSnakbar(false);
     };
 
+        // Function to show a snack bar alert
     const handleSankbarShow = (alertMessage: SnakbarAlertMessage) => {
         setSnakbarAlertMessage(alertMessage);
         setOpenSnakbar(true);
@@ -69,9 +76,11 @@ function ViewProduct() {
 
     // add stock modal
     const [addStockModalOpen, setAddStockModalOpen] = useState<boolean>(false)
+        // Function to open the add stock modal
     const handleAddStockModelClose = () => {
         setAddStockModalOpen(false)
     }
+        // Function to close the add stock modal
     const handleAddStockModelOpen = (row: any) => {
         console.log("test");
         setAddStockModalOpen(true)
@@ -86,6 +95,8 @@ function ViewProduct() {
         console.info(res.data.data)
         setIsloading(false)
     }
+
+        // Use useEffect to fetch data when the component mounts
 
     useEffect(() => {
         getProductById()
@@ -102,6 +113,8 @@ function ViewProduct() {
         { field: "quantity", headerName: "Quantity", width: 170 },
         { field: "unit_price", headerName: "Unit Price", width: 170, renderCell: (params: any) => { return <p> <span className="lkr">LKR</span>{parseFloat(params.row.unit_price).toFixed(2)}</p> } },
     ], [])
+
+        // Calculate the total items in stock
 
     const totalItemsInStock = product?.stock?.reduce((acc: number, curr: any) => acc + curr.quantity, 0)
 

@@ -1,4 +1,6 @@
 
+    // Importing necessary dependencies and components
+
 import { ChangeEvent, useEffect, useState, MouseEvent, useMemo } from 'react';
 import axios from '../../axios';
 
@@ -9,6 +11,8 @@ import { useNavigate } from "react-router-dom"
 import { Box, Button, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, TextField, useMediaQuery, useTheme } from '@mui/material';
 import { Add, Delete, Edit, MoreVert, Search } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
+
+// Define the structure of an employee
 
 type employeeType = {
   address_line_1?: string,
@@ -26,12 +30,16 @@ type employeeType = {
   uid: string
 }
 
+// Define the properties for the option menu
+
 type menuPropsType = {
   anchorEl: HTMLElement | null
   open: boolean
   handleClose: () => void
   employeeId: string
 }
+
+// OptionMenu component for employee actions
 
 function OptionMenu({ anchorEl, open, handleClose, employeeId }: menuPropsType) {
   return (
@@ -61,6 +69,7 @@ function OptionMenu({ anchorEl, open, handleClose, employeeId }: menuPropsType) 
     </>
   );
 }
+// Staff component for displaying staff details
 
 function Staff() {
 
@@ -85,6 +94,10 @@ function Staff() {
     setAnchorEl(event.currentTarget);
     setSelectedRow(row)
   };
+      // Handle the click event for the option menu
+
+          // Handle the closing of the option menu
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -102,6 +115,7 @@ function Staff() {
 
   // input validation
   const handleSearchInput = (value: string) => {
+            // Escape special characters in the search term
     value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     setSearchTerm(value)
     if (value === '') {
@@ -109,11 +123,14 @@ function Staff() {
     }
   }
 
+      // Handle Enter key press for searching
   const handleEnterKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       getEmployees()
     }
   }
+
+      // Fetch all employees
 
   const getEmployees = async () => {
     try {
@@ -132,12 +149,16 @@ function Staff() {
     }
   }
 
+      // Search for employees with a specific term
+
   const searchEmployee = async () => {
     setIsLoading(true)
     const res = await axios.get(`/employee?term=${searchTerm}&quantityOnly=true`)
     setEmployees(res.data.data)
     setIsLoading(false)
   }
+
+      // Fetch employees when the component mounts
 
   useEffect(() => {
     getEmployees()
@@ -146,6 +167,8 @@ function Staff() {
 
   const cols = useMemo(() => [
     {
+              // Define columns for the data grid
+
       field: 'image', filterable: false, headerName: 'Employee', width: 76, renderCell: (params: any) => {
         return <div className="table-row-img-icon"><img src={`https://stylioo.blob.core.windows.net/images/${params.row.image}`} alt="" className="product-image" /></div>
       }

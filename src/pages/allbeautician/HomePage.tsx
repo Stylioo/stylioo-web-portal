@@ -10,6 +10,7 @@
 
 // display all beauticians in a card view 
 
+// Import necessary modules and dependencies.
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -22,6 +23,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// Function to display copyright information.
 
 
 function Copyright() {
@@ -36,12 +39,13 @@ function Copyright() {
     </Typography>
   );
 }
-
+// Create an array of cards (in this case, card placeholders).
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+// Define the AllBeauticianPage component.
  function AllBeauticianPage() {
   return (
     <ThemeProvider theme={defaultTheme}>

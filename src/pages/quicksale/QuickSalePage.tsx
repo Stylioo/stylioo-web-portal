@@ -17,6 +17,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Link } from 'react-router-dom'; 
 import QuickSaleForm from './QuickSaleForm';
 
+// Function to create a data row for the table
 
 const columns: GridColDef[] = [
 
@@ -81,7 +82,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// create sample data
 const rows = [
   { 
   id:1,

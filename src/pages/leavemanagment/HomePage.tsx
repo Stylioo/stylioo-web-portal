@@ -28,7 +28,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { useEffect } from 'react';
 
-
+// Define columns for the DataGrid
 const columns: GridColDef[] = [
   // { field: 'id', headerName: 'id', width: 10},
   { field: 'Position', headerName: 'Position', width: 100 },
@@ -95,6 +95,7 @@ const columns: GridColDef[] = [
   },
 ];
 
+// Mock data for the table
 
 const rows = [
   {  
@@ -120,6 +121,7 @@ const rows = [
 //   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
+// Function to create balance data rows
 
 function createData(
   name: string,
@@ -129,6 +131,8 @@ function createData(
 ) {
   return { name, Used, Available, Allowance };
 }
+
+// Mock data for the balance table
 
 const tablerows = [
   createData('Vacation', 15, 6, 4),

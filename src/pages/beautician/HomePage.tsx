@@ -1,3 +1,6 @@
+// Import necessary modules and dependencies.
+// import styles files
+
 import '../../styles/beautician/index.scss'
 import React from 'react';
 import { Grid } from '@mui/material';
@@ -15,11 +18,13 @@ import { Box, Tab, Tabs } from '@mui/material';
 import { Button, ButtonGroup } from '@mui/material';
 
 
+// Define an interface for ExpandMore button props.
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
 
+// Define and style the ExpandMore button.
 const ExpandMore = styled((props: ExpandMoreProps) => {
         const { expand, ...other } = props;
         return <IconButton {...other} />;
@@ -32,16 +37,20 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
       }));
 
 
+// Define a functional component called BeauticianPage.
 
 const BeauticianPage = () => {
+   // Define and initialize the 'expanded' state.
         const [expanded, setExpanded] = React.useState(false);
-
+// Define and initialize the 'tabValue' state.
         const [tabValue, setTabValue] = React.useState(0);
-
+        
+  // Define a function to handle tab change.
         const handleTabChange = (event, newValue) => {
           setTabValue(newValue);
         };
 
+  // Define a function to handle the expand/collapse action.
         const handleExpandClick = () => {
         setExpanded(!expanded);     
         };
