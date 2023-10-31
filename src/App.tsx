@@ -20,7 +20,6 @@ import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
 
-
 function App() {
 
   return (

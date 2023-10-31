@@ -1,6 +1,6 @@
 
 import { ChangeEvent, useEffect, useState, MouseEvent, useMemo } from 'react';
-import axios from '../../axios';
+import axios from '@/axios';
 
 import LoadingOverlay from '../../components/Loading'
 import CustomNoRowsOverlay from '../../components/NoData'
@@ -31,9 +31,11 @@ type menuPropsType = {
   open: boolean
   handleClose: () => void
   employeeId: string
+  deleteEmployee: (id: string) => void
 }
 
-function OptionMenu({ anchorEl, open, handleClose, employeeId }: menuPropsType) {
+function OptionMenu({ anchorEl, open, handleClose, employeeId, deleteEmployee }: menuPropsType) {
+
   return (
     <>
       <Menu
@@ -51,7 +53,9 @@ function OptionMenu({ anchorEl, open, handleClose, employeeId }: menuPropsType) 
           </ListItemIcon>
           <ListItemText>Edit</ListItemText>
         </MenuItem>
-        <MenuItem>
+        <MenuItem
+          onClick={() => deleteEmployee(employeeId)}
+        >
           <ListItemIcon>
             <Delete fontSize="small" />
           </ListItemIcon>
@@ -84,6 +88,7 @@ function Staff() {
   const handleClick = (event: MouseEvent<HTMLButtonElement>, row: any) => {
     setAnchorEl(event.currentTarget);
     setSelectedRow(row)
+    setEmployeeId(row.id)
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -139,9 +144,28 @@ function Staff() {
     setIsLoading(false)
   }
 
+  const deleteEmployee = async (id: string) => {
+    try {
+      setIsLoading(true)
+      setAnchorEl(null);
+      const res = await axios.delete(`/employee/${id}`)
+      if (res.data.success) {
+        console.log(res.data.message);
+        getEmployees()
+      }
+
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   useEffect(() => {
     getEmployees()
   }, [])
+
+
 
 
   const cols = useMemo(() => [
@@ -174,7 +198,9 @@ function Staff() {
         anchorEl={anchorEl}
         open={open}
         handleClose={handleClose}
-        employeeId={employeeId} />
+        employeeId={employeeId}
+        deleteEmployee={deleteEmployee}
+      />
       <Box className="page-header flex flex-between">
         <div className="flex gap-1">
           <TextField
