@@ -19,8 +19,6 @@ import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
-import AllBeauticianPage from "./pages/allbeautician/HomePage"
-import Dashboard from "./pages/dashboard/HomePage"
 
 
 function App() {
@@ -58,6 +56,8 @@ function App() {
                 <Route path="products" element={<Products />} />
                 <Route path="products/new" element={<AddProducts />} />
                 <Route path="products/:id" element={<ViewProducts />} />
+                <Route path="insights" element={<Insights/>} />
+
               </Route>
 
             </Route>
