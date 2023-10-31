@@ -19,10 +19,6 @@ import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
-import AllBeauticianPage from "./pages/allbeautician/HomePage"
-import Dashboard from "./pages/dashboard/HomePage"
-import Insights from "./pages/insights/Insights"
-
 
 function App() {
 

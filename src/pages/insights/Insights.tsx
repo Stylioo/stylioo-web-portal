@@ -106,6 +106,44 @@ const Insights = () => {
             </h2>
             <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>4</h1>
           </div>
+      }}
+    >
+      <div style={{display: "flex", flexDirection: "row"}}>
+        <div
+          style={{
+            border: "1px solid rgba(0, 0, 0, 0.3)",
+            borderRadius: "10px",
+            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
+            padding: "15px",
+            margin: "15px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "300px",
+            height: "210px",
+          }}
+        >
+          <h2 style={{ color: "#007BFF", textAlign: "center" }}>Available Employees Count</h2>
+          <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>10</h1>
+        </div>
+        <div
+          style={{
+            border: "1px solid rgba(0, 0, 0, 0.3)",
+            borderRadius: "10px",
+            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)",
+            padding: "15px",
+            margin: "15px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "300px",
+            height: "210px",
+          }}
+        >
+          <h2 style={{ color: "#007BFF", textAlign: "center" }}>Absent Employees Count</h2>
+          <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>4</h1>
         </div>
       </div>
       <div
@@ -174,7 +212,9 @@ const Insights = () => {
             <LinePlot />
             <ChartsXAxis axisId="quarters" label="Dates" labelFontSize={18} />
             <ChartsYAxis axisId="quantities" label="# in Rupees" />
+
             {/* <ChartsYAxis axisId="money" position="right" label="revenue" /> */}
+            <ChartsYAxis axisId="money" position="right" label="revenue" />
           </ResponsiveChartContainer>
         </Box>
       </div>
@@ -249,6 +289,8 @@ const Insights = () => {
             />
             <ChartsYAxis axisId="quantities" label="# Appoinment count" />
             {/* <ChartsYAxis axisId="money" position="right" label="revenue" /> */}
+            <ChartsYAxis axisId="money" position="right" label="revenue" />
+
           </ResponsiveChartContainer>
         </Box>
       </div>
