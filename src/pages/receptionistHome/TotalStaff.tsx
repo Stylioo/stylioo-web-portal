@@ -32,7 +32,7 @@ export default function TotalStaff() {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success',
+              backgroundColor: '#a509a2',
               height: 56,
               width: 56
             }}

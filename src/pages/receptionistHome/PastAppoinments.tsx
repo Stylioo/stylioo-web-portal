@@ -32,7 +32,7 @@ export default function PastAppoinment() {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success',
+              backgroundColor: '#f07a6d',
               height: 56,
               width: 56
             }}

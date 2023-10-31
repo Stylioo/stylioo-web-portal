@@ -32,7 +32,7 @@ export default function TotalCustomers() {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success',
+              backgroundColor: '#4dc82e',
               height: 56,
               width: 56
             }}

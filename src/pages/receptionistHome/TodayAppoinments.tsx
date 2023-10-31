@@ -32,13 +32,13 @@ export default function TodayAppoinment() {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success',
+              backgroundColor: 'primary.light',
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <TodayRounded />
+              <TodayRounded/>
             </SvgIcon>
           </Avatar>
         </Stack>
