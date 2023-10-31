@@ -44,7 +44,7 @@ function Copyright(props: any) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Stylioo
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -267,12 +267,12 @@ export default function ReceptionistInsigntsPage() {
         {/* appoinments overview */}
         <Grid item xs={12} md={4} lg={6}>
                 <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 300,
-                  }}
+                  // sx={{
+                  //   p: 2,
+                  //   display: 'flex',
+                  //   flexDirection: 'column',
+                  //   height: 300,
+                  // }}
                 >
                   <AppointmentOverview />
                 </Paper>
@@ -280,13 +280,14 @@ export default function ReceptionistInsigntsPage() {
         
            {/* staff overview */}
            <Grid item xs={12} md={4} lg={6}>
+           <title>Staff Overview</title>
                 <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 300,
-                  }}
+                  // sx={{
+                  //   p: 2,
+                  //   display: 'flex',
+                  //   flexDirection: 'column',
+                  //   height: 390,
+                  // }}
                 >
                   <StaffOverview />
                 </Paper>

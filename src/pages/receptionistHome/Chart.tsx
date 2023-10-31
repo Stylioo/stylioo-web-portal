@@ -11,13 +11,13 @@ function createData(time: string, amount?: number) {
 // add time to the data and change the data to the following format
 const data = [
   createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
+  createData('03:00', 5000),
+  createData('06:00', 10000),
+  createData('09:00', 15000),
+  createData('12:00', 20000),
+  createData('15:00', 25000),
+  createData('18:00', 30000),
+  createData('21:00', 35000),
   createData('24:00', undefined),
 ];
 
@@ -55,7 +55,7 @@ export default function Chart() {
                 ...theme.typography.body1,
               }}
             >
-              Sales ($)
+              Sales (LKR)
             </Label>
           </YAxis>
           <Line
