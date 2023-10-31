@@ -1061,8 +1061,8 @@ function NewAppointment() {
                                             services?.map((service: any, index: number) => (
                                                 <div key={index} className="service-box">
                                                     <input type="checkbox" id={service.id} className="hiddenCheckbox select-service-checkbox"
+                                                    checked={selectedServices.some(selectedService => selectedService.id === service.id)}
                                                         onChange={handleServiceOnChange}
-                                                        checked={selectedServices.some(selectedService => selectedService.id === service.id)}
                                                     />
                                                     <label htmlFor={service.id} className="select-service-label">
                                                         <p className="service-name">{service.name}</p>

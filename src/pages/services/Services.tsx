@@ -12,6 +12,7 @@ import CardContent from '@mui/material/CardContent';
 
 import axios from '../../axios'
 import Loading from '../../components/Loading';
+import { covertMinToHMin } from '@/utils/covertMinToHMin';
 
 type servicesType = {
   id: string;
@@ -172,7 +173,7 @@ const Services = () => {
         name: Name,
         description: Description,
         price: parseFloat(Price),
-        duration: duration,
+        duration: parseInt(duration),
         status: "active",
         // selectedOptions: selectedOptions
       })
@@ -295,7 +296,7 @@ const Services = () => {
                     <td>{service.category}</td>
                     <td style={{ maxWidth: '250px' }}>{service.description}</td>
                     <td>LKR {service.price}</td>
-                    <td>{service.duration} hr</td>
+                    <td>{covertMinToHMin(parseInt(service.duration))}</td>
                     <td>
                       <div className="btn_delete_edit">
                         <  FaRegEdit size={20} onClick={closePopup} className="icon-with-gap" />
@@ -368,146 +369,32 @@ const Services = () => {
               placeholder="Price"
               className="inputbox_container"
             />
-            <select value={duration}
+            <select
               onChange={(e) => {
                 setDuration(e.target.value);
               }}
               className="first_seelectbox">
               <option value="">Duration</option>
-              <option value="00.10">00.10</option>
-              <option value="00.15">00.15</option>
-              <option value="00.20">00.20</option>
-              <option value="00.25">00.25</option>
-              <option value="00.30">00.30</option>
-              <option value="00.35">00.35</option>
-              <option value="00.40">00.40</option>
-              <option value="00.45">00.45</option>
-              <option value="00.50">00.50</option>
-              <option value="00.55">00.55</option>
-              <option value="01.00">01.00</option>
-              <option value="01.05">01.05</option>
-              <option value="01.10">01.10</option>
-              <option value="01.15">01.15</option>
-              <option value="01.20">01.20</option>
-              <option value="01.25">01.25</option>
-              <option value="01.30">01.30</option>
-              <option value="01.35">01.35</option>
-              <option value="01.40">01.40</option>
-              <option value="01.45">01.45</option>
-              <option value="01.50">01.50</option>
-              <option value="01.55">01.55</option>
-              <option value="02.00">02.00</option>
-              <option value="02.05">02.05</option>
-              <option value="02.10">02.10</option>
-              <option value="02.15">02.15</option>
-              <option value="02.20">02.20</option>
-              <option value="02.25">02.25</option>
-              <option value="02.30">02.30</option>
-              <option value="option2">02.35</option>
-              <option value="option1">02.40</option>
-              <option value="option2">02.45</option>
-              <option value="option1">02.50</option>
-              <option value="option2">02.55</option>
-              <option value="option1">03.00</option>
-              <option value="option2">03.05</option>
-              <option value="option1">03.10</option>
-              <option value="option2">03.15</option>
-              <option value="option1">03.20</option>
-              <option value="option2">03.25</option>
-              <option value="option1">03.30</option>
-              <option value="option2">03.35</option>
-              <option value="option1">03.40</option>
-              <option value="option2">03.45</option>
-              <option value="option1">03.50</option>
-              <option value="option2">03.55</option>
-              <option value="option1">04.00</option>
-              <option value="option1">04.00</option>
-              <option value="option2">04.05</option>
-              <option value="option1">04.10</option>
-              <option value="option2">04.15</option>
-              <option value="option1">04.20</option>
-              <option value="option2">04.25</option>
-              <option value="option1">04.30</option>
-              <option value="option2">04.35</option>
-              <option value="option1">04.40</option>
-              <option value="option2">04.45</option>
-              <option value="option1">04.50</option>
-              <option value="option2">04.55</option>
-              <option value="option1">05.00</option>
-              <option value="option2">05.05</option>
-              <option value="option1">05.10</option>
-              <option value="option2">05.15</option>
-              <option value="option1">05.20</option>
-              <option value="option2">05.25</option>
-              <option value="option1">05.30</option>
-              <option value="option2">05.35</option>
-              <option value="option1">05.40</option>
-              <option value="option2">05.45</option>
-              <option value="option1">05.50</option>
-              <option value="option2">05.55</option>
-              <option value="option1">06.00</option>
-              <option value="option2">06.05</option>
-              <option value="option1">06.10</option>
-              <option value="option2">06.15</option>
-              <option value="option1">06.20</option>
-              <option value="option2">06.25</option>
-              <option value="option1">06.30</option>
-              <option value="option2">06.35</option>
-              <option value="option1">06.40</option>
-              <option value="option2">06.45</option>
-              <option value="option1">06.50</option>
-              <option value="option2">06.55</option>
-              <option value="option1">07.00</option>
-              <option value="option2">07.05</option>
-              <option value="option1">07.10</option>
-              <option value="option2">07.15</option>
-              <option value="option1">07.20</option>
-              <option value="option2">07.25</option>
-              <option value="option1">07.30</option>
-              <option value="option2">07.35</option>
-              <option value="option1">07.40</option>
-              <option value="option2">07.45</option>
-              <option value="option1">07.50</option>
-              <option value="option2">07.55</option>
-              <option value="option1">08.00</option>
-              <option value="option1">08.00</option>
-              <option value="option2">08.05</option>
-              <option value="option1">08.10</option>
-              <option value="option2">08.15</option>
-              <option value="option1">08.20</option>
-              <option value="option2">08.25</option>
-              <option value="option1">08.30</option>
-              <option value="option2">08.35</option>
-              <option value="option1">08.40</option>
-              <option value="option2">08.45</option>
-              <option value="option1">08.50</option>
-              <option value="option2">08.55</option>
-              <option value="option1">08.00</option>
-              <option value="option2">08.05</option>
-              <option value="option1">08.10</option>
-              <option value="option2">08.15</option>
-              <option value="option1">08.20</option>
-              <option value="option2">08.25</option>
-              <option value="option1">08.30</option>
-              <option value="option2">08.35</option>
-              <option value="option1">08.40</option>
-              <option value="option2">08.45</option>
-              <option value="option1">08.50</option>
-              <option value="option2">08.55</option>
-              <option value="option1">09.00</option>
-              <option value="option1">09.00</option>
-              <option value="option2">09.05</option>
-              <option value="option1">09.10</option>
-              <option value="option2">09.15</option>
-              <option value="option1">09.20</option>
-              <option value="option2">09.25</option>
-              <option value="option1">09.30</option>
-              <option value="option2">09.35</option>
-              <option value="option1">09.40</option>
-              <option value="option2">09.45</option>
-              <option value="option1">09.50</option>
-              <option value="option2">09.55</option>
-              <option value="option1">10.00</option>
+              <option value="15">15 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">01 hr 00 min</option>
+              <option value="75">01 hr 15 min</option>
+              <option value="90">01 hr 30 min</option>
+              <option value="105">01 hr 45 min</option>
+              <option value="120">02 hr 00 min</option>
+              <option value="135">02 hr 15 min</option>
+              <option value="150">02 hr 30 min</option>
+              <option value="165">02 hr 45 min</option>
+              <option value="180">03 hr 00 min</option>
+              <option value="195">03 hr 15 min</option>
+              <option value="210">03 hr 30 min</option>
+              <option value="225">03 hr 45 min</option>
+              <option value="240">04 hr 00 min</option>
+              <option value="255">04 hr 15 min</option>
+              <option value="270">04 hr 30 min</option>
+              <option value="285">04 hr 45 min</option>
+              <option value="300">05 hr 00 min</option>
             </select>
           </div>
           <p style={{
