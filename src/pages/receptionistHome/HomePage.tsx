@@ -13,21 +13,12 @@ import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-// import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
-import Deposits from './Deposits';
 import Orders from './Orders';
 import TodayAppoinment from './TodayAppoinments';
 import PastAppoinment from './PastAppoinments';
@@ -52,7 +43,7 @@ function Copyright(props: any) {
   );
 }
 
-const drawerWidth: number = 240;
+const drawerWidth = 240;
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -107,16 +98,16 @@ const defaultTheme = createTheme();
 
 export default function ReceptionistInsigntsPage() {
   // const [open, setOpen] = React.useState(true);
-//   const toggleDrawer = () => {
-//     setOpen(!open);
-//   };
+  //   const toggleDrawer = () => {
+  //     setOpen(!open);
+  //   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         {/* <AppBar position="absolute" open={open}> */}
-          {/* <Toolbar
+        {/* <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
             }}
@@ -133,7 +124,7 @@ export default function ReceptionistInsigntsPage() {
             >
               <MenuIcon />
             </IconButton> */}
-            {/* <Typography
+        {/* <Typography
               component="h1"
               variant="h6"
               color="inherit"
@@ -142,12 +133,12 @@ export default function ReceptionistInsigntsPage() {
             >
               Dashboard
             </Typography> */}
-            {/* <IconButton color="inherit">
+        {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-          {/* </Toolbar> */}
+        {/* </Toolbar> */}
         {/* </AppBar> */}
         {/* <Drawer variant="permanent" open={open}>
           <Toolbar
@@ -158,12 +149,12 @@ export default function ReceptionistInsigntsPage() {
               px: [1],
             }}
           > */}
-            {/* <IconButton onClick={toggleDrawer}>
+        {/* <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton> */}
-          {/* </Toolbar> */}
-          {/* <Divider /> */}
-          {/* <List component="nav">
+        {/* </Toolbar> */}
+        {/* <Divider /> */}
+        {/* <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
@@ -210,8 +201,8 @@ export default function ReceptionistInsigntsPage() {
                   <TodayAppoinment />
                 </Paper>
               </Grid>
-               {/* Past Appoinments */}
-               <Grid item xs={12} md={4} lg={3}>
+              {/* Past Appoinments */}
+              <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
                     p: 2,
@@ -263,36 +254,36 @@ export default function ReceptionistInsigntsPage() {
                   <TotalStaff />
                 </Paper>
               </Grid>
-        
-        {/* appoinments overview */}
-        <Grid item xs={12} md={4} lg={6}>
+
+              {/* appoinments overview */}
+              <Grid item xs={12} md={4} lg={6}>
                 <Paper
-                  // sx={{
-                  //   p: 2,
-                  //   display: 'flex',
-                  //   flexDirection: 'column',
-                  //   height: 300,
-                  // }}
+                // sx={{
+                //   p: 2,
+                //   display: 'flex',
+                //   flexDirection: 'column',
+                //   height: 300,
+                // }}
                 >
                   <AppointmentOverview />
                 </Paper>
               </Grid>
-        
-           {/* staff overview */}
-           <Grid item xs={12} md={4} lg={6}>
-           <title>Staff Overview</title>
+
+              {/* staff overview */}
+              <Grid item xs={12} md={4} lg={6}>
+                <title>Staff Overview</title>
                 <Paper
-                  // sx={{
-                  //   p: 2,
-                  //   display: 'flex',
-                  //   flexDirection: 'column',
-                  //   height: 390,
-                  // }}
+                // sx={{
+                //   p: 2,
+                //   display: 'flex',
+                //   flexDirection: 'column',
+                //   height: 390,
+                // }}
                 >
                   <StaffOverview />
                 </Paper>
               </Grid>
-        
+
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
