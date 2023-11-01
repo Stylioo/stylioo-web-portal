@@ -43,8 +43,7 @@ type editServicesType = {
 
 const Services = () => {
   // const [searchValue, setSearchValue] = useState("");
-    // State variables
-  const [searchValue, setSearchValue] = useState("");
+  // State variables
   const [selectedValue, setSelectedValue] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
@@ -56,7 +55,14 @@ const Services = () => {
   const [services, setServices] = useState<servicesType[]>([]);
   const [saerchServices, setSaerchServices] = useState<servicesType[]>([]);
 
-  const [editServices, setEditServices] = useState<editServicesType>({});
+  const [editServices, setEditServices] = useState<editServicesType>({
+    id: "",
+    name: "",
+    description: "",
+    price: 0,
+    duration: "",
+    category: "",
+  });
   const [deleteOrUpdateId, setDeleteOrUpdateId] = useState<string>("");
   const [editId, setEditId] = useState<string>("");
 
@@ -72,19 +78,19 @@ const Services = () => {
 
 
   const dropdownOptions = ['Janith', 'Chirasi', 'Pabasara'];
-  
+
   // Function to open the service addition popup
   const openPopup = () => {
     setIsPopupOpen(true);
 
   };
 
-    // Function to close the service addition popup
+  // Function to close the service addition popup
   const closePopup = () => {
     setIsPopupOpen(false);
   };
 
-    // Styles for the Modal popup
+  // Styles for the Modal popup
   const centerStyles = {
     overlay: {
       display: 'flex',
@@ -109,13 +115,13 @@ const Services = () => {
     },
   };
 
-    // Function to open the delete confirmation popup
+  // Function to open the delete confirmation popup
   const openPopuptwo = () => {
     setIsPopuptwoOpen(true);
 
   };
 
-    // Function to close the delete confirmation popup
+  // Function to close the delete confirmation popup
   const closePopuptwo = () => {
     setIsPopuptwoOpen(false);
   };
@@ -146,28 +152,28 @@ const Services = () => {
     },
   };
 
-    // Function to open the view service popup
+  // Function to open the view service popup
   const openPopupView = () => {
     setIsPopupViewOpen(true);
 
   };
 
-    // Function to close the view service popup
+  // Function to close the view service popup
   const closePopupView = () => {
     setIsPopupViewOpen(false);
   };
-    // Function to open the second view service popup
+  // Function to open the second view service popup
   const openPopupViewtwo = () => {
     setIsPopupViewtwoOpen(true);
 
   };
 
-    // Function to close the second view service popup
+  // Function to close the second view service popup
   const closePopupViewtwo = () => {
     setIsPopupViewtwoOpen(false);
   };
 
-    // Function to open the edit service popup
+  // Function to open the edit service popup
   const openeditPopup = () => {
     setIseditPopupOpen(true);
   };
@@ -179,12 +185,12 @@ const Services = () => {
 
   };
 
-    // Function to close the edit service popup
+  // Function to close the edit service popup
   const closeeditPopup = () => {
     setIseditPopupOpen(false);
   };
 
-  const fetchServices = async (value: string = "") => {
+  const fetchServices = async (value = "") => {
     try {
       setIsLoading(true)
       setSelectedValue(value);
@@ -230,7 +236,7 @@ const Services = () => {
     if (searchTerm === '') {
       fetchServices()
     }
-  
+
     try {
       const res = await axios.get(`/service/search?term=${searchTerm}`)
       console.log(res.data);
@@ -291,7 +297,7 @@ const Services = () => {
     }
   }
 
-    // Function to add a new service
+  // Function to add a new service
 
   const handleAddService = async (e: any) => {
 
@@ -369,14 +375,14 @@ const Services = () => {
     }
   }
 
-    // Function to handle service deletion
+  // Function to handle service deletion
 
   const handleDelete = (id: string) => {
     openPopuptwo()
     setDeleteOrUpdateId(id)
   }
 
-    // Function to confirm and execute service deletion
+  // Function to confirm and execute service deletion
 
   const handleDeleteOk = async () => {
     try {
@@ -394,14 +400,14 @@ const Services = () => {
     }
   }
 
-    // Function to cancel service deletion
+  // Function to cancel service deletion
 
   const handleDeleteCancel = () => {
     setDeleteOrUpdateId("")
     closePopuptwo()
   }
 
-    // Fetch services when the component mounts
+  // Fetch services when the component mounts
 
   useEffect(() => {
     fetchServices()
@@ -440,19 +446,19 @@ const Services = () => {
           </div>
         </div>
 
-       <div>
-        <input
-          type="text"
-          value={searchTerm}
-          // onChange={(e) => {
-          //   e.preventDefault()
-          //   setSearchValue(e.target.value)
-          // }}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => searchService(e.target.value)}
-          placeholder="Search..."
-          className="searchbar"
-        />
-        <Button
+        <div>
+          <input
+            type="text"
+            value={searchTerm}
+            // onChange={(e) => {
+            //   e.preventDefault()
+            //   setSearchValue(e.target.value)
+            // }}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => searchService(e.target.value)}
+            placeholder="Search..."
+            className="searchbar"
+          />
+          <Button
             color="primary"
             variant="contained"
             sx={{ py: 1 }}
@@ -518,7 +524,7 @@ const Services = () => {
                 setCategory(e.target.value);
               }}
               className="first_seelectbox">
-                {/* add menu list  */}
+              {/* add menu list  */}
               <option >Select Group</option>
               <option value="facial">Facial</option>
               <option value="hair">Hair</option>
