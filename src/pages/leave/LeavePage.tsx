@@ -29,6 +29,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 
+// Define columns for the DataGrid component
 
 const columns: GridColDef[] = [
   // { field: 'id', headerName: 'id', width: 10},
@@ -72,7 +73,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// Sample data for the DataGrid
 const rows = [
   {  
     id: 1,
@@ -138,6 +139,7 @@ const rows = [
 //   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
+// Helper function to create data for the summary table
 
 function createData(
   name: string,
@@ -147,6 +149,7 @@ function createData(
 ) {
   return { name, Used, Available, Allowance };
 }
+// Sample data for the summary table
 
 const tablerows = [
   createData('Vacation', 15, 6, 4),
@@ -154,6 +157,7 @@ const tablerows = [
   createData('WFH', 26, 1, 4)
 ];
 
+// Interface for the TabPanelProps
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -161,6 +165,7 @@ interface TabPanelProps {
   value: number;
 }
 
+// Custom TabPanel component
 
 function CustomTabPanel(props: TabPanelProps) {
   
@@ -190,6 +195,8 @@ function a11yProps(index: number) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
+
+// Main LeavePage component
 
 export default function LeavePage() {
   const [value, setValue] = React.useState(0);

@@ -1,4 +1,7 @@
+// import styles 
 import '../../styles/beautician/index.scss'
+// Import necessary styles and libraries
+
 import React from 'react';
 import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -15,10 +18,12 @@ import { Box, Tab, Tabs } from '@mui/material';
 import { Button, ButtonGroup } from '@mui/material';
 
 
+// Define custom IconButton for expand/collapse functionality
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
+// Styling for the expand/collapse icon
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -32,11 +37,15 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 
+// Define the HomePage component
 
 const HomePage = () => {
+    // State management for expanded content and selected tab
+
   const [expanded, setExpanded] = React.useState(false);
 
   const [tabValue, setTabValue] = React.useState(0);
+  // Function to handle tab changes
 
   const handleTabChange = (event: any, newValue: any) => {
     setTabValue(newValue);
@@ -81,12 +90,10 @@ const HomePage = () => {
                 subheaderTypographyProps={{ color: '#1E1E1E', fontSize: '15px', fontWeight: 'bold' }}
               />
               <div className='userDetails' >
-                {/* Other content */}
 
                 <img src='https://stylioo.blob.core.windows.net/images/chirasi.jpeg' className='userImg' />
                 <p className='service'>Kithmi Amaya</p>
 
-                {/* Other content */}
               </div>
               <CardContent>
                 <div className="cardDetails">

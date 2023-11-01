@@ -6,10 +6,10 @@ import { Avatar, CardContent, Stack, SvgIcon } from '@mui/material';
 import { Users as UsersIcon } from 'react-feather';
 import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
 import { styled } from '@mui/material/styles';
-import { TodayRounded } from '@mui/icons-material';
+import { UpcomingRounded } from '@mui/icons-material';
 
 
-export default function TodayAppoinment() {
+export default function UpcomingAppoinment() {
   return (
     <React.Fragment>
       <CardContent>
@@ -24,21 +24,21 @@ export default function TodayAppoinment() {
               color="text.secondary"
               variant="overline"
             >
-              Today's Appoinments
+              Upcoming Appoinments
             </Typography>
             <Typography variant="h4">
-              20
+              50
             </Typography>
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'primary.light',
+              backgroundColor: '#f7ed5e',
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <TodayRounded/>
+              <UpcomingRounded />
             </SvgIcon>
           </Avatar>
         </Stack>
@@ -70,7 +70,7 @@ export default function TodayAppoinment() {
               color="text.secondary"
               variant="caption"
             >
-              2nd of Nov, 2023
+              Since Tommorrow 
             </Typography>
           </Stack>
         

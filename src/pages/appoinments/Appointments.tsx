@@ -1,10 +1,12 @@
 import { useState } from "react"
+// Import necessary modules and dependencies.
+
+// add styles 
 
 import '../../styles/main.scss'
 import '../../styles/product.scss'
 
-import { useTheme } from "@mui/material/styles"
-import { Box, Button, Tab, Tabs, Typography, useMediaQuery } from "@mui/material"
+import { Box, Button, Tab, Tabs } from "@mui/material"
 import { Add } from '@mui/icons-material'
 import { useNavigate } from "react-router-dom"
 

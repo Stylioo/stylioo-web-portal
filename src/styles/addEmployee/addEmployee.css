@@ -1,18 +1,25 @@
+/* Start styles here  */
+/* Container for names with a horizontal layout */
 .name_container{
-    display: flex;
-    gap: 20px;
+    display: flex; /* Display children in a horizontal row */
+    gap: 20px; /* Add space between child elements */
   }
 
+  /* Container for input boxes */
   .inputbox_container{
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px
+    padding: 10px; /* Apply padding inside the container */
+    border: 1px solid black; /* Add a 1px solid black border */
+    border-radius: 4px; /* Round the corners with a 4px border radius */
+    font-size: 16px; /* Set the font size to 16px */
+    width: 100%; /* Occupy the full width */
+    margin-top: 10px  /* Add top margin of 10px */
   
   }
 
+  /* Container with a width of 100% */
   .div_container{
-    width: 100%;
+    width: 100%; /* Occupy the full width of its parent */
   }
+
+
+/* end styles here  */

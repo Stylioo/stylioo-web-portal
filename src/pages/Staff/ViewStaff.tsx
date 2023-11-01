@@ -1,3 +1,5 @@
+    // Importing necessary dependencies and components
+
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Add } from "@mui/icons-material"
@@ -8,6 +10,8 @@ import moment from "moment"
 import axios from "../../axios"
 import { useParams } from "react-router-dom"
 import Loading from '../../components/Loading'
+
+// ViewStaff component to display staff details
 
 function ViewStaff() {
     const theme = useTheme()
@@ -22,15 +26,18 @@ function ViewStaff() {
     const [qualifications, setQualifications] = useState<any>([])
     const [addQualificationModalOpen, setAddQualificationModalOpen] = useState<boolean>(false)
 
+    // Open the qualification modal
 
     const handleQualificationModalOpen = () => {
         setAddQualificationModalOpen(true)
     }
+    // Close the qualification modal
 
     const handleQualificationModalClose = () => {
         setAddQualificationModalOpen(false)
     }
 
+    // Fetch staff details
 
     const getStaff = async () => {
         try {
@@ -48,6 +55,8 @@ function ViewStaff() {
             setIsLoading(false)
         }
     }
+
+        // Fetch staff details when the component mounts
 
     useEffect(() => {
         getStaff()
@@ -556,3 +565,6 @@ function ViewStaff() {
 }
 
 export default ViewStaff
+
+
+// view all staff details 

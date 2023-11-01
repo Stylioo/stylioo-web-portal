@@ -1,14 +1,16 @@
 import { ChangeEvent, useState } from "react";
 
 import { Alert, AlertColor, Box, Button, Grid, Snackbar, TextField, Typography } from "@mui/material"
-import axios from "../../axios";
+import axios from "../../axios"; // Import axios for making HTTP requests
 import Loading from "../../components/Loading";
 
+// Define a type for snack bar alert messages
 type SnakbarAlertMessage = {
     type: AlertColor,
     message: string
 }
 
+ // Define a type for a Supplier object
 type Supplier = {
     name: string,
     contact_no: string,
@@ -19,22 +21,29 @@ type Supplier = {
 
 function AddSupplier({ setSupplierModal, handleSankbarShow }: { setSupplierModal: (value: boolean) => void, handleSankbarShow: (msg: SnakbarAlertMessage) => void }) {
 
+  // Define state variables
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>('')
 
+    // Initialize the data state with an empty Supplier object
     const [data, setData] = useState<Supplier>({ name: '', contact_no: '', email: '', address_line_1: '', address_line_2: '' })
 
+      // Function to handle the cancel action
     const handleCancel = () => {
         setSupplierModal(false)
+        // Reset the data to its initial empty state
         setData({ name: '', contact_no: '', email: '', address_line_1: '', address_line_2: '' })
     }
+
+      // Function to handle text input changes
 
     const handleTextInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setData({ ...data, [name]: value })
     }
 
+      // Function to handle the save action
     const handleSave = async () => {
         setIsLoading(true)
         try {
@@ -44,12 +53,14 @@ function AddSupplier({ setSupplierModal, handleSankbarShow }: { setSupplierModal
                 handleSankbarShow({
                     type: "success",
                     message: "Supplier added successfully."
+                    // Show a success message in the snack bar
                 })
                 setSupplierModal(false)
             } else {
                 handleSankbarShow({
                     type: "error",
                     message: "somthing went wrong."
+                    // Show an error message in the snack bar
                 })
             }
 
@@ -59,9 +70,11 @@ function AddSupplier({ setSupplierModal, handleSankbarShow }: { setSupplierModal
             handleSankbarShow({
                 type: "error",
                 message: "somthing went wrong."
+                // Show an error message in the snack bar
             })
         } finally {
             setIsLoading(false)
+            // Reset the data to its initial empty state
             setData({ name: '', contact_no: '', email: '', address_line_1: '', address_line_2: '' })
         }
 
@@ -141,4 +154,7 @@ function AddSupplier({ setSupplierModal, handleSankbarShow }: { setSupplierModal
     )
 }
 
+ // Export the AddSupplier component
 export default AddSupplier
+
+// add supplier 

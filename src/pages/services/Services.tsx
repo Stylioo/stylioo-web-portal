@@ -1,4 +1,5 @@
 import * as React from 'react';
+// Import CSS styles
 import "../../styles/services/services.css";
 import { useState, ChangeEvent, useEffect, useCallback } from "react";
 import Modal from 'react-modal';
@@ -13,7 +14,9 @@ import { Search } from '@mui/icons-material';
 // import Button from '@mui/material/Button'; 
 import { Button } from "@mui/material"
 
+// Import Axios for making HTTP requests
 import axios from '../../axios'
+// Assuming you have a Loading component
 import Loading from '../../components/Loading';
 import { covertMinToHMin } from '@/utils/covertMinToHMin';
 
@@ -41,6 +44,8 @@ type editServicesType = {
 
 const Services = () => {
   // const [searchValue, setSearchValue] = useState("");
+    // State variables
+  const [searchValue, setSearchValue] = useState("");
   const [selectedValue, setSelectedValue] = useState("10");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
@@ -68,15 +73,19 @@ const Services = () => {
 
 
   const dropdownOptions = ['Janith', 'Chirasi', 'Pabasara'];
-
+  
+  // Function to open the service addition popup
   const openPopup = () => {
     setIsPopupOpen(true);
 
   };
 
+    // Function to close the service addition popup
   const closePopup = () => {
     setIsPopupOpen(false);
   };
+
+    // Styles for the Modal popup
   const centerStyles = {
     overlay: {
       display: 'flex',
@@ -101,19 +110,19 @@ const Services = () => {
     },
   };
 
+    // Function to open the delete confirmation popup
   const openPopuptwo = () => {
     setIsPopuptwoOpen(true);
 
   };
 
+    // Function to close the delete confirmation popup
   const closePopuptwo = () => {
     setIsPopuptwoOpen(false);
   };
 
 
-
-
-
+  // Styles for the delete confirmation popup
   const centerStylestwo = {
     overlay: {
       display: 'flex',
@@ -138,23 +147,28 @@ const Services = () => {
     },
   };
 
+    // Function to open the view service popup
   const openPopupView = () => {
     setIsPopupViewOpen(true);
 
   };
 
+    // Function to close the view service popup
   const closePopupView = () => {
     setIsPopupViewOpen(false);
   };
+    // Function to open the second view service popup
   const openPopupViewtwo = () => {
     setIsPopupViewtwoOpen(true);
 
   };
 
+    // Function to close the second view service popup
   const closePopupViewtwo = () => {
     setIsPopupViewtwoOpen(false);
   };
 
+    // Function to open the edit service popup
   const openeditPopup = () => {
     setIseditPopupOpen(true);
   };
@@ -166,9 +180,12 @@ const Services = () => {
 
   };
 
+    // Function to close the edit service popup
   const closeeditPopup = () => {
     setIseditPopupOpen(false);
   };
+
+    // Function to fetch services from the server
 
   const fetchServices = async () => {
     try {
@@ -261,6 +278,8 @@ const Services = () => {
     }
   }
 
+    // Function to add a new service
+
   const handleAddService = async (e: any) => {
 
     try {
@@ -337,10 +356,14 @@ const Services = () => {
     }
   }
 
+    // Function to handle service deletion
+
   const handleDelete = (id: string) => {
     openPopuptwo()
     setDeleteOrUpdateId(id)
   }
+
+    // Function to confirm and execute service deletion
 
   const handleDeleteOk = async () => {
     try {
@@ -358,10 +381,14 @@ const Services = () => {
     }
   }
 
+    // Function to cancel service deletion
+
   const handleDeleteCancel = () => {
     setDeleteOrUpdateId("")
     closePopuptwo()
   }
+
+    // Fetch services when the component mounts
 
   useEffect(() => {
     fetchServices()
@@ -477,6 +504,7 @@ const Services = () => {
                 setCategory(e.target.value);
               }}
               className="first_seelectbox">
+                {/* add menu list  */}
               <option >Select Group</option>
               <option value="facial">Facial</option>
               <option value="hair">Hair</option>

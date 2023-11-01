@@ -1,8 +1,10 @@
+// Import necessary modules and dependencies.
+
 import TextArea from '@/components/TextArea'
 import { serviceCategories } from '@/constants/services'
 import { Add, ArrowBackIos, ArrowBackIosNew, ArrowForwardIos, CalendarTodayOutlined, Close, Search } from '@mui/icons-material'
 import { Box, Button, FormControl, Grid, IconButton, InputAdornment, InputLabel, MenuItem, Modal, OutlinedInput, Select, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
-
+// styles 
 import '@/scss/newAppointment.scss'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import listOfDays from '@/utils/listOfDays'

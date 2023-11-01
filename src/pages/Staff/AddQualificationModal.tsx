@@ -1,3 +1,4 @@
+// Importing necessary dependencies and components
 import { useState } from "react";
 import { Add } from "@mui/icons-material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -7,11 +8,14 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import { AlertColor, Autocomplete, Box, Button, Chip, FormControl, Grid, Modal, TextField, Typography } from "@mui/material"
 import moment from "moment";
 
+// Defining a type for the alert message
+
 type SnakbarAlertMessage = {
     type: AlertColor,
     message: string
 }
 
+// Defining props for the AddQualificationModal component
 
 type addQualificationModalProps = {
     open: boolean
@@ -20,7 +24,11 @@ type addQualificationModalProps = {
     setQualification: (qualification: any) => void
 }
 
+// Creating the AddQualificationModal component
+
 function AddQualificationModal({ open, handleClose, qualifications, setQualification }: addQualificationModalProps) {
+
+        // Styling for the modal
 
     const style = {
         position: 'absolute',
@@ -35,11 +43,14 @@ function AddQualificationModal({ open, handleClose, qualifications, setQualifica
         p: 3,
     };
 
+        // State variables to manage form inputs
+
     const [title, setTitle] = useState<string>('')
     const [institute, setInstitute] = useState<string>('')
     const [startDate, setStartDate] = useState<Date | null>(null)
     const [endDate, setEndDate] = useState<Date | null>(null)
 
+    // Function to close the modal
 
     const handleModalClose = () => {
         setTitle('')
@@ -48,11 +59,13 @@ function AddQualificationModal({ open, handleClose, qualifications, setQualifica
         setEndDate(null)
         handleClose()
     }
+    // Function to save the qualification
 
     const handleSave = () => {
         if (title.length === 0 || institute.length === 0 || startDate === null || endDate === null) {
             return
         }
+        // Create a qualification object with input values
 
         const qualification = {
             qualification: title,
@@ -60,10 +73,13 @@ function AddQualificationModal({ open, handleClose, qualifications, setQualifica
             start_date: new Date(startDate),
             end_date: new Date(endDate)
         }
+        // Add the qualification to the list of qualifications and close the modal
 
         setQualification([...qualifications, qualification])
         handleModalClose()
     }
+
+        // JSX code for the modal component
 
     return (
         <>
@@ -160,4 +176,9 @@ function AddQualificationModal({ open, handleClose, qualifications, setQualifica
     )
 }
 
+// Exporting the AddQualificationModal component
+
 export default AddQualificationModal
+
+
+// adding qualifications to the staff member

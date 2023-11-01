@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../../styles/receptionist/index.scss';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,37 +15,38 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Menu, MenuItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Link } from 'react-router-dom';
-import axios from '@/axios';
 
-// Define columns for the data grid
+// Define columns for the DataGrid
+
 const columns: GridColDef[] = [
-  { field: 'date', headerName: 'Date', width: 130 },
-  { field: 'startTime', headerName: 'Start Time', width: 130 },
-  { field: 'customer', headerName: 'Client name', width: 130 },
-  { field: 'services', headerName: 'Service', width: 330 },
-  { field: 'beautician', headerName: 'Beautician', width: 130 },
-  { field: 'totalPrice', headerName: 'Service Price', width: 130 },
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'Date', headerName: 'Date', width: 130 },
+  { field: 'StartTime', headerName: 'Start Time', width: 130 },
+  { field: 'EndTime', headerName: 'End Time', width: 130 },
+  { field: 'ClientName', headerName: 'Client name', width: 130 },
+  { field: 'Service', headerName: 'Service', width: 130 },
+  { field: 'Beautician', headerName: 'Beautician', width: 130 },
+  { field: 'ServicePrice', headerName: 'Service Price', width: 130 },
 
   {
     field: 'Options',
     headerName: 'Options',
     width: 130,
+        // Custom rendering for the "Options" column
+
     renderCell: (params) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      // Initialize state for the menu anchor
       const [anchorEl, setAnchorEl] = useState(null);
 
-      // Open the menu when an option is clicked
-      const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
+      const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
       };
 
-      // Close the menu
       const handleClose = () => {
         setAnchorEl(null);
       };
@@ -52,20 +54,19 @@ const columns: GridColDef[] = [
 
       return (
         <div>
-          {/* Add icon buttons for edit, delete, and view more options */}
           <IconButton aria-label="edit" color="primary">
             <EditIcon />
           </IconButton>
           <IconButton aria-label="delete" color="primary">
             <DeleteIcon />
           </IconButton>
-          {/* <IconButton
+          <IconButton
             aria-label="see more"
             color="primary"
             onClick={handleClick}
           >
             <MoreHorizIcon />
-          </IconButton> */}
+          </IconButton>
           <Menu
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
@@ -86,14 +87,32 @@ const columns: GridColDef[] = [
   },
 ];
 
-// Sample data rows
+// Sample data for the DataGrid
+
 const rows = [
-  { id: 1, Date: '10/10/2021', StartTime: '10:00 AM', EndTime: '11:00 AM', ClientName: 'John Doe', Service: 'Haircut', Beautician: 'Chirasi Walpola', ServicePrice: 'Rs.1500.00' },
+  {
+    id: 1,
+    Date: '10/10/2021',
+    StartTime: '10:00 AM',
+    EndTime: '11:00 AM',
+    ClientName: 'John Doe',
+    Service: 'Haircut',
+    Beautician: 'Chirasi Walpola',
+    ServicePrice: 'Rs.1500.00'
+  },
 
-
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
 
+// Define the TabPanel component
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -101,11 +120,12 @@ interface TabPanelProps {
   value: number;
 }
 
-// Define a function for rendering tab panels
+// Function to generate accessibility properties for tabs
 
 function CustomTabPanel(props: TabPanelProps) {
 
   const { children, value, index, ...other } = props;
+
 
   return (
     <div
@@ -124,7 +144,6 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-// Define a function for setting accessibility properties
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -132,53 +151,30 @@ function a11yProps(index: number) {
   };
 }
 
-  // Function to fetch and set appointment data
+// Define the ReceptionistPage component
+
 export default function ReceptionistPage() {
+  // State for controlling selected tab
   const [value, setValue] = React.useState(0);
+  // State for controlling the dialog's open/close
   const [open, setOpen] = React.useState(false);
-
-
-  const [tableData, setTableData] = useState<any[]>([])
-
-  const getAllAppointments = async () => {
-    try {
-      const response = await axios.get('/appointment')
-      if (response.data.success) {
-        setTableData(response.data.data)
-        console.log(response.data.data);
-
-      }
-
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  // Fetch appointment data on component mount
-  useEffect(() => {
-    getAllAppointments()
-  }, [])
-
 
   // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
   //   setValue(newValue);
   // };
 
-    // Function to handle tab change
   const handleChange = (event: any, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
   };
 
-    // Function to open the add appointment dialog
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-    // Function to close the dialog
   const handleClose = () => {
     setOpen(false);
   };
 
-    // Function to handle form submission
   const handleSubmit = () => {
     // Handle form submission here
     // You can access form data using state or useRef
@@ -204,7 +200,7 @@ export default function ReceptionistPage() {
           variant="contained"
           aria-label="Disabled elevation buttons"
           sx={{ marginTop: '20px', marginLeft: '911.5px' }} >
-          <Button startIcon={<AddCircleIcon />} color='primary' onClick={handleClickOpen}>Add New Appoinment</Button>
+          <Button startIcon={<AddCircleIcon />} color='accent' onClick={handleClickOpen}>Add New Appoinment</Button>
 
           <Dialog open={open} onClose={handleClose}>
 
@@ -255,6 +251,7 @@ export default function ReceptionistPage() {
                   onChange={(e) => setServiceCategory(e.target.value)}
                   sx={{ marginBottom: '10px' }}
                 />
+
                 <TextField
                   label="Total Price"
                   fullWidth
@@ -276,7 +273,7 @@ export default function ReceptionistPage() {
             </DialogActions>
           </Dialog>
 
-          {/* <Button component={Link} to="/receptionist/quick-sale-form" startIcon={<ReceiptIcon />}>Quick Sale</Button> */}
+          <Button component={Link} sx={{ marginLeft: '1rem' }} to="/quick-sale-form" startIcon={<ReceiptIcon />}>Quick Sale</Button>
         </ButtonGroup>
         <TextField
           label="Search"
@@ -293,9 +290,9 @@ export default function ReceptionistPage() {
         />
         <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop: '20px', width: '65%' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Upcomming Appoinments" {...a11yProps(0)} />
-            <Tab label="Ongoing Appoinments" {...a11yProps(1)} />
-            <Tab label="Todays Appoinments" {...a11yProps(2)} />
+            <Tab label="Ongoing Appoinments" {...a11yProps(0)} />
+            <Tab label="Today Appoinments" {...a11yProps(1)} />
+            <Tab label="Upcoming Appoinments" {...a11yProps(2)} />
             <Tab label="Past Appoinments" {...a11yProps(3)} />
           </Tabs>
         </Box>
@@ -304,7 +301,7 @@ export default function ReceptionistPage() {
 
         <CustomTabPanel value={value} index={0}>
           <DataGrid sx={{ width: '100%' }}
-            rows={tableData}
+            rows={rows}
             columns={columns}
             initialState={{
               pagination: {
@@ -334,8 +331,7 @@ export default function ReceptionistPage() {
 
         <CustomTabPanel value={value} index={2}>
           <DataGrid sx={{ width: '100%' }}
-            rows={tableData}
-
+            rows={rows}
             columns={columns}
             initialState={{
               pagination: {

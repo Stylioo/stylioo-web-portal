@@ -20,6 +20,7 @@ import AddNewProductModal from "./AddNewProductModal"
 import SnakbarAlert from "../../components/SnakbarAlert"
 import DeleteAlert from "./DeleteAlert"
 
+// Define types for the option menu
 
 type menuPropsType = {
   anchorEl: HTMLElement | null
@@ -29,10 +30,15 @@ type menuPropsType = {
   productId: string
 }
 
+
+// Define a type for snack bar alert messages
+
 type SnakbarAlertMessage = {
   type: AlertColor,
   message: string
 }
+
+// Create the option menu component
 
 function OptionMenu({ anchorEl, open, handleClose, handleProductDeleteOption, productId }: menuPropsType) {
   return (
@@ -97,6 +103,7 @@ function Products() {
     setOpenSnakbar(false);
   };
 
+    // Function to show a snack bar alert
   const handleSankbarShow = (alertMessage: SnakbarAlertMessage) => {
     setSnakbarAlertMessage(alertMessage);
     setOpenSnakbar(true);
@@ -106,9 +113,12 @@ function Products() {
   //delete alert
   const [openDeleteAlert, setOpenDeleteAlert] = useState<boolean>(false)
 
+  // Function to close the delete alert
   const handleDeleteAlertClose = () => {
     setOpenDeleteAlert(false);
   }
+
+    // Function to close the delete alert
 
   const handleProductDeleteOption = () => {
     setOpenDeleteAlert(true)
@@ -117,10 +127,13 @@ function Products() {
 
   // add stock modal
   const [addStockModalOpen, setAddStockModalOpen] = useState<boolean>(false)
+     
+  // Function to close the add stock modal
   const handleAddStockModelClose = () => {
     setAddStockModalOpen(false)
   }
 
+  // Function to open the update stock modal
   const handleOpenUpdateStockModal = (id: string) => {
     setProductId(id)
     setAddStockModalOpen(true)
@@ -354,3 +367,6 @@ function Products() {
 }
 
 export default Products
+
+
+// display whole products 

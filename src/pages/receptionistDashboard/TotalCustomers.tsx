@@ -6,10 +6,10 @@ import { Avatar, CardContent, Stack, SvgIcon } from '@mui/material';
 import { Users as UsersIcon } from 'react-feather';
 import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
 import { styled } from '@mui/material/styles';
-import { TodayRounded } from '@mui/icons-material';
+import { PersonAddAltRounded } from '@mui/icons-material';
 
 
-export default function TodayAppoinment() {
+export default function TotalCustomers() {
   return (
     <React.Fragment>
       <CardContent>
@@ -24,21 +24,21 @@ export default function TodayAppoinment() {
               color="text.secondary"
               variant="overline"
             >
-              Today's Appoinments
+              Total Customers
             </Typography>
             <Typography variant="h4">
-              20
+              30
             </Typography>
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'primary.light',
+              backgroundColor: '#4dc82e',
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <TodayRounded/>
+              <PersonAddAltRounded />
             </SvgIcon>
           </Avatar>
         </Stack>
@@ -70,7 +70,7 @@ export default function TodayAppoinment() {
               color="text.secondary"
               variant="caption"
             >
-              2nd of Nov, 2023
+              Since last month
             </Typography>
           </Stack>
         

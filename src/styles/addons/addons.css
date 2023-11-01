@@ -1,48 +1,56 @@
+/* Start styles here  */
+
+/* Container for a popup with flex layout and vertical alignment */
 .popup_container{
-    display: flex;
-    align-items: center; 
-    gap: 10px;
+    display: flex; /* Display children in a horizontal row */
+    align-items: center; /* Vertically align children to the center */
+    gap: 10px; /* Add space between child elements */
 }
 
+/* Close button style with circular appearance */
 .close-button {
     /* position: absolute; */
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #e24848;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
+    top: 10px; /* Position the button 10px from the top */
+    right: 10px; /* Position the button 10px from the right */
+    width: 50px; /* Set button width to 50px */
+    height: 50px; /* Set button height to 50px */
+    border-radius: 50%; /* Create a circular shape with 50% border radius */
+    background-color: #e24848;  /* Background color in a shade of red */
+    border: none; /* Remove border */
+    cursor: pointer; /* Show pointer cursor on hover */
+    display: flex; /* Use flex layout for button content */
+    justify-content: center; /* Horizontally center button content */
+    align-items: center; /* Vertically center button content */
   }
 
+  /* Container for center-aligned buttons */
   .btn_center{
-    display: flex;
+    display: flex; /* Display children in a horizontal row */
     justify-content: center; /* Center align the buttons horizontally */
     align-items: flex-end; /* Align the buttons to the bottom */
-    margin-top: 20px;
-    gap: 30px;
-    top: 100px;
+    margin-top: 20px; /* Add top margin of 20px */
+    gap: 30px; /* Add space between child elements */
+    top: 100px; /* Position the container 100px from the top */
     
 
   }
+
+  /* Done button style with circular appearance */
   .done-button{
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #1fbe1a;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 10px; /* Position the button 10px from the top */
+    right: 10px; /* Position the button 10px from the right */
+    width: 50px; /* Set button width to 50px */
+    height: 50px; /* Set button height to 50px */
+    border-radius: 50%; /* Create a circular shape with 50% border radius */
+    background-color: #1fbe1a; /* Background color in a shade of green */
+    border: none; /* Remove border */
+    cursor: pointer;  /* Show pointer cursor on hover */
+    display: flex; /* Use flex layout for button content */
+    justify-content: center; /* Horizontally center button content */
+    align-items: center; /* Vertically center button content */
 
   }
   
+
+/* End styles here  */
+

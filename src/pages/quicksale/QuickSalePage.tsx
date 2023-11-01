@@ -17,6 +17,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import { Link } from 'react-router-dom'; 
 import QuickSaleForm from './QuickSaleForm';
 
+// Function to create a data row for the table
 
 const columns: GridColDef[] = [
 
@@ -71,6 +72,7 @@ const columns: GridColDef[] = [
               },
             }}
           >
+            {/* add buttons */}
             <MenuItem onClick={handleClose} >View Details</MenuItem>
             <MenuItem onClick={handleClose} >Invoice</MenuItem>
           </Menu>
@@ -80,7 +82,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// create sample data
 const rows = [
   { 
   id:1,
@@ -172,7 +174,6 @@ export default function QuickSalePage() {
             }}
             sx={{ marginTop: '-45px'}} // Add margin top here
           />
-     
                       <DataGrid sx={{ width:'100%' }}
                         rows={rows}
                         columns={columns}
@@ -184,6 +185,7 @@ export default function QuickSalePage() {
                         pageSizeOptions={[5, 10]}
                         checkboxSelection
                       />
+
     
     </Box>
     </React.Fragment>

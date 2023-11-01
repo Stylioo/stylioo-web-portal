@@ -1,3 +1,6 @@
+/* Start styles here  */
+
+/* Style for a container with calendar input */
 .calanderBox{
     padding: 10px;
     border: 1px solid #ccc;
@@ -9,7 +12,7 @@
   
 }
 
-
+/* Container for inputs with padding, border, border-radius, and flexible width */
 .inputcontainer {
     padding: 12px; 
     border: 2px solid rgb(141, 157, 141);
@@ -19,8 +22,11 @@
     justify-content: space-between;
   }
 
+  /* Container for a bill date input with gap and centered alignment */
   .billdatebox{
     display: flex;
     gap: 10px;
     align-items: center;
   }
+
+/* End styles here  */
