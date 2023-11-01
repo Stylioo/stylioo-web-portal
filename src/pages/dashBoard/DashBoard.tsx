@@ -112,13 +112,6 @@ const dataset = [
 const valueFormatter = (value: number) => `${value}`;
 
 
-
-
-
-
-
-
-
 const chartSetting2 = {
   yAxis: [
     {
@@ -222,10 +215,39 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
 
 const DashBoard = () => {
 
+  const [pending, setPending] = useState(0);
+  const [cancled, setCancled] = useState(0);
+  const [paid, setPaid] = useState(0);
+
+  const fetchAppoinments = async (value: string = "") => {
+    try {
+      // setIsLoading(true)
+      const response = await axios.get(`/service/fetch?term=${value}`)
+      if (response.status === 200) {
+        const data = response.data
+
+        if (data.success) {
+          console.log(data.data);
+          setServices(data.data);
+          
+        }
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    finally {
+      // setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <div>
-    <h2>Dashboard</h2>
+    <h1>Dashboard</h1>
     <hr style={{marginBottom: '10px'}}></hr>
       {/* <Grid container spacing={4}> */}
 
@@ -236,22 +258,22 @@ const DashBoard = () => {
     
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Pending Appointments</p>
-      <p style={{fontSize:'50px', textAlign: 'center'}}>12</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since last week</p>
+      <p style={{fontSize:'50px', textAlign: 'center'}}>10</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since this month</p>
 
     </div>
 
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Complted Appointments</p>
-      <p style={{fontSize:'50px', textAlign: 'center'}}>16</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since last week</p>
+      <p style={{fontSize:'50px', textAlign: 'center'}}>12</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#6a6b6b'}}>Since this month</p>
 
     </div>
 
     <div style={{border: '1px solid black', width: '190px', height:'250px', background: '#e3f3fc', borderRadius: '10px', marginRight: '20px'}}>
       <p style={{fontSize:'25px', textAlign: 'center', marginTop: '30px'}}>Canceled Appointments</p>
       <p style={{fontSize:'50px', textAlign: 'center'}}>4</p>
-      <p style={{margin: '15px 0px 0px 10px', color: '#7a7a7a'}}>Since last week</p>
+      <p style={{margin: '15px 0px 0px 10px', color: '#7a7a7a'}}>Since this month</p>
 
     </div>
     </div>
@@ -307,7 +329,7 @@ const DashBoard = () => {
       series={[
         { dataKey: 'income', label: 'Monthly Income', valueFormatter },
       ]}
-      {...chartSetting}
+      {...chartSetting2}
     />
     
 

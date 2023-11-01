@@ -14,9 +14,8 @@ import { Search } from '@mui/icons-material';
 // import Button from '@mui/material/Button'; 
 import { Button } from "@mui/material"
 
-// Import Axios for making HTTP requests
-import axios from '../../axios'
 // Assuming you have a Loading component
+import axios from '../../axios';
 import Loading from '../../components/Loading';
 import { covertMinToHMin } from '@/utils/covertMinToHMin';
 
@@ -46,7 +45,7 @@ const Services = () => {
   // const [searchValue, setSearchValue] = useState("");
     // State variables
   const [searchValue, setSearchValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("10");
+  const [selectedValue, setSelectedValue] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopuptwoOpen, setIsPopuptwoOpen] = useState(false);
   const [isPopupViewOpen, setIsPopupViewOpen] = useState(false);
@@ -185,12 +184,11 @@ const Services = () => {
     setIseditPopupOpen(false);
   };
 
-    // Function to fetch services from the server
-
-  const fetchServices = async () => {
+  const fetchServices = async (value: string = "") => {
     try {
       setIsLoading(true)
-      const response = await axios.get('/service')
+      setSelectedValue(value);
+      const response = await axios.get(`/service/fetch?term=${value}`)
       if (response.status === 200) {
         const data = response.data
 
@@ -224,14 +222,29 @@ const Services = () => {
 
   // }
 
-  const searchService = async () => {
+  const searchService = async (searchTerm: string) => {
+    // searchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     setIsLoading(true);
-
+    // let loop = "abc";
+    setSearchTerm(searchTerm)
+    if (searchTerm === '') {
+      fetchServices()
+    }
+  
     try {
       const res = await axios.get(`/service/search?term=${searchTerm}`)
       console.log(res.data);
-      setSaerchServices(res.data.data);
-      setServices(saerchServices);
+      // loop = res.data.error;
+      // console.log(res.data.error)
+      // // setSaerchServices(res.data.data);
+      // if(loop === "No Services found"){
+      //   // loop =  true;
+      //   while(7){
+      //     setIsLoading(true);
+      //   }
+      // }
+      setServices(res.data.data);
+
 
     } catch (error) {
       console.error("Error occurred while fetching data:", error);
@@ -414,35 +427,36 @@ const Services = () => {
             <p>Show</p>
             <select value={selectedValue}
               onChange={(e) => {
-                setSelectedValue(e.target.value);
+                fetchServices(e.target.value)
               }}
               className="selectbox_container"
             >
-              <option value="">5</option>
-              <option value="option1">10</option>
-              <option value="option2">25</option>
-              <option value="option3">50</option>
+              <option value="">All</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
             </select>
           </div>
         </div>
 
-        <div>
-          <input
-            type="text"
-            value={searchTerm}
-            // onChange={(e) => {
-            //   e.preventDefault()
-            //   setSearchValue(e.target.value)
-            // }}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearchService(e.target.value)}
-            placeholder="Search..."
-            className="searchbar"
-          />
-          <Button
+       <div>
+        <input
+          type="text"
+          value={searchTerm}
+          // onChange={(e) => {
+          //   e.preventDefault()
+          //   setSearchValue(e.target.value)
+          // }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => searchService(e.target.value)}
+          placeholder="Search..."
+          className="searchbar"
+        />
+        <Button
             color="primary"
             variant="contained"
             sx={{ py: 1 }}
-            onClick={searchService}
+            onClick={() => searchService(searchTerm)}
           >
             <Search />
           </Button>
