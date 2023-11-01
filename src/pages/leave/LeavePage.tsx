@@ -105,7 +105,7 @@ const rows = [
   id: 3,
   StartDate: '2023-07-27',
   EndDate: '2023-07-27',
-  Reason: 'Sick Leave',
+  Reason: 'Personal Leave',
   NoofDays: '1',
   NoofHours: '24',
   Notes : 'No Notes',
@@ -125,6 +125,45 @@ const rows = [
   Status: 'Rejected',
   Deduction: '-',
   CancelledReason: 'Reason is not justified'
+},
+
+{  
+  id: 5,
+  StartDate: '2023-10-12',
+  EndDate: '2023-10-14',
+  Reason: 'Personal Leave',
+  NoofDays: '2',
+  NoofHours: '48',
+  Notes : 'No Notes',
+  Status: 'Pending',
+  Deduction: '-',
+  CancelledReason: '-'
+},
+
+{  
+  id: 6,
+  StartDate: '2023-10-15',
+  EndDate: '2023-10-15',
+  Reason: 'Sick Leave',
+  NoofDays: '1',
+  NoofHours: '24',
+  Notes : 'No Notes',
+  Status: 'Approved',
+  Deduction: '-',
+  CancelledReason: '-'
+},
+
+{  
+  id: 7,
+  StartDate: '2023-10-12',
+  EndDate: '2023-10-15',
+  Reason: 'Personal Leave',
+  NoofDays: '3',
+  NoofHours: '72',
+  Notes : 'No Notes',
+  Status: 'Pending',
+  Deduction: '-',
+  CancelledReason: '-'
 },
 
 
@@ -198,7 +237,7 @@ function a11yProps(index: number) {
 
 // Main LeavePage component
 
-export default function LeavePage() {
+function LeavePage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -246,13 +285,12 @@ export default function LeavePage() {
             disableElevation
             variant="contained"
             aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'1100px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Request Leave</Button>
+            sx={{ marginTop: '20px', marginLeft:'1070px'}} >
+            <Button startIcon={<AddCircleIcon />}   onClick={handleClickOpen}>Request Leave</Button>
                   
                 <Dialog open={open} onClose={handleClose}>
-                  
                   <DialogTitle className='formHeader'>Request Leave</DialogTitle>
-                    <DialogContent sx={{marginTop:'5px', width:'600px', height:'1500px'}}>
+                    <DialogContent sx={{marginTop:'5px', width:'600px', height:'500px'}}>
                       <DialogContentText>
                      <div className="dates">
                      <FormControl fullWidth>
@@ -265,9 +303,9 @@ export default function LeavePage() {
                             onChange={handleChangeAge}
                     
                           >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>Medical</MenuItem>
+                            <MenuItem value={20}>Personal</MenuItem>
+                            <MenuItem value={30}>Other</MenuItem>
                           </Select>
                         </FormControl>
                      </div>
@@ -316,8 +354,8 @@ export default function LeavePage() {
                       </div>
                       </DialogContentText>
                     </DialogContent>
-                    <div>
-                      <TableContainer component={Paper}>
+                    {/* <div> */}
+                      {/* <TableContainer component={Paper}>
                       <Table sx={{ minWidth: 500 }} aria-label="simple table">
                         <TableHead>
                           <TableRow>
@@ -344,7 +382,7 @@ export default function LeavePage() {
                         </TableBody>
                       </Table>
                     </TableContainer>
-                    </div>
+                    </div> */}
                     <DialogActions>
                       <Button onClick={handleClose} color="primary">
                         Cancel
@@ -364,7 +402,7 @@ export default function LeavePage() {
                 className="startDate"
                 id="outlined-multiline-flexible"
                 label="Start Date"
-                color="darkPrimary"
+                // color="darkPrimary"
                 multiline
                 maxRows={4}
                 />
@@ -375,7 +413,7 @@ export default function LeavePage() {
                 className="endDate"
                 id="outlined-multiline-flexible"
                 label="End Date"
-                color="darkPrimary"
+                // color="darkPrimary"
                 multiline
                 maxRows={4}
                 />
@@ -402,3 +440,4 @@ export default function LeavePage() {
   );
 }
 
+export default LeavePage;

@@ -79,7 +79,8 @@ const defaultTheme = createTheme();
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" variant="contained" color='success'>View More Details</Button>
+                    <Button size="small" variant="contained" color='primary'>View More Details</Button>
+                    <Button size="small" variant="outlined" color='success'>Check Availability</Button>
                   </CardActions>
                 </Card>
               </Grid>
