@@ -85,7 +85,7 @@ const centerStyles =  {
         </div>
         <div className='popup_container'>
             <h2>Price : </h2>
-            <p>Rs.2000.00</p>
+            <p>LKR.2000.00</p>
         </div>
         </div>
           

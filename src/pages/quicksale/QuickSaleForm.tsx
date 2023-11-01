@@ -176,7 +176,7 @@ const [isAddServiceClicked, setIsAddServiceClicked] = useState(false);
         <TableHead>
           <TableRow>
             <TableCell>Title</TableCell>
-            <TableCell align="right">Amount (Rs.)</TableCell>
+            <TableCell align="right">Amount (LKR.)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -344,7 +344,7 @@ const Package = () => {
             <td>Hair coloring</td>
             <td>1</td>
             <td> 
-              Rs.1000
+              LKR.1000
             </td>
             <td className="editdlt_btn">
             <  RiDeleteBin5Line size={20} />
@@ -354,7 +354,7 @@ const Package = () => {
             <td>Clean-up facial</td>
             <td>1</td>
             <td> 
-              Rs.600
+              LKR.600
             </td>
             <td className="editdlt_btn">
             <  RiDeleteBin5Line size={20}  />
@@ -368,7 +368,7 @@ const Package = () => {
         <div className="name_container">
             <input
                 type="text"
-                value="Rs.1200.00"
+                value="LKR.1200.00"
                 onChange={(e)=> {
                     e.preventDefault()
                     setCostPrice(e.target.value)
@@ -378,7 +378,7 @@ const Package = () => {
              />
               <input
                 type="text"
-                value="Rs.1000.00"
+                value="LKR.1000.00"
                 onChange={(e)=> {
                     e.preventDefault()
                     setspecialPrice(e.target.value)
@@ -457,14 +457,14 @@ const Package = () => {
             <td>Hair coloring</td>
             <td>1</td>
             <td> 
-              Rs.1000
+              LKR.1000
             </td>
           </tr>  
           <tr>
             <td>Clean-up facial</td>
             <td>1</td>
             <td> 
-              Rs.600
+              LKR.600
             </td>
           </tr> 
         </tbody>

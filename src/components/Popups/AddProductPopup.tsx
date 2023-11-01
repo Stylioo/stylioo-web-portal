@@ -81,7 +81,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"
@@ -93,7 +93,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"
@@ -105,7 +105,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"
@@ -145,9 +145,9 @@ function AddProductPopup(props) {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}
                 >
-                  <MenuItem onClick={handleCloseMenu}>Option 1</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 2</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 3</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Brand 1</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Brand 2</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Brand 3</MenuItem>
                 </Menu>
               </div>
               <div>
@@ -166,9 +166,9 @@ function AddProductPopup(props) {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}
                 >
-                  <MenuItem onClick={handleCloseMenu}>Option 1</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 2</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 3</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 1</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 2</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 3</MenuItem>
                 </Menu>
               </div>
               <div>
@@ -187,9 +187,9 @@ function AddProductPopup(props) {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}
                 >
-                  <MenuItem onClick={handleCloseMenu}>Option 1</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 2</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 3</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Vendor 1</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Vendor 2</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Vendor 3</MenuItem>
                 </Menu>
               </div>
             </div>
@@ -209,7 +209,7 @@ function AddProductPopup(props) {
               </div>
               <div>
                 <p>
-                  List the available in stock quatities fot the products. Also
+                  List the available in stock quatities for the products. Also
                   set a minimum quatity level and get alerts when the stock is
                   less.
                 </p>

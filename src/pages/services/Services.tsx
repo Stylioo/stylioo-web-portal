@@ -741,7 +741,7 @@ const Services = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Rs.1500</td>
+                        <td>LKR.1500</td>
                         <td>00.30</td>
 
                       </tr>
@@ -1043,7 +1043,7 @@ const Services = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Rs.2000</td>
+                        <td>LKR.2000</td>
                         <td>00.45</td>
 
                       </tr>
