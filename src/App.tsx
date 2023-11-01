@@ -53,10 +53,14 @@ function App() {
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN]} />}>
-                <Route path="services" element={<Services />} />
                 <Route path="products" element={<Products />} />
                 <Route path="products/new" element={<AddProducts />} />
                 <Route path="products/:id" element={<ViewProducts />} />
+              </Route>
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN, ROLE.RECEPTIONIST]} />}>
+                <Route path="services" element={<Services />} />
+
               </Route>
 
             </Route>
