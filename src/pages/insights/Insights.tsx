@@ -1,5 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import { BarChart } from "@mui/x-charts/BarChart";
 import {
   ResponsiveChartContainer,
   BarPlot,
@@ -8,9 +9,189 @@ import {
   ChartsYAxis,
   axisClasses,
 } from "@mui/x-charts";
-import { Insights as InsightsIcon } from "@mui/icons-material";
+// import { Insights as InsightsIcon } from "@mui/icons-material";
 
 const Insights = () => {
+  // all_appoinments chart
+  const chartSetting_r = {
+    yAxis: [
+      {
+        label: "# Rupees (x 1000)",
+      },
+    ],
+    width: 900,
+    height: 500,
+    sx: {
+      [`.${axisClasses.left} .${axisClasses.label}`]: {
+        transform: "translate(-20px, 0)",
+      },
+    },
+  };  
+  const dataset_r = [
+    {
+      profit: 100,
+      income: 186,
+      expense: 86,
+      month: "Jan",
+    },
+    {
+      profit: 70,
+      income: 86,
+      expense: 16,
+      month: "Feb",
+    },
+    {
+      profit: 56,
+      income: 86,
+      expense: 30,
+      month: "Mar",
+    },
+    {
+      profit: 48,
+      income: 68,
+      expense: 20,
+      month: "Apr",
+    },
+    {
+      profit: 88,
+      income: 93,
+      expense: 5,
+      month: "May",
+    },
+    {
+      profit: 70,
+      income: 96,
+      expense: 26,
+      month: "June",
+    },
+    {
+      profit: 63,
+      income: 104,
+      expense: 41,
+      month: "July",
+    },
+    {
+      profit: 62,
+      income: 91,
+      expense: 29,
+      month: "Aug",
+    },
+    {
+      profit: 77,
+      income: 96,
+      expense: 19,
+      month: "Sept",
+    },
+    {
+      profit: 82,
+      income: 112,
+      expense: 30,
+      month: "Oct",
+    },
+    {
+      profit: 12,
+      income: 25,
+      expense: 13,
+      month: "Nov",
+    },
+    
+  ];
+  // end of all_appoinments chart-----------
+
+  // begin of appoinment chart
+  const chartSetting_a = {
+    yAxis: [
+      {
+        label: "# appoinment count",
+      },
+    ],
+    width: 900,
+    height: 500,
+    sx: {
+      [`.${axisClasses.left} .${axisClasses.label}`]: {
+        transform: "translate(-20px, 0)",
+      },
+    },
+  };
+  const dataset_a = [
+    {
+      successful_appoinments: 39,
+      all_appoinments: 42,
+      canceled_appoinments: 3,
+      month: "Jan",
+    },
+    {
+      successful_appoinments: 45,
+      all_appoinments: 47,
+      canceled_appoinments: 2,
+      month: "Fev",
+    },
+    {
+      successful_appoinments: 47,
+      all_appoinments: 53,
+      canceled_appoinments: 6,
+      month: "Mar",
+    },
+    {
+      successful_appoinments: 84,
+      all_appoinments: 96,
+      canceled_appoinments: 12,
+      month: "Apr",
+    },
+    {
+      successful_appoinments: 77,
+      all_appoinments: 79,
+      canceled_appoinments: 2,
+      month: "May",
+    },
+    {
+      successful_appoinments: 60,
+      all_appoinments: 63,
+      canceled_appoinments: 3,
+      month: "June",
+    },
+    {
+      successful_appoinments: 59,
+      all_appoinments: 60,
+      canceled_appoinments: 1,
+      month: "July",
+    },
+    {
+      successful_appoinments: 66,
+      all_appoinments: 65,
+      canceled_appoinments: 0,
+      month: "Aug",
+    },
+    {
+      successful_appoinments: 51,
+      all_appoinments: 54,
+      canceled_appoinments: 3,
+      month: "Sept",
+    },
+    {
+      successful_appoinments: 60,
+      all_appoinments: 65,
+      canceled_appoinments: 5,
+      month: "Oct",
+    },
+    {
+      successful_appoinments: 6,
+      all_appoinments: 6,
+      canceled_appoinments: 0,
+      month: "Nov",
+    },
+  ];
+
+  // end of appoinment chart
+
+  // const valueFormatter = (value: number) => `${value}mm`;
+  // valueFormatter for Rupees
+  const valueFormatterRs = (valueRr: number) => `Rs ${valueRr}`;
+
+  // valueFormatter for mm
+  const valueFormatterMm = (valueMm: number) => `${valueMm}mm`;
+  
+
   return (
     <div
       style={{
@@ -33,8 +214,8 @@ const Insights = () => {
           justifyContent: "center",
         }}
       >
-        <div>
-          <h1
+        <div id="employees-statictics-container">
+          <h1 id="employees-statictics-header"
             style={{
               textAlign: "center",
               fontSize: "24px",
@@ -45,7 +226,7 @@ const Insights = () => {
             Employees Statistics for Today
           </h1>
         </div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ display: "flex", flexDirection: "row" ,justifyContent:"center"}}>
           <div
             style={{
               border: "1px solid rgba(0, 0, 0, 0.3)",
@@ -118,65 +299,51 @@ const Insights = () => {
           display: "inline-block",
         }}
       >
-        <div
-          style={{
-            textAlign: "center",
-            fontSize: "24px",
-            fontWeight: "bold",
-            color: "#007BFF",
-          }}
-        >
-          Revenue Chart
-        </div>
-        <Box sx={{ width: "100%", maxWidth: 800, mx: "auto" }}>
-          <ResponsiveChartContainer
-            xAxis={[
-              {
-                scaleType: "band",
-                data: ["2023-10-25", "2023-10-26", "2023-10-27", "2023-10-28"],
-                id: "quarters",
-                label: "Quarters",
-              },
-            ]}
-            yAxis={[{ id: "money" }, { id: "quantities" }]}
-            series={[
-              {
-                type: "bar",
-                id: "profit",
-                yAxisKey: "quantities",
-                data: [305, 5642, 6135, 3374],
-              },
-              {
-                type: "bar",
-                id: "revenue",
-                yAxisKey: "quantities",
-                data: [3205, 2542, 3135, 8374],
-              },
-              {
-                type: "bar",
-                id: "expendutiure",
-                yAxisKey: "quantities",
-                data: [1645, 5542, 5146, 3735],
-              },
-            ]}
-            height={400}
-            margin={{ left: 70, right: 70 }}
-            sx={{
-              [`.${axisClasses.left} .${axisClasses.label}`]: {
-                transform: "translate(-25px, 0)",
-              },
-              [`.${axisClasses.right} .${axisClasses.label}`]: {
-                transform: "translate(30px, 0)",
-              },
+        <div id="all_appoinments-chart-container">
+          <div
+            id="all_appoinments-chart-topic"
+            style={{
+              textAlign: "center",
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: "#007BFF",
             }}
           >
-            <BarPlot />
-            <LinePlot />
-            <ChartsXAxis axisId="quarters" label="Dates" labelFontSize={18} />
-            <ChartsYAxis axisId="quantities" label="# in Rupees" />
-            {/* <ChartsYAxis axisId="money" position="right" label="revenue" /> */}
-          </ResponsiveChartContainer>
-        </Box>
+            Revenue Chart
+          </div>
+          <div
+            id="all_appoinments-chart-diagram"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh", // Set the height to make it full-screen
+            }}
+          >
+            <BarChart
+              dataset={dataset_r} // Use the correct dataset name
+              xAxis={[{ scaleType: "band", dataKey: "month" , label:"Month"}]}
+              series={[
+                {
+                  dataKey: "profit",
+                  label: "Profit",
+                  valueFormatterRs,
+                },
+                {
+                  dataKey: "income",
+                  label: "Income",
+                  valueFormatterRs,
+                },
+                {
+                  dataKey: "expense",
+                  label: "Expense",
+                  valueFormatterRs,
+                },
+              ]}
+              {...chartSetting_r}
+            />
+          </div>
+        </div>
       </div>
       <div
         style={{
@@ -188,69 +355,51 @@ const Insights = () => {
           display: "inline-block",
         }}
       >
-        <div
-          style={{
-            textAlign: "center",
-            fontSize: "24px",
-            fontWeight: "bold",
-            color: "#007BFF",
-          }}
-        >
-          Appoinment Chart
-        </div>
-        <Box sx={{ width: "100%", maxWidth: 800, mx: "auto" }}>
-          <ResponsiveChartContainer
-            xAxis={[
-              {
-                scaleType: "band",
-                data: ["2023-10-25", "2023-10-26", "2023-10-27", "2023-10-28"],
-                id: "quarters",
-                label: "Quarters",
-              },
-            ]}
-            yAxis={[{ id: "money" }, { id: "quantities" }]}
-            series={[
-              {
-                type: "bar",
-                id: "profit",
-                yAxisKey: "quantities",
-                data: [3, 4, 6, 8],
-              },
-              {
-                type: "bar",
-                id: "revenue",
-                yAxisKey: "quantities",
-                data: [5, 4, 5, 4],
-              },
-              {
-                type: "bar",
-                id: "expendutiure",
-                yAxisKey: "quantities",
-                data: [5, 5, 7, 9],
-              },
-            ]}
-            height={400}
-            margin={{ left: 70, right: 70 }}
-            sx={{
-              [`.${axisClasses.left} .${axisClasses.label}`]: {
-                transform: "translate(-25px, 0)",
-              },
-              [`.${axisClasses.right} .${axisClasses.label}`]: {
-                transform: "translate(30px, 0)",
-              },
+        <div id="appoinment-chart-container">
+          <div
+            id="all_appoinments-chart-topic"
+            style={{
+              textAlign: "center",
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: "#007BFF",
             }}
           >
-            <BarPlot />
-            <LinePlot />
-            <ChartsXAxis
-              axisId="quarters"
-              label="Appointments"
-              labelFontSize={18}
+            Appoinments Chart
+          </div>
+          <div
+            id="all_appoinments-chart-diagram"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh", // Set the height to make it full-screen
+            }}
+          >
+            <BarChart
+              dataset={dataset_a} // Use the correct dataset name
+              xAxis={[{ scaleType: "band", dataKey: "month" , label:"Month"}]}
+              series={[
+                {
+                  dataKey: "successful_appoinments",
+                  label: "Successful Appointments",
+                  valueFormatterMm,
+                },
+                {
+                  dataKey: "all_appoinments",
+                  label: "All Appointments",
+                  valueFormatterMm,
+                },
+                {
+                  dataKey: "canceled_appoinments",
+                  label: "Canceled Appointments",
+                  valueFormatterMm,
+                },
+              ]}
+              {...chartSetting_a}
             />
-            <ChartsYAxis axisId="quantities" label="# Appoinment count" />
-            {/* <ChartsYAxis axisId="money" position="right" label="revenue" /> */}
-          </ResponsiveChartContainer>
-        </Box>
+          </div>
+        </div>
       </div>
     </div>
   );
