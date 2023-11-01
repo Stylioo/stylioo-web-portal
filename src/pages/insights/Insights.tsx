@@ -12,7 +12,7 @@ import {
 // import { Insights as InsightsIcon } from "@mui/icons-material";
 
 const Insights = () => {
-  // all_appoinments chart
+  // all_appoinments chart function
   const chartSetting_r = {
     yAxis: [
       {
@@ -98,7 +98,7 @@ const Insights = () => {
   ];
   // end of all_appoinments chart-----------
 
-  // begin of appoinment chart
+  // begin of appoinment chart--------
   const chartSetting_a = {
     yAxis: [
       {
@@ -182,14 +182,14 @@ const Insights = () => {
     },
   ];
 
-  // end of appoinment chart
+  // end of appoinment chart------------
 
   // const valueFormatter = (value: number) => `${value}mm`;
   // valueFormatter for Rupees
   const valueFormatterRs = (valueRr: number) => `Rs ${valueRr}`;
 
   // valueFormatter for mm
-  const valueFormatterMm = (valueMm: number) => `${valueMm}mm`;
+  const valueFormatterMm = (valueMm: number) => `${valueMm}`;
   
 
   return (
@@ -375,17 +375,17 @@ const Insights = () => {
                 {
                   dataKey: "profit",
                   label: "Profit",
-                  valueFormatterRs,
+                  valueFormatter: valueFormatterRs,
                 },
                 {
                   dataKey: "income",
                   label: "Income",
-                  valueFormatterRs,
+                  valueFormatter: valueFormatterRs,
                 },
                 {
                   dataKey: "expense",
                   label: "Expense",
-                  valueFormatterRs,
+                  valueFormatter: valueFormatterRs,
                 },
               ]}
               {...chartSetting_r}
@@ -431,17 +431,17 @@ const Insights = () => {
                 {
                   dataKey: "successful_appoinments",
                   label: "Successful Appointments",
-                  valueFormatterMm,
+                  valueFormatter: valueFormatterMm,
                 },
                 {
                   dataKey: "all_appoinments",
                   label: "All Appointments",
-                  valueFormatterMm,
+                  valueFormatter: valueFormatterMm,
                 },
                 {
                   dataKey: "canceled_appoinments",
                   label: "Canceled Appointments",
-                  valueFormatterMm,
+                  valueFormatter: valueFormatterMm,
                 },
               ]}
               {...chartSetting_a}
