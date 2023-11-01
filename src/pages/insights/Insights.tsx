@@ -124,7 +124,7 @@ const Insights = () => {
       successful_appoinments: 45,
       all_appoinments: 47,
       canceled_appoinments: 2,
-      month: "Fev",
+      month: "Feb",
     },
     {
       successful_appoinments: 47,
