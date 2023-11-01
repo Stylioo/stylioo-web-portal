@@ -295,9 +295,9 @@ export default function ReceptionistInsigntsPage() {
 
               {/* Recent Orders */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                {/* <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />
-                </Paper>
+                </Paper> */}
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
