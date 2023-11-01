@@ -1,7 +1,7 @@
 import ROLE from "@/constants/roles"
 import { useAppSelector } from "@/redux/store"
-import ReceptionistInsigntsPage from "../receptionistDashboard/HomePage"
 import OwnerInsights from "../OwnerInsights/OwnerInsights"
+import ReceptionistInsigntsPage from "../receptionistHome/HomePage"
 
 function HomePage() {
     const currentUserRole = useAppSelector(state => state.auth.role)
