@@ -295,3 +295,6 @@ function AddProductPopup(props) {
 }
 
 export default AddProductPopup;
+
+
+// Create popup for add a new product in the inventory

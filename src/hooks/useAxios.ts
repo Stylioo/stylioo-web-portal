@@ -1,25 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+// Import necessary modules and dependencies.
+
 import { useState, useEffect } from "react"
 import axios from "../axios"
 
+// Define a type for the configuration object used in the useAxios hook.
 type ConfigType = {
-    axiosInstance?: any
-    url?: string
-    method?: string
+    axiosInstance?: any  // Optional Axios instance for making requests.
+    url?: string  // The URL for the HTTP request
+    method?: string  // The HTTP request method (e.g., 'get', 'post').
     request?: {
-        headers?: any
-        params?: any
-        data?: any
+        headers?: any // Request headers.
+        params?: any // Request parameters.
+        data?: any // Request data.
     }
 }
 
-const useAxios = () => {
+// Define the useAxios custom hook.
 
-    const [response, setResponse] = useState<any>(null)
-    const [success, setSuccess] = useState<boolean>(false)
-    const [error, setError] = useState<string | null>(null)
-    const [loading, setLoading] = useState<boolean | null>(null)
-    const [controller, setController] = useState<any>()
+const useAxios = () => {
+// Define state variables to manage the HTTP request.
+    const [response, setResponse] = useState<any>(null)    // Response data.
+    const [success, setSuccess] = useState<boolean>(false)  // Success flag.
+    const [error, setError] = useState<string | null>(null)  // Error message.
+    const [loading, setLoading] = useState<boolean | null>(null)  // Loading flag.
+    const [controller, setController] = useState<any>()  // Abort controller for request cancellation.
+
+    // Define the axiosFetch function to make HTTP requests.
 
     const axiosFetch = async (configObj: ConfigType) => {
         const {
@@ -57,11 +65,16 @@ const useAxios = () => {
         }
     }
 
+     // Use useEffect to clean up the abort controller when the component unmounts.
+
     useEffect(() => {
         return () => controller && controller.abort()
     }, [controller])
 
+    // Return an array with response data, loading state, error message, and the axiosFetch function.
     return [response, loading, error, axiosFetch]
 }
+
+// Export the useAxios custom hook for use in other parts of the application.
 
 export default useAxios

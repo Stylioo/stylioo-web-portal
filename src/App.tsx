@@ -19,6 +19,9 @@ import DashboardLayout from "./components/DashboardLayout"
 import ProtectedLayout from "./components/ProtectedLayout"
 import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
+import AllBeauticianPage from "./pages/allbeautician/HomePage"
+import Dashboard from "./pages/dashboard/HomePage"
+import ViewBeautician from "./pages/allbeautician/ViewBeautician"
 
 function App() {
 
@@ -48,14 +51,17 @@ function App() {
                 <Route path="client" element={<ClientPage />} />
                 <Route path="leave" element={<LeavePage />} />
                 <Route path='beauticians' element={<AllBeauticianPage />} />
+                <Route path='beauticians/:id' element={<ViewBeautician />} />
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN]} />}>
-                <Route path="services" element={<Services />} />
                 <Route path="products" element={<Products />} />
                 <Route path="products/new" element={<AddProducts />} />
                 <Route path="products/:id" element={<ViewProducts />} />
-                <Route path="insights" element={<Insights/>} />
+              </Route>
+
+              <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN, ROLE.RECEPTIONIST]} />}>
+                <Route path="services" element={<Services />} />
 
               </Route>
 
@@ -71,31 +77,3 @@ function App() {
 }
 
 export default App
-
-
-
-{/* <Routes>
-            <Route path="/receptionist" element={<Layout allowedRoles='RECEPTIONIST' />} >
-              <Route path="" element={<AppointmentPage />} />
-              <Route path="appointment" element={<AppointmentPage />} />
-              <Route path="client" element={<ClientPage />} />
-              <Route path="quicksale" element={<QuickSalePage />} />
-              <Route path="quick-sale-form" element={<QuickSaleForm />} />
-              <Route path="leave" element={<LeavePage />} />
-            </Route>
-
-            <Route path="/manager" element={<Layout allowedRoles='MANAGER' />} >
-              <Route path="" element={<Services />} />
-              <Route path="leavemanagement" element={<LeaveManagmentPage />} />
-            </Route>
-
-            <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
-              <Route path="" element={<h1>Insights</h1>} />
-              <Route path="insights" element={<h1>Insights</h1>} />
-              <Route path="sales" element={<h1>Sales</h1>} />
-            </Route>
-
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/accessDenied" element={<h1>Access Denied</h1>} />
-            <Route path="*" element={<h1>Not Found</h1>} />
-          </Routes> */}

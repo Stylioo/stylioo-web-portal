@@ -1,15 +1,17 @@
 import ROLE from "@/constants/roles"
 import { useAppSelector } from "@/redux/store"
-import ReceptionistInsigntsPage from "../receptionistDashboard/HomePage"
+import OwnerInsights from "../OwnerInsights/OwnerInsights"
+import ReceptionistInsigntsPage from "../receptionistHome/HomePage"
+import ManagerDashBoard from "../managerDashboard/ManagerDashBoard"
 
 function HomePage() {
     const currentUserRole = useAppSelector(state => state.auth.role)
 
     if (currentUserRole === ROLE.OWNER) {
-        return <h1>Owner Dashboard</h1>
+        return <OwnerInsights />
     }
     else if (currentUserRole === ROLE.MANAGER) {
-        return <h1>Manager Dashboard</h1>
+        return <ManagerDashBoard />
     }
     else if (currentUserRole === ROLE.RECEPTIONIST) {
         return <ReceptionistInsigntsPage />

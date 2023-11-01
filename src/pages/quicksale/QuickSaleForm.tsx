@@ -16,12 +16,16 @@ import Paper from '@mui/material/Paper';
 import "../../theme.tsx"
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
+// Function to create a data row for the table
+
 function createData(
   name: string,
   calories: number,
 ) {
   return { name, calories};
 }
+
+// Define data rows for the table
 
 const rows = [
   createData('Sub Total', 12000),
@@ -34,12 +38,14 @@ const rows = [
 
 
 const CreateInvoiceForm = () => {
-  const [open, setOpen] = React.useState(false);
-  const [clientName, setClientName] = useState("");
-  const [contact, setContact] = useState("");
-  const [extraCharges, setExtraCharges] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [discountType, setDiscountType] = React.useState('');
+    // Define state variables and set their initial values
+
+  const [open, setOpen] = React.useState(false); // State for the dialog
+  const [clientName, setClientName] = useState(""); // State for client name input
+  const [contact, setContact] = useState(""); // State for contact input
+  const [extraCharges, setExtraCharges] = useState(""); // State for extra charges input
+  const [discount, setDiscount] = useState(""); // State for discount input
+  const [discountType, setDiscountType] = React.useState(''); // State for discount type selection
   
 // Additional state variables for form fields
 const [isAddServiceClicked, setIsAddServiceClicked] = useState(false);
@@ -169,7 +175,7 @@ const [isAddServiceClicked, setIsAddServiceClicked] = useState(false);
 
      </div>
 
-
+{/* create table  */}
 <div className="table">
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -8,12 +8,13 @@ import { AlertColor, Autocomplete, Box, Button, Chip, Grid, Modal, TextField, Ty
 import AddSupplier from "./AddSupplier";
 import AddStock from "./AddStock";
 
+// Define a type for snack bar alert messages
 type SnakbarAlertMessage = {
     type: AlertColor,
     message: string
 }
 
-
+ // Define a type for the AddStockModal component's props
 type addStockModalPropsType = {
     open: boolean
     handleClose: () => void
@@ -23,6 +24,7 @@ type addStockModalPropsType = {
 }
 
 function AddStockModal({ open, handleClose, productId, refetch, handleSankbarShow }: addStockModalPropsType) {
+      // Define the modal style
     const style = {
         position: 'absolute',
         top: '50%',
@@ -36,12 +38,15 @@ function AddStockModal({ open, handleClose, productId, refetch, handleSankbarSho
         p: 3,
     };
 
+  // State to control the display of the Add Supplier page
     const [addSupplierPage, setAddSupplierPage] = useState<boolean>(false)
 
+// Function to open the Add Supplier page
     const openAddSupplierPage = () => {
         setAddSupplierPage(true)
     }
 
+  // Function to open the Add Stock page
     const openAddStockPage = () => {
         setAddSupplierPage(false)
     }
@@ -65,4 +70,8 @@ function AddStockModal({ open, handleClose, productId, refetch, handleSankbarSho
     )
 }
 
+// Export the AddStockModal component
+
 export default AddStockModal
+
+// add stock model 

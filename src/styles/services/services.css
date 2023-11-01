@@ -1,3 +1,6 @@
+/* Start styles here  */
+
+/* Style for a primary button */
 .primary_button {
   background-color: #043aa7;
   color: white;
@@ -10,43 +13,52 @@
   width: 80px;
 }
 
+/* Style for a header container */
 .header_container{
   display: flex;
   justify-content: space-between;
 }
 
+/* Style for a search container */
 .search_container{
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
+
+/* Style for a show container */
 .show_container{
   display: flex;
   gap: 10px;
 }
 
+/* Style for a table */
 .table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
 
+/* Style for table headers and cells */
 .table th,.table td {
   padding: 8px; 
   border: none; 
   text-align: left; 
 }
 
+/* Style for table headers */
 .table th {
   background-color: #f2f2f2; 
   font-weight: bold; 
 }
 
+/* Style for a container with names */
 .name_container{
   display: flex;
   gap: 20px;
 }
 
+/* Style for an input box container */
 .inputbox_container{
   padding: 10px;
   border: 1px solid black;
@@ -57,6 +69,7 @@
 
 }
 
+/* Style for an input box container for description */
 .inputbox_container_description{
   padding: 10px;
   border: 1px solid black;
@@ -68,6 +81,7 @@
 
 }
 
+/* Style for a save button */
 .save-button{
   background-color: #043aa7;
   color: white;
@@ -81,26 +95,33 @@
   margin-top: 20px;
 }
 
+/* Style for a close button container */
 .close_btn{
   display: flex;
   justify-content: flex-end;
 }
 
+/* Style for a button container for delete and edit */
 .btn_delete_edit{
   justify-content: space-around;
   text-align: center;
   
 }
+
+/* Style for an icon with gap */
+
 .icon-with-gap {
   margin-right: 15px; 
 }
 
+/* Style for a select box container */
 .selectbox_container{
   padding: 2px;
   border-radius: 20px;
   width: 70px;
 }
 
+/* Style for a search bar input */
 
 .searchbar{
   padding: 7px;
@@ -119,6 +140,8 @@
 
 }
 
+/* Style for a first select box */
+/* Style for an introduction container */
 .intro_container{
   padding: 10px;
   border: none;
@@ -165,4 +188,5 @@
   justify-content:center;
 }
 
+/* End styles here  */
 

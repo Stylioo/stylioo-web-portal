@@ -1,3 +1,5 @@
+// Import necessary modules and dependencies.
+
 import { useState } from 'react';
 
 import Modal from 'react-modal';
@@ -6,23 +8,28 @@ import Donebutton from "./Donebutton";
 import React from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
+// Import styles for the Addons component.
 
-
-
-
+// add styles 
 import "../../styles/addons/addons.css";
 
+// Define the Addons component.
+
 const Addons = () => {
+  // Define the Addons component.
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  // Function to open the popup.
 const openPopup = () => {
   setIsPopupOpen(true);
 
 };
 
+  // Function to close the popup.
 const closePopup = () => {
   setIsPopupOpen(false);
 };
+  // Define styles for the center-aligned popup.
 const centerStyles =  {
     overlay: {
       display: 'flex',

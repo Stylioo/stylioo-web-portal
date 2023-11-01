@@ -1,3 +1,5 @@
+// Importing necessary dependencies and components
+
 import { Box, Button, Checkbox, FormControl, FormControlLabel, Grid, IconButton, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { useEffect, useRef, useState } from "react"
 import { Add, CameraAltRounded, Close } from "@mui/icons-material"
@@ -14,6 +16,7 @@ import useAuth from "@/hooks/useAuth"
 
 
 function AddStaff() {
+    // Create references and initialize state variables
 
     const fileRef = useRef<HTMLInputElement>(null)
     const theme = useTheme()
@@ -26,6 +29,8 @@ function AddStaff() {
     const [file, setFile] = useState<File | null>(null)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    // Custom hook for uploading files
+
     const [uploadImage] = useFileUploader()
 
     const [qualifications, setQualifications] = useState<any>([])
@@ -33,13 +38,19 @@ function AddStaff() {
 
     const [formData, setFormData] = useState<any>({})
 
+    // Function to open the qualification modal
+
     const handleQualificationModalOpen = () => {
         setAddQualificationModalOpen(true)
     }
 
+    // Function to close the qualification modal
+
     const handleQualificationModalClose = () => {
         setAddQualificationModalOpen(false)
     }
+
+    // Function to handle form input changes
 
     const handleInput = (event: any) => {
 
@@ -47,17 +58,28 @@ function AddStaff() {
         setFormData({ ...formData, [name]: value })
     }
 
+    // Function to handle date input changes
+
     const handleDateInput = (name: string, value: Date | null) => {
         const dString = moment(value).format('YYYY-MM-DD')
         setFormData({ ...formData, [name]: dString })
     }
 
-    const handleSave = async () => {
+    // Function to save the staff member data
 
+    const handleSave = async () => {
         try {
+            // Upload the staff member's profile image
             setIsLoading(true)
             const name = await uploadImage(file)
             if (name && name.length) {
+                setFormData({ ...formData })
+
+                // Log the uploaded image name
+
+                console.log(name);
+
+                // Send a POST request to add the staff member
                 const res = await axios.post('/employee', { ...formData, image: name[0] })
                 if (res.data.success) {
                     console.log("success:", res.data.data);
@@ -70,10 +92,12 @@ function AddStaff() {
             console.log(err);
         }
         finally {
-            setIsLoading(true)
+            setIsLoading(false)
             navigate('/staff')
         }
     }
+
+    // Update formData when qualifications change
 
     useEffect(() => {
         setFormData({ ...formData, qualifications: qualifications })
@@ -575,3 +599,6 @@ function AddStaff() {
 }
 
 export default AddStaff
+
+
+// add a new staff member 

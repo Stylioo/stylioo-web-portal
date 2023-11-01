@@ -1,3 +1,4 @@
+// Define the Closebutton component.
 const Closebutton = () => {
     return (
         <svg
@@ -18,3 +19,6 @@ const Closebutton = () => {
   }
   
   export default Closebutton
+
+
+//   add close button

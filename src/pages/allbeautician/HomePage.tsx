@@ -1,6 +1,20 @@
 import axios from '@/axios';
 import Loading from '@/components/Loading';
 import { Box } from '@mui/material';
+// import React from 'react'
+
+// export const AllBeauticianPage = () => {
+//   return (
+//     <div>AllBeauticianPage</div>
+//   )
+// }
+
+// export default AllBeauticianPage
+
+// display all beauticians in a card view 
+
+// Import necessary modules and dependencies.
+import * as React from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,6 +23,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Function to display copyright information.
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -17,6 +34,8 @@ function AllBeauticianPage() {
 
   const [beautician, setBeautician] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   const getAllBeauticians = async () => {
     try {
@@ -38,6 +57,7 @@ function AllBeauticianPage() {
     getAllBeauticians()
   }, [])
 
+  // Define the AllBeauticianPage component.
   return (
     <>
       {
@@ -74,7 +94,9 @@ function AllBeauticianPage() {
                       </Typography> */}
                     </CardContent>
                     <CardActions>
-                      <Button size="small" variant="contained" color='success'>View More Details</Button>
+                      <Button size="small" variant="contained" color='success' onClick={() => {
+                        navigate(`/beauticians/${beauti.id}`)
+                      }}>View More Details</Button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -85,5 +107,6 @@ function AllBeauticianPage() {
     </>
   );
 }
+
 
 export default AllBeauticianPage

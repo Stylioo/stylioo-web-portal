@@ -149,18 +149,25 @@ function CanceledAppoitments() {
         {
             field: 'status_changed_by', headerName: "Cancelled By", filterable: false, width: 150, renderCell: (params: any) => {
                 return <Box sx={{ display: "flex", alignItems: 'center', gap: 1 }}>
-                    <img style={{
-                        width: 30,
-                        height: 30,
-                        borderRadius: "50%"
-                    }} src={params.row.status_changed_by.image ? `https://stylioo.blob.core.windows.net/images/${params.row.status_changed_by.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
-                    <Box sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: '5px'
-                    }}>
-                        <Typography variant="caption">{params.row.status_changed_by?.first_name}</Typography> <Typography variant="caption"> {params.row.status_changed_by?.last_name}</Typography>
-                    </Box>
+                    {
+                        params.row.status_changed_by !== null ?
+                            <>
+                                <img style={{
+                                    width: 30,
+                                    height: 30,
+                                    borderRadius: "50%"
+                                }} src={params.row.status_changed_by.image ? `https://stylioo.blob.core.windows.net/images/${params.row.status_changed_by.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}></img>
+                                <Box sx={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    gap: '5px'
+                                }}>
+                                    <Typography variant="caption">{params.row.status_changed_by?.first_name}</Typography> <Typography variant="caption"> {params.row.status_changed_by?.last_name}</Typography>
+                                </Box>
+                            </>
+                            :
+                            <Typography variant="caption">By Customer</Typography>
+                    }
                 </Box >
             }
         },
@@ -184,7 +191,7 @@ function CanceledAppoitments() {
         },
 
         {
-            field: "service", headerName: "Services", width: 275, renderCell: (params: any) => {
+            field: "service", headerName: "Services", width: 260, renderCell: (params: any) => {
                 return <Box
                     sx={{
                         display: "flex",

@@ -21,7 +21,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } 
 import { Link } from 'react-router-dom';
 import axios from '@/axios';
 
-
+// Define columns for the data grid
 const columns: GridColDef[] = [
   { field: 'date', headerName: 'Date', width: 130 },
   { field: 'startTime', headerName: 'Start Time', width: 130 },
@@ -36,12 +36,15 @@ const columns: GridColDef[] = [
     width: 130,
     renderCell: (params) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
+      // Initialize state for the menu anchor
       const [anchorEl, setAnchorEl] = useState(null);
 
+      // Open the menu when an option is clicked
       const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
         setAnchorEl(event.currentTarget);
       };
 
+      // Close the menu
       const handleClose = () => {
         setAnchorEl(null);
       };
@@ -49,6 +52,7 @@ const columns: GridColDef[] = [
 
       return (
         <div>
+          {/* Add icon buttons for edit, delete, and view more options */}
           <IconButton aria-label="edit" color="primary">
             <EditIcon />
           </IconButton>
@@ -82,7 +86,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-
+// Sample data rows
 const rows = [
   { id: 1, Date: '10/10/2021', StartTime: '10:00 AM', EndTime: '11:00 AM', ClientName: 'John Doe', Service: 'Haircut', Beautician: 'Chirasi Walpola', ServicePrice: 'LKR.1500.00' },
 
@@ -97,6 +101,7 @@ interface TabPanelProps {
   value: number;
 }
 
+// Define a function for rendering tab panels
 
 function CustomTabPanel(props: TabPanelProps) {
 
@@ -119,6 +124,7 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
+// Define a function for setting accessibility properties
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -126,6 +132,7 @@ function a11yProps(index: number) {
   };
 }
 
+  // Function to fetch and set appointment data
 export default function ReceptionistPage() {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
@@ -146,7 +153,7 @@ export default function ReceptionistPage() {
       console.log(err);
     }
   }
-
+  // Fetch appointment data on component mount
   useEffect(() => {
     getAllAppointments()
   }, [])
@@ -156,18 +163,22 @@ export default function ReceptionistPage() {
   //   setValue(newValue);
   // };
 
+    // Function to handle tab change
   const handleChange = (event: any, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
   };
 
+    // Function to open the add appointment dialog
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+    // Function to close the dialog
   const handleClose = () => {
     setOpen(false);
   };
 
+    // Function to handle form submission
   const handleSubmit = () => {
     // Handle form submission here
     // You can access form data using state or useRef
@@ -244,12 +255,6 @@ export default function ReceptionistPage() {
                   onChange={(e) => setServiceCategory(e.target.value)}
                   sx={{ marginBottom: '10px' }}
                 />
-
-                {/* Add more form fields here */}
-
-                {/* <Divider sx={{ marginBottom: '10px' }} /> */}
-
-                {/* Display the total price */}
                 <TextField
                   label="Total Price"
                   fullWidth

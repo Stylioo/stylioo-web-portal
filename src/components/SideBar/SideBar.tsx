@@ -46,7 +46,7 @@ export default function SideBar({ children }: sidebarPropType) {
             [
                 { title: 'Insights', slug: '/', icon: <Assessment /> },
                 { title: 'Appointments', slug: '/appointments', icon: <Event /> },
-                { title: 'Customers', slug: '/customers', icon: <People /> },
+                // { title: 'Customers', slug: '/customers', icon: <People /> },
                 { title: 'Beauticians', slug: '/beauticians', icon: <Person /> },
                 { title: 'Services', slug: '/services', icon: <Business /> }
             ])
