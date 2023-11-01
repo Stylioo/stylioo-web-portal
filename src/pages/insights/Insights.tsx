@@ -98,7 +98,7 @@ const Insights = () => {
   ];
   // end of all_appoinments chart-----------
 
-  // begin of appoinment chart--------
+  // begin of appoinment chart---------
   const chartSetting_a = {
     yAxis: [
       {
@@ -188,7 +188,7 @@ const Insights = () => {
   // valueFormatter for Rupees
   const valueFormatterRs = (valueRr: number) => `Rs ${valueRr}`;
 
-  // valueFormatter for mm
+  // valueFormatter for counts
   const valueFormatterMm = (valueMm: number) => `${valueMm}`;
   
 
@@ -396,7 +396,7 @@ const Insights = () => {
                   valueFormatter: valueFormatterMm,
                 },
               ]}
-              {...chartSetting_a}
+              {...chartSetting_a} // Use the correct chart setting name to appoinments 
             />
           </div>
         </div>
