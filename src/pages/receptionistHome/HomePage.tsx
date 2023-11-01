@@ -107,16 +107,16 @@ const defaultTheme = createTheme();
 
 export default function ReceptionistInsigntsPage() {
   // const [open, setOpen] = React.useState(true);
-//   const toggleDrawer = () => {
-//     setOpen(!open);
-//   };
+  //   const toggleDrawer = () => {
+  //     setOpen(!open);
+  //   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         {/* <AppBar position="absolute" open={open}> */}
-          {/* <Toolbar
+        {/* <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
             }}
@@ -133,7 +133,7 @@ export default function ReceptionistInsigntsPage() {
             >
               <MenuIcon />
             </IconButton> */}
-            {/* <Typography
+        {/* <Typography
               component="h1"
               variant="h6"
               color="inherit"
@@ -142,12 +142,12 @@ export default function ReceptionistInsigntsPage() {
             >
               Dashboard
             </Typography> */}
-            {/* <IconButton color="inherit">
+        {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-          {/* </Toolbar> */}
+        {/* </Toolbar> */}
         {/* </AppBar> */}
         {/* <Drawer variant="permanent" open={open}>
           <Toolbar
@@ -158,12 +158,12 @@ export default function ReceptionistInsigntsPage() {
               px: [1],
             }}
           > */}
-            {/* <IconButton onClick={toggleDrawer}>
+        {/* <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton> */}
-          {/* </Toolbar> */}
-          {/* <Divider /> */}
-          {/* <List component="nav">
+        {/* </Toolbar> */}
+        {/* <Divider /> */}
+        {/* <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
@@ -210,8 +210,8 @@ export default function ReceptionistInsigntsPage() {
                   <TodayAppoinment />
                 </Paper>
               </Grid>
-               {/* Past Appoinments */}
-               <Grid item xs={12} md={4} lg={3}>
+              {/* Past Appoinments */}
+              <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
                     p: 2,
@@ -263,36 +263,36 @@ export default function ReceptionistInsigntsPage() {
                   <TotalStaff />
                 </Paper>
               </Grid>
-        
-        {/* appoinments overview */}
-        <Grid item xs={12} md={4} lg={6}>
+
+              {/* appoinments overview */}
+              <Grid item xs={12} md={4} lg={6}>
                 <Paper
-                  // sx={{
-                  //   p: 2,
-                  //   display: 'flex',
-                  //   flexDirection: 'column',
-                  //   height: 300,
-                  // }}
+                // sx={{
+                //   p: 2,
+                //   display: 'flex',
+                //   flexDirection: 'column',
+                //   height: 300,
+                // }}
                 >
                   <AppointmentOverview />
                 </Paper>
               </Grid>
-        
-           {/* staff overview */}
-           <Grid item xs={12} md={4} lg={6}>
-           <title>Staff Overview</title>
+
+              {/* staff overview */}
+              <Grid item xs={12} md={4} lg={6}>
+                <title>Staff Overview</title>
                 <Paper
-                  // sx={{
-                  //   p: 2,
-                  //   display: 'flex',
-                  //   flexDirection: 'column',
-                  //   height: 390,
-                  // }}
+                // sx={{
+                //   p: 2,
+                //   display: 'flex',
+                //   flexDirection: 'column',
+                //   height: 390,
+                // }}
                 >
                   <StaffOverview />
                 </Paper>
               </Grid>
-        
+
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
