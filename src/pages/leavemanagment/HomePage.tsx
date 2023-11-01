@@ -194,10 +194,6 @@ export default function LeaveManagmentPage() {
   };
 
   const handleSubmit = () => {
-    // Handle form submission here
-    // You can access form data using state or useRef
-    // For example, you can create a state for each form field and update them on change
-    // Then use the state values for form submission
     handleClose();
   };
 
@@ -227,8 +223,6 @@ export default function LeaveManagmentPage() {
       };
 
       useEffect(() => {
-        // Simulate fetching balance data from an API based on selectedPosition and selectedStaffMember
-        // Replace this with your actual API call
         const fetchedBalanceData = [
           createData('Vacation', 15, 6, 4),
           createData('Stick Leave', 23, 9, 3),
@@ -242,7 +236,7 @@ export default function LeaveManagmentPage() {
           return (
             <div>
               <TableContainer component={Paper}>
-                {/* ... (Balance table rendering code) */}
+                {}
               </TableContainer>
             </div>
           );
@@ -278,9 +272,9 @@ export default function LeaveManagmentPage() {
                             onChange={handleChangePosition}
                     
                           >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={20}>20</MenuItem>
+                            <MenuItem value={30}>20</MenuItem>
                           </Select>
                         </FormControl>
                         <FormControl fullWidth>
@@ -293,9 +287,9 @@ export default function LeaveManagmentPage() {
                             onChange={handleChangeStaffMember}
                     
                           >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={20}>20</MenuItem>
+                            <MenuItem value={30}>20</MenuItem>
                           </Select>
                         </FormControl>
 
@@ -312,9 +306,9 @@ export default function LeaveManagmentPage() {
                             onChange={handleChangeLeaveType}
                     
                           >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={20}>20</MenuItem>
+                            <MenuItem value={30}>20</MenuItem>
                           </Select>
                         </FormControl>
                       
