@@ -71,31 +71,3 @@ function App() {
 }
 
 export default App
-
-
-
-{/* <Routes>
-            <Route path="/receptionist" element={<Layout allowedRoles='RECEPTIONIST' />} >
-              <Route path="" element={<AppointmentPage />} />
-              <Route path="appointment" element={<AppointmentPage />} />
-              <Route path="client" element={<ClientPage />} />
-              <Route path="quicksale" element={<QuickSalePage />} />
-              <Route path="quick-sale-form" element={<QuickSaleForm />} />
-              <Route path="leave" element={<LeavePage />} />
-            </Route>
-
-            <Route path="/manager" element={<Layout allowedRoles='MANAGER' />} >
-              <Route path="" element={<Services />} />
-              <Route path="leavemanagement" element={<LeaveManagmentPage />} />
-            </Route>
-
-            <Route path="/owner" element={<Layout allowedRoles='OWNER' />} >
-              <Route path="" element={<h1>Insights</h1>} />
-              <Route path="insights" element={<h1>Insights</h1>} />
-              <Route path="sales" element={<h1>Sales</h1>} />
-            </Route>
-
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/accessDenied" element={<h1>Access Denied</h1>} />
-            <Route path="*" element={<h1>Not Found</h1>} />
-          </Routes> */}

@@ -55,54 +55,53 @@ function AllBeauticianPage() {
   }, [])
 
   // Define the AllBeauticianPage component.
-  function AllBeauticianPage() {
-    return (
-      <>
-        {
-          isLoading ? <Loading /> :
-            <Box sx={{
-              mt: 1
-            }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 2
-                }}
-              >Beauticians</Typography>
-              <Grid container spacing={8} >
+  return (
+    <>
+      {
+        isLoading ? <Loading /> :
+          <Box sx={{
+            mt: 1
+          }}>
+            <Typography
+              variant="h4"
+              sx={{
+                mb: 2
+              }}
+            >Beauticians</Typography>
+            <Grid container spacing={8} >
 
-                {beautician.map((beauti) => (
-                  <Grid item key={beauti.id} xs={12} sm={4} md={3}>
-                    <Card
-                      sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                    >
-                      <CardMedia
-                        component="div"
-                        sx={{
-                          height: '200px',
-                        }}
-                        image={beauti.image ? `https://stylioo.blob.core.windows.net/images/${beauti.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {beauti.first_name} {beauti.last_name}
-                        </Typography>
-                        {/* <Typography>
+              {beautician.map((beauti) => (
+                <Grid item key={beauti.id} xs={12} sm={4} md={3}>
+                  <Card
+                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  >
+                    <CardMedia
+                      component="div"
+                      sx={{
+                        height: '200px',
+                      }}
+                      image={beauti.image ? `https://stylioo.blob.core.windows.net/images/${beauti.image}` : 'https://source.boringavatars.com/beam/120/Stefan?colors=264653,f4a261,e76f51'}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {beauti.first_name} {beauti.last_name}
+                      </Typography>
+                      {/* <Typography>
                         Talented hair cutting beautician with 5 years of experience in hair cutting and hair styling.
                       </Typography> */}
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" variant="contained" color='success'>View More Details</Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-        }
-      </>
-    );
-  }
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" variant="contained" color='success'>View More Details</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+      }
+    </>
+  );
 }
+
 
 export default AllBeauticianPage
