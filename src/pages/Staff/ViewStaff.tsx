@@ -169,7 +169,7 @@ function ViewStaff() {
                                                 >
                                                     <MenuItem value='Male'>Male</MenuItem>
                                                     <MenuItem value='Female'>Female</MenuItem>
-                                                    <MenuItem value='Rather no to say'>Rather no to say</MenuItem>
+                                                    <MenuItem value='Rather no to say'>Rather not to say</MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </Grid>

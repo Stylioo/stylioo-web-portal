@@ -62,7 +62,7 @@ function AddStaff() {
                 if (res.data.success) {
                     console.log("success:", res.data.data);
                 } else {
-                    //error
+                    console.log("Error occurred");
                 }
 
             }
@@ -345,7 +345,7 @@ function AddStaff() {
                                     <Table sx={{ minWidth: 300 }} aria-label="simple table">
                                         <TableHead>
                                             <TableRow>
-                                                <TableCell >Qualification</TableCell>
+                                                <TableCell>Qualification</TableCell>
                                                 <TableCell>Institute</TableCell>
                                                 <TableCell>Start Date</TableCell>
                                                 <TableCell>End Date</TableCell>
