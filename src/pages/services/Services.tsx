@@ -238,7 +238,7 @@ const Services = () => {
     }
 
     try {
-      const res = await axios.get(`/service/search?term=${searchTerm}`)
+      const res = await axios.get(`/service/searchServiceByManager?term=${searchTerm}`)
       console.log(res.data);
       // loop = res.data.error;
       // console.log(res.data.error)

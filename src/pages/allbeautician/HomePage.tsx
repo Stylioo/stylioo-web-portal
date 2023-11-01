@@ -23,6 +23,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Function to display copyright information.
 
@@ -33,6 +34,8 @@ function AllBeauticianPage() {
 
   const [beautician, setBeautician] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   const getAllBeauticians = async () => {
     try {
@@ -91,7 +94,9 @@ function AllBeauticianPage() {
                       </Typography> */}
                     </CardContent>
                     <CardActions>
-                      <Button size="small" variant="contained" color='success'>View More Details</Button>
+                      <Button size="small" variant="contained" color='success' onClick={() => {
+                        navigate(`/beauticians/${beauti.id}`)
+                      }}>View More Details</Button>
                     </CardActions>
                   </Card>
                 </Grid>

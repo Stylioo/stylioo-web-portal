@@ -21,6 +21,7 @@ import Appointments from "./pages/appoinments/Appointments"
 import NewAppointment from "./pages/appoinments/newAppointment"
 import AllBeauticianPage from "./pages/allbeautician/HomePage"
 import Dashboard from "./pages/dashboard/HomePage"
+import ViewBeautician from "./pages/allbeautician/ViewBeautician"
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
                 <Route path="client" element={<ClientPage />} />
                 <Route path="leave" element={<LeavePage />} />
                 <Route path='beauticians' element={<AllBeauticianPage />} />
+                <Route path='beauticians/:id' element={<ViewBeautician />} />
               </Route>
 
               <Route element={<ProtectedLayout allowedRole={[ROLE.MANAGER, ROLE.OWNER, ROLE.ADMIN]} />}>

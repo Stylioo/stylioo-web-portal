@@ -281,9 +281,13 @@ function NewAppointment() {
 
     const getAllServices = async () => {
         try {
+
+            console.log("test");
             setServicesLoading(true)
             const response = await axios.get('/service')
+            console.log("testtt", response.data);
             if (response.data.success) {
+
                 setServices(response.data.data)
             }
         } catch (error) {
@@ -301,8 +305,8 @@ function NewAppointment() {
     const searchServices = async (e: ChangeEvent<HTMLInputElement>) => {
         try {
             setServicesLoading(true)
-            let value = e.target.value
-            value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const value = e.target.value
+            // value = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
             setServiceSearchTerm(value)
 
 
@@ -310,6 +314,7 @@ function NewAppointment() {
                 q: value
             })
             if (response.data.success) {
+                console.log(response.data.data);
                 setServices(response.data.data)
             }
         } catch (error) {
@@ -1063,7 +1068,7 @@ function NewAppointment() {
                                             services?.map((service: any, index: number) => (
                                                 <div key={index} className="service-box">
                                                     <input type="checkbox" id={service.id} className="hiddenCheckbox select-service-checkbox"
-                                                    checked={selectedServices.some(selectedService => selectedService.id === service.id)}
+                                                        checked={selectedServices.some(selectedService => selectedService.id === service.id)}
                                                         onChange={handleServiceOnChange}
                                                     />
                                                     <label htmlFor={service.id} className="select-service-label">
