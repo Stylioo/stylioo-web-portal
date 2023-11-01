@@ -145,9 +145,9 @@ function AddProductPopup(props) {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}
                 >
-                  <MenuItem onClick={handleCloseMenu}>Option 1</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 2</MenuItem>
-                  <MenuItem onClick={handleCloseMenu}>Option 3</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 1</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 2</MenuItem>
+                  <MenuItem onClick={handleCloseMenu}>Product 3</MenuItem>
                 </Menu>
               </div>
               <div>
