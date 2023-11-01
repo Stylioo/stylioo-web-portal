@@ -49,7 +49,7 @@ const theme = responsiveFontSizes(createTheme({
             track: {
                 borderRadius: 13,
                 border: '1px solid #bdbdbd',
-                backgroundColor: '#fafafa',
+                backgroundColor: '#AC6BAA',
                 opacity: 1,
                 transition: 'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
             },
