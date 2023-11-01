@@ -13,7 +13,7 @@ export const services = [
     {
         id: 'Grooming_consultation',
         name: 'Grooming consultation',
-        description: "On your big day, you ought to look and be your best! Therefore groom's hair-do, makeup, skincare, and also the selection of a hair style that blends with groom's appearance are the most crucial aspects. Make an appointment with master stylist Surith before the big day to take your grooming to the next level.",
+        description: "On your big day, you need to look and be your best! Therefore groom's hair-do, makeup, skincare, and also the selection of a hair style that blends with groom's appearance are the most crucial aspects. Make an appointment with master stylist Surith before the big day to take your grooming to the next level.",
         price: 0,
         categoryId: 'grooming',
         duration: 20,

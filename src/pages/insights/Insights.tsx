@@ -186,7 +186,7 @@ const Insights = () => {
 
   // const valueFormatter = (value: number) => `${value}mm`;
   // valueFormatter for Rupees
-  const valueFormatterRs = (valueRr: number) => `Rs ${valueRr}`;
+  const valueFormatterRs = (valueRr: number) => `LKR ${valueRr}`;
 
   // valueFormatter for counts
   const valueFormatterMm = (valueMm: number) => `${valueMm}`;

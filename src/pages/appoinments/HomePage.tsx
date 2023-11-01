@@ -84,7 +84,7 @@ const columns: GridColDef[] = [
 
 
 const rows = [
-  { id: 1, Date: '10/10/2021', StartTime: '10:00 AM', EndTime: '11:00 AM', ClientName: 'John Doe', Service: 'Haircut', Beautician: 'Chirasi Walpola', ServicePrice: 'Rs.1500.00' },
+  { id: 1, Date: '10/10/2021', StartTime: '10:00 AM', EndTime: '11:00 AM', ClientName: 'John Doe', Service: 'Haircut', Beautician: 'Chirasi Walpola', ServicePrice: 'LKR.1500.00' },
 
 
 ];

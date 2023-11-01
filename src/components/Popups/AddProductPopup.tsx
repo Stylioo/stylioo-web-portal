@@ -81,7 +81,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"
@@ -93,7 +93,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"
@@ -105,7 +105,7 @@ function AddProductPopup(props) {
                 sx={{ m: 1, width: "35ch" }}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position="start">SL Rs:</InputAdornment>
+                    <InputAdornment position="start">LKR:</InputAdornment>
                   ),
                 }}
                 variant="filled"

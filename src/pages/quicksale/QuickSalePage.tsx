@@ -88,7 +88,7 @@ const rows = [
   Contact: '0771234567',
   BillNo: '001',
   Services: 'Long Hair cut',
-  PricePaidBalance: 'Rs.1500.00',
+  PricePaidBalance: 'LKR.1500.00',
   Date: '2023-08-04',
   FeedbackRatings: 'Good',
   Status: 'Paid'
@@ -101,7 +101,7 @@ const rows = [
   Contact: '0777834567',
   BillNo: '002',
   Services: 'Hair Color',
-  PricePaidBalance: 'Rs.5000.00',
+  PricePaidBalance: 'LKR.5000.00',
   Date: '2023-08-05',
   FeedbackRatings: 'Good',
   Status: 'Paid'
@@ -114,7 +114,7 @@ const rows = [
   Contact: '0771234569',
   BillNo: '003',
   Services: 'Hair Cut',
-  PricePaidBalance: 'Rs.1000.00',
+  PricePaidBalance: 'LKR.1000.00',
   Date: '2023-08-06',
   FeedbackRatings: 'None',
   Status: 'Paid'
@@ -126,7 +126,7 @@ const rows = [
   Contact: '0771774567',
   BillNo: '004',
   Services: 'Long Hair cut',
-  PricePaidBalance: 'Rs.1500.00',
+  PricePaidBalance: 'LKR.1500.00',
   Date: '2023-08-07',
   FeedbackRatings: 'None',
   Status: 'Paid'
@@ -138,7 +138,7 @@ const rows = [
   Contact: '0751234767',
   BillNo: '005',
   Services: 'Short Hair cut',
-  PricePaidBalance: 'Rs.900.00',
+  PricePaidBalance: 'LKR.900.00',
   Date: '2023-08-10',
   FeedbackRatings: 'None',
   Status: 'Paid'

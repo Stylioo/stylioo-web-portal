@@ -104,7 +104,7 @@ const rows = [
 //     Email: 'amaya99@gmail.com',
 //     Notes: 'Good',
 //     Service: 'Hair Cut',
-//     Price : 'Rs 1000.00',
+//     Price : 'LKR 1000.00',
 //     Status: 'Paid',
 //     Date: '2021-10-10',
 //     CancelledReason: 'No Reason'
