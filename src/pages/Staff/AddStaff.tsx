@@ -469,7 +469,7 @@ function AddStaff() {
                     </Box>
 
 
-                    <Box>
+                    {/* <Box>
                         <Typography variant='h6' sx={{ mt: 4, mb: 3, fontWeight: '500' }}>
                             Permissions
                         </Typography>
@@ -523,7 +523,7 @@ function AddStaff() {
                                 <FormControlLabel required control={<Checkbox />} label="Delete Inventory" />
                             </Grid>
                         </Grid>
-                    </Box>
+                    </Box> */}
 
 
                     <Box>
