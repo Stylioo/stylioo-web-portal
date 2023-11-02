@@ -81,6 +81,11 @@ const Services = () => {
 
   // Function to open the service addition popup
   const openPopup = () => {
+    setCategory('')
+    setName('')
+    setDescription('')
+    setPrice("")
+    setDuration('')
     setIsPopupOpen(true);
 
   };
