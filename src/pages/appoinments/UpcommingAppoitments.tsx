@@ -127,25 +127,25 @@ function UpcommingAppoitments() {
                 </Box>
             }
         },
-        {
-            field: "status", headerName: "Status", width: 120, renderCell: (params: any) => {
-                let status = "pending"
-                let className = "badge-primary"
+        // {
+        //     field: "status", headerName: "Status", width: 120, renderCell: (params: any) => {
+        //         let status = "pending"
+        //         let className = "badge-primary"
 
-                if (params.row.status === 'paid') {
-                    status = "Paid"
-                    className = "badge-success"
-                }
-                else if (params.row.status === 'canceled') {
-                    status = "Canceled"
-                    className = "badge-danger"
-                } else {
-                    status = "Pending"
-                    className = "badge-primary"
-                }
-                return <div className={`badge ${className}`}><p className="capitalize">{status}</p></div>;
-            }
-        },
+        //         if (params.row.status === 'paid') {
+        //             status = "Paid"
+        //             className = "badge-success"
+        //         }
+        //         else if (params.row.status === 'canceled') {
+        //             status = "Canceled"
+        //             className = "badge-danger"
+        //         } else {
+        //             status = "Pending"
+        //             className = "badge-primary"
+        //         }
+        //         return <div className={`badge ${className}`}><p className="capitalize">{status}</p></div>;
+        //     }
+        // },
         {
             field: "date", headerName: "Date", width: 130, renderCell: (params: any) => {
                 return <Box
@@ -171,7 +171,7 @@ function UpcommingAppoitments() {
         },
 
         {
-            field: "service", headerName: "Services", width: 275, renderCell: (params: any) => {
+            field: "service", headerName: "Services", width: 320, renderCell: (params: any) => {
                 return <Box
                     sx={{
                         display: "flex",

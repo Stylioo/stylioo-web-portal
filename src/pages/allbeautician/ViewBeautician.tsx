@@ -1,4 +1,4 @@
-    // Importing necessary dependencies and components
+// Importing necessary dependencies and components
 
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { useEffect, useState } from "react"
@@ -56,7 +56,7 @@ function ViewStaff() {
         }
     }
 
-        // Fetch staff details when the component mounts
+    // Fetch staff details when the component mounts
 
     useEffect(() => {
         getStaff()
@@ -358,12 +358,12 @@ function ViewStaff() {
                                         </Typography>
 
                                 }
-                                <Button
+                                {/* <Button
                                     variant='contained'
                                     sx={{ mr: 2, mb: 2 }}
                                     startIcon={<Add />}
                                     onClick={handleQualificationModalOpen}
-                                >Add Qualification</Button>
+                                >Add Qualification</Button> */}
 
                             </Box>
                         </Box>
@@ -387,7 +387,7 @@ function ViewStaff() {
                                         </LocalizationProvider>
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} lg={3}>
+                                {/* <Grid item xs={12} lg={3}>
                                     <FormControl fullWidth>
                                         <InputLabel id="demo-simple-select-label">Role</InputLabel>
                                         <Select
@@ -403,7 +403,7 @@ function ViewStaff() {
                                             <MenuItem value='Manager'>Manager</MenuItem>
                                         </Select>
                                     </FormControl>
-                                </Grid>
+                                </Grid> */}
                                 <Grid item xs={12} lg={6}>
                                     {/* <Box sx={{
                                         display: 'flex',
