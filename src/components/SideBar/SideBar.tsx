@@ -46,9 +46,10 @@ export default function SideBar({ children }: sidebarPropType) {
             [
                 { title: 'Insights', slug: '/', icon: <Assessment /> },
                 { title: 'Appointments', slug: '/appointments', icon: <Event /> },
-                // { title: 'Customers', slug: '/customers', icon: <People /> },
+                { title: 'Services', slug: '/services', icon: <Business /> },
+                { title: 'Customers', slug: '/client', icon: <People /> },
                 { title: 'Beauticians', slug: '/beauticians', icon: <Person /> },
-                { title: 'Services', slug: '/services', icon: <Business /> }
+                { title: 'Leave', slug: '/leave', icon: <Event /> },
             ])
         else if (currentUser.role === ROLE.OWNER) setMenuItems([
             { title: 'Insights', slug: '/', icon: <Assessment /> },

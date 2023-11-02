@@ -99,11 +99,61 @@ const rows = [
     Address: 'Matara',
     ContactNo: '0711234569',
     Email: 'amaya99@gmail.com',
-    LastSeriveDate: '2022-10-15',
+    LastSeriveDate: '2023-10-15',
     Notes: 'Good',
     TotalVisit: '5',
     Status: 'Active'
  },
+
+ {  
+  id: 2,
+  Name: 'Kalani Perera',
+  Address: 'Colombo 01',
+  ContactNo: '0711114569',
+  Email: 'kalaniperera9@gmail.com',
+  LastSeriveDate: '2022-10-20',
+  Notes: 'Good',
+  TotalVisit: '2',
+  Status: 'Active'
+},
+
+{  
+  id: 3,
+  Name: 'Pasani Kavindi',
+  Address: 'Gampaha',
+  ContactNo: '0711884569',
+  Email: 'pasani9@gmail.com',
+  LastSeriveDate: '2022-10-21',
+  Notes: 'Excellent',
+  TotalVisit: '1',
+  Status: 'Active'
+},
+
+{  
+  id: 4,
+  Name: 'Oshani Maduskika',
+  Address: 'Colombo 1',
+  ContactNo: '0711234599',
+  Email: 'oshanimadu@gmail.com',
+  LastSeriveDate: '2022-10-25',
+  Notes: 'Excellent',
+  TotalVisit: '2',
+  Status: 'Active'
+},
+
+{  
+  id: 5,
+  Name: 'Nethmi Perera',
+  Address: 'Colombo 02',
+  ContactNo: '0711239969',
+  Email: 'nethmiperera@gmail.com',
+  LastSeriveDate: '2022-10-27',
+  Notes: 'Good',
+  TotalVisit: '2',
+  Status: 'Active'
+},
+
+
   // Define more fields as per your requirements
 
 //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
@@ -156,7 +206,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function ClientPage() {
+function ClientPage() {
     // Define handleChange function and other related functions
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
@@ -199,8 +249,8 @@ export default function ClientPage() {
             disableElevation
             variant="contained"
             aria-label="Disabled elevation buttons"
-            sx={{ marginTop: '20px', marginLeft:'1090px'}} >
-            <Button startIcon={<AddCircleIcon />} color='accent'  onClick={handleClickOpen}>Add New Client</Button>
+            sx={{ marginTop: '20px', marginLeft:'1070px'}} >
+            <Button startIcon={<AddCircleIcon />} onClick={handleClickOpen}>Add New Client</Button>
                   
                 <Dialog open={open} onClose={handleClose}>
                   
@@ -275,7 +325,7 @@ export default function ClientPage() {
                 className="startDate"
                 id="outlined-multiline-flexible"
                 label="Start Date"
-                color="darkPrimary"
+                // color="darkPrimary"
                 multiline
                 maxRows={4}
                 />
@@ -286,7 +336,7 @@ export default function ClientPage() {
                 className="endDate"
                 id="outlined-multiline-flexible"
                 label="End Date"
-                color="darkPrimary"
+                // color="darkPrimary"
                 multiline
                 maxRows={4}
                 />
@@ -295,12 +345,12 @@ export default function ClientPage() {
 
 
 
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'30%'}}>
+      {/* <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#E26D5C', marginTop:'20px', width:'30%'}}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Client List" {...a11yProps(0)} />
           <Tab label="Inactive Clients" {...a11yProps(1)} />
         </Tabs>
-      </Box>
+      </Box> */}
      
       
        
@@ -336,3 +386,4 @@ export default function ClientPage() {
   );
 }
 
+export default ClientPage;
